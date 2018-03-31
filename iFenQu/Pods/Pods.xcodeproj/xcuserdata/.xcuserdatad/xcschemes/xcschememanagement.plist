@@ -34,17 +34,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AiFeiQu.xcscheme</key>
+		<key>Pods-IFenQu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AiFeiQuTests.xcscheme</key>
+		<key>Pods-IFenQuTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-AiFeiQuUITests.xcscheme</key>
+		<key>Pods-IFenQuUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

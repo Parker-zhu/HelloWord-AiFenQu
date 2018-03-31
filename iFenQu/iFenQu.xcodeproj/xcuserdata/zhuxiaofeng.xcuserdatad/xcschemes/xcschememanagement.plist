@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AiFeiQu.xcscheme</key>
+		<key>IFenQu.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>B4D95CAA204FDBE5009EB09D</key>
+		<key>B4B12E472067A61D00EB90D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4D95CBE204FDBE5009EB09D</key>
+		<key>B4B12E5B2067A61D00EB90D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B4D95CC9204FDBE5009EB09D</key>
+		<key>B4B12E662067A61D00EB90D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

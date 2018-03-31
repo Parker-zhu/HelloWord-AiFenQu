@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AiFeiQu
+//  iFenQu
 //
 //  Created by 朱晓峰 on 2018/3/7.
 //  Copyright © 2018年 朱晓峰. All rights reserved.
@@ -25,8 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.initViewStatus()
         
         let tabVc = BaseTabBarViewController()
-        UserDefaults.standard.set(false, forKey: "a")
+        
         self.window?.rootViewController = BaseNavigationController.init(rootViewController: tabVc)
+        
+        Network.dataRequest(url: Url.getEnvironment() + "v1/cards", param: nil, reqmethod: .GET) { (reuslt) in
+            
+        }
         
         return true
     }

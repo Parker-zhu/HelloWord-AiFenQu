@@ -8,8 +8,8 @@
 ///登陆
 
 import UIKit
-
-class LoginViewController: BaseViewController {
+import SDWebImage
+class LoginViewController: BaseViewController,SMSVerificationDelegate {
     //MARK: xib上的视图控件
     @IBOutlet weak var phoneTextF: UITextField!
     @IBOutlet weak var authCodeTextF: UITextField!
@@ -18,7 +18,7 @@ class LoginViewController: BaseViewController {
     
     @IBOutlet weak var iconsuperView: UIView!
    
-    @IBOutlet weak var authCodeBtn: XButton!
+    @IBOutlet weak var authCodeBtn: SMSVerification!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,54 +42,30 @@ class LoginViewController: BaseViewController {
         authCodeBtn.time = nil
         self.dismiss(animated: true, completion: nil)
     }
-
-
-
-    var count = 0
-    var link: CADisplayLink!
-    var la: CAShapeLayer!
+    var btn:SMSVerification?
     
     //获取验证码
     @IBAction func getCodeClick(_ sender: Any) {
-        let btn = sender as! XButton
-        
-        //先判断电话格式是否正确
-        if phoneTextF.text!.isPhoneNum() {
-           //倒计时
-            self.authCodeTextF.becomeFirstResponder()
-            btn.time = 60
-        } else {
+//        btn?.removeFromSuperview()
+//        let sms = SMSVerification.init(frame: CGRect.init(x: 0, y: 100, width: 100, height: 100))
+//        sms.backgroundColor = UIColor.red
+//        sms.delegate = self
+//        sms.starVerify()
+//        btn = sms
+//        self.view.addSubview(sms)
+        let btn = sender as! SMSVerification
+        btn.starVerify()
+//
+//        //先判断电话格式是否正确
+//        if phoneTextF.text!.isPhoneNum() {
+//           //倒计时
+//            self.authCodeTextF.becomeFirstResponder()
+//            btn.time = 60
+//        } else {
 //            Hud.showError(text: "请输入有效的手机号")
-            
-            la = CAShapeLayer.init()
-            la.bounds = CGRect.init(x: 0, y: 0, width: 200, height: 45)
-            la.lineWidth = 10
-            la.position = self.view.center
-            UIColor.red.setFill()
-            let path = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: count/6*2, height: 45), cornerRadius: 10)
-//            la.fillRule =
-//            path.move(to: (self.view.center))
-//            path.addLine(to: CGPoint.init(x: self.view.center.x + CGFloat(count), y: self.view.center.y))
-            la.path = path.cgPath
-            link = CADisplayLink.init(target: self, selector: #selector(aaa))
-            link.add(to: RunLoop.current, forMode: .commonModes)
-            self.view.layer.addSublayer(la)
-        }
-    }
-    @objc func aaa(){
-        count += 1
-//        let path = UIBezierPath.init()
-//        path.move(to: (self.view.center))
-//        path.addLine(to: CGPoint.init(x: self.view.x + CGFloat(count/600)*self.view.width, y: self.view.center.y))
-//        la.path = path.cgPath
-        let path = UIBezierPath.init(roundedRect: CGRect.init(x: 0, y: 0, width: count/6*2, height: 45), cornerRadius: 10)
-        //            la.fillRule =
-        //            path.move(to: (self.view.center))
-        //            path.addLine(to: CGPoint.init(x: self.view.center.x + CGFloat(count), y: self.view.center.y))
-        la.path = path.cgPath
-        if count == 600 {
-            link.invalidate()
-        }
+//
+//
+//        }
     }
     //隐私条款
     @IBAction func secretClick(_ sender: Any) {
@@ -108,6 +84,13 @@ class LoginViewController: BaseViewController {
                 Hud.showError(text: "请输入有效的验证码")
             }
         }
+    }
+    
+    func verifySuccessfully() {
+//        Hud.showError(text: "验证崇高了")
+    }
+    func verifyFailed(error: String) {
+//        Hud.showError(text: "朱晓峰说验证失败了")
     }
 }
 

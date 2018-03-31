@@ -10,8 +10,8 @@
 import UIKit
 
 enum Environment: String {
-    case dev = "https://dev-rest.i fenqu.com/account/"
-    case sit = "https://sit-rest.i fenqu.com/account/"
+    case dev = "https://dev-rest.ifenqu.com/account/"
+    case sit = "https://sit-rest.ifenqu.com/account/"
     case rest = "https://rest.ifenqu.com/account/"
 }
 
@@ -19,7 +19,7 @@ class Url {
     
     ///获取当前开发环境
     class func getEnvironment() -> String {
-        return Environment.dev.rawValue
+        return Environment.rest.rawValue
     }
     
     
