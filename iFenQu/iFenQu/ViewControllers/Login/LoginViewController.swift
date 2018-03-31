@@ -67,9 +67,12 @@ class LoginViewController: BaseViewController,SMSVerificationDelegate {
 //
 //        }
     }
+    func localizedString(_ key:String) -> String {
+        return NSLocalizedString(key, comment: "")
+    }
     //隐私条款
     @IBAction func secretClick(_ sender: Any) {
-        
+        phoneTextF.text = localizedString("aaa")
     }
     //登陆
     @IBAction func loginBtnClick(_ sender: Any) {
