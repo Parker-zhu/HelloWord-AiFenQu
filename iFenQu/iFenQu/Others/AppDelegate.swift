@@ -28,9 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window?.rootViewController = BaseNavigationController.init(rootViewController: tabVc)
         
-        Network.dataRequest(url: Url.getEnvironment() + "v1/cards", param: nil, reqmethod: .GET) { (reuslt) in
-            
-        }
         
         return true
     }
@@ -56,13 +53,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         net.setReachabilityStatusChange { (status) in
             switch status {
             case .notReachable:
-                print("")
+                print("没有连接")
             case .unknown:
-                print("")
+                print("网络错误")
             case .reachableViaWWAN:
-                print("")
+                print("自带网络")
             case .reachableViaWiFi:
-                print("")
+                print("WIFI")
             }
         }
         net.startMonitoring()

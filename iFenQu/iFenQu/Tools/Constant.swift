@@ -16,3 +16,7 @@ let SCREEN_Height = UIScreen.main.bounds.height
 ///--------项目中常用的颜色
 let xlightGray = UIColor.init(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
 let xyellow = UIColor.init(red: 255/255, green: 205/255, blue: 0, alpha: 1)
+
+///短信验证API
+let api1 = "https://captcha.ifenqu.com/v2/captcha"
+let api2 = "https://captcha.ifenqu.com/v2/validate"

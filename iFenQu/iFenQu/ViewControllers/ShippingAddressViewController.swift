@@ -38,8 +38,12 @@ class ShippingAddressViewController: BaseViewController {
             Hud.showError(text: "信息不完整或手机格式有误，请核实")
             return
         }
-    delegate?.completedInformationModification(infoModel:"")
-      self.navigationController?.popViewController(animated: true)
+    
+        Network.dataRequest(url: "", param: nil, reqmethod: .POST) { (result) in
+            self.navigationController?.popViewController(animated: true)
+            self.delegate?.completedInformationModification(infoModel:"")
+        }
+    
     }
     
     var delegate: ShippingAddressVcDelegate?

@@ -33,7 +33,7 @@ class ShopViewController: BaseViewController {
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        loadData()
     }
 
 }

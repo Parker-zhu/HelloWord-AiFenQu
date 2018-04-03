@@ -38,6 +38,7 @@ class ReceiverInfoViewController: BaseViewController {
         }
         
     }
+    
     ///初始化底部Btn
     func initBottomBtn() {
         let bottomBtn = XButton.init()
@@ -52,9 +53,10 @@ class ReceiverInfoViewController: BaseViewController {
             make?.bottom.equalTo()(self.view)?.setOffset(0)
         }
         
+        weak var weakSelf = self
         bottomBtn.block = {
            //跳转至新增收货地址
-            self.navigationController?.pushViewController(ShippingAddressViewController(), animated: true)
+            weakSelf?.navigationController?.pushViewController(ShippingAddressViewController(), animated: true)
         }
     }
     

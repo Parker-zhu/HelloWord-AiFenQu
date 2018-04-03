@@ -10,6 +10,9 @@
 		16B6068F6E5D0DA541D838F6 /* Pods_IFenQuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B854E04AC75C622A426668D5 /* Pods_IFenQuTests.framework */; };
 		1FA863CFB6F9B18129FBD407 /* Pods_IFenQuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FF0100F6F4CB1E10C02F0FA /* Pods_IFenQuUITests.framework */; };
 		6E60C530586B4449358973C8 /* Pods_IFenQu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F431F90A28F1F21E87E7B8 /* Pods_IFenQu.framework */; };
+		B4AB59012072530100751DF1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59002072530100751DF1 /* DataManager.swift */; };
+		B4AB59032072534300751DF1 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59022072534300751DF1 /* TokenModel.swift */; };
+		B4AB59052072557F00751DF1 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59042072557F00751DF1 /* ModelManager.swift */; };
 		B4B12E512067A61D00EB90D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4B12E4F2067A61D00EB90D8 /* Main.storyboard */; };
 		B4B12E612067A61D00EB90D8 /* IFenQuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12E602067A61D00EB90D8 /* IFenQuTests.swift */; };
 		B4B12E6C2067A61D00EB90D8 /* IFenQuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12E6B2067A61D00EB90D8 /* IFenQuUITests.swift */; };
@@ -81,6 +84,9 @@
 		69F431F90A28F1F21E87E7B8 /* Pods_IFenQu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFenQu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72F3AB936D52956BBBA6251F /* Pods-IFenQuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQuTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQuTests/Pods-IFenQuTests.release.xcconfig"; sourceTree = "<group>"; };
 		7FA61731DA8B9108C84C8020 /* Pods-IFenQuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQuTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQuTests/Pods-IFenQuTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B4AB59002072530100751DF1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		B4AB59022072534300751DF1 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
+		B4AB59042072557F00751DF1 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		B4B12E482067A61D00EB90D8 /* IFenQu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IFenQu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B12E502067A61D00EB90D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4B12E572067A61D00EB90D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -267,6 +273,9 @@
 				B4B12E972067A6EB00EB90D8 /* Url.swift */,
 				B4B12E982067A6EB00EB90D8 /* Tools.swift */,
 				B4B12ED9206918A000EB90D8 /* SMSVerification.swift */,
+				B4AB59002072530100751DF1 /* DataManager.swift */,
+				B4AB59022072534300751DF1 /* TokenModel.swift */,
+				B4AB59042072557F00751DF1 /* ModelManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -711,6 +720,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4B12E8A2067A6C000EB90D8 /* UIView_extension.swift in Sources */,
+				B4AB59032072534300751DF1 /* TokenModel.swift in Sources */,
+				B4AB59012072530100751DF1 /* DataManager.swift in Sources */,
 				B4B12EBC2067A6F500EB90D8 /* ReceiverInfoViewController.swift in Sources */,
 				B4B12E7E2067A6B400EB90D8 /* BaseNavigationController.swift in Sources */,
 				B4B12EC82067A6F500EB90D8 /* ReceiverInfoTableViewCell.swift in Sources */,
@@ -736,6 +747,7 @@
 				B4B12EBF2067A6F500EB90D8 /* AboutViewController.swift in Sources */,
 				B4B12E7D2067A6B400EB90D8 /* BaseViewController.swift in Sources */,
 				B4B12E9F2067A6EC00EB90D8 /* PillPageControl.swift in Sources */,
+				B4AB59052072557F00751DF1 /* ModelManager.swift in Sources */,
 				B4B12EBE2067A6F500EB90D8 /* ShopViewController.swift in Sources */,
 				B4B12EA32067A6EC00EB90D8 /* Tools.swift in Sources */,
 				B4B12EDA206918A000EB90D8 /* SMSVerification.swift in Sources */,

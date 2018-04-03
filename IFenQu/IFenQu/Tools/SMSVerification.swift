@@ -10,22 +10,12 @@
 import UIKit
 import GT3Captcha
 import AFNetworking
-///验证的代理
-protocol SMSVerificationDelegate {
-    ///验证成功
-    func verifySuccessfully()
-    ///验证失败
-    func verifyFailed(error:String)
-}
 
 class SMSVerification: XButton,GT3CaptchaManagerDelegate,GT3CaptchaManagerViewDelegate {
     
-    var delegate: SMSVerificationDelegate?
-    
-    let api1 = "https://captcha.ifenqu.com/v2/captcha"
-    let api2 = "https://captcha.ifenqu.com/v2/validate"
-    
     var manger: GT3CaptchaManager!
+    var succesBlock: (() -> Void)!
+    var phoneNumb: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,54 +23,44 @@ class SMSVerification: XButton,GT3CaptchaManagerDelegate,GT3CaptchaManagerViewDe
         manger.delegate = self
         manger.viewDelegate = self
         manger.useVisualView(with: UIBlurEffect.init(style: .dark))
-        manger.registerCaptcha(nil)
+        manger.registerCaptcha {
+        }
     }
     
     ///开始验证
-    func starVerify() {
+    func starVerify(phone:String,success:@escaping () -> Void) {
+            self.succesBlock = success
+            phoneNumb = phone
         
             weak var weakSelf = self
-            Network.dataRequest(url: self.api1, param: nil, reqmethod: .GET) { (result) in
+            Network.dataRequest(url: api1, param: nil, reqmethod: .GET) { (result) in
                 if result?.code == 1 {
-                    weakSelf?.manger.configureGTest(result?.responseDic["gt"] as! String, challenge: result?.responseDic["challenge"] as! String, success: result?.responseDic["success"] as! NSNumber, withAPI2: weakSelf?.api2)
+                    weakSelf?.manger.configureGTest(result?.responseDic["gt"] as! String, challenge: result?.responseDic["challenge"] as! String, success: result?.responseDic["success"] as! NSNumber, withAPI2: api2)
                     weakSelf?.manger.startGTCaptchaWith(animated: true)
                 }
             }
-        
-        
-        
     }
     
     func stopVerify() {
         manger.stopGTCaptcha()
     }
     
-    
     //验证的代理
     func gtCaptcha(_ manager: GT3CaptchaManager!, errorHandler error: GT3Error!) {
-        delegate?.verifyFailed(error: "李毅中验证失败")
+        
     }
     
     func gtCaptcha(_ manager: GT3CaptchaManager!, didReceiveCaptchaCode code: String!, result: [AnyHashable : Any]!, message: String!) {
         let r = result as! [String : String]
         let dic:[String:String] = ["challenge":r["geetest_challenge"]!,"validate":r["geetest_validate"]!,"seccode":r["geetest_seccode"]!]
-        let param = ["mobile":"17602138417"]
+        let param = ["mobile":phoneNumb]
         Network.dataRequest(header: convertDictionaryToString(dict: dic), url: "https://account.ifenqu.com/v1/send-login-verify-code", param: param, reqmethod: .POST) { (result) in
-            print(result)
+            if result?.code == 1 {
+                self.succesBlock()
+            }
         }
     }
     
-    func getJSONStringFromDictionary(dictionary:NSDictionary) -> String {
-        if (!JSONSerialization.isValidJSONObject(dictionary)) {
-            print("无法解析出JSONString")
-            return ""
-        }
-        let data : NSData! = try? JSONSerialization.data(withJSONObject: dictionary, options: []) as NSData!
-        let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
-        return JSONString! as String
-        
-        
-    }
     ///字典转json字符串
     func convertDictionaryToString(dict:[String:String]) -> String {
         var result:String = ""

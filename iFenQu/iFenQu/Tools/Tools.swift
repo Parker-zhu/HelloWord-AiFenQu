@@ -19,3 +19,13 @@ func getTime(function:()->()){
     let end=CACurrentMediaTime()
     print("方法耗时为：\(end-start)")
 }
+
+
+/// 国际化字符串
+///
+/// - Parameter key:
+/// - Returns: 
+func localizedString(_ key:String) -> String {
+    return NSLocalizedString(key, comment: "")
+}
+

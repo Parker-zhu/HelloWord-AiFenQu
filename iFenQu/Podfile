@@ -27,5 +27,6 @@ target 'IFenQu' do
   pod 'IQKeyboardManager'
   pod 'MJRefresh'
   pod 'Bugly'
+  pod 'MJExtension'
 
 end

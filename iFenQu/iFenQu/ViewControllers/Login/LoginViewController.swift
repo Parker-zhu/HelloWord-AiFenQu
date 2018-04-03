@@ -9,7 +9,8 @@
 
 import UIKit
 import SDWebImage
-class LoginViewController: BaseViewController,SMSVerificationDelegate {
+class LoginViewController: BaseViewController {
+    
     //MARK: xib上的视图控件
     @IBOutlet weak var phoneTextF: UITextField!
     @IBOutlet weak var authCodeTextF: UITextField!
@@ -46,40 +47,41 @@ class LoginViewController: BaseViewController,SMSVerificationDelegate {
     
     //获取验证码
     @IBAction func getCodeClick(_ sender: Any) {
-//        btn?.removeFromSuperview()
-//        let sms = SMSVerification.init(frame: CGRect.init(x: 0, y: 100, width: 100, height: 100))
-//        sms.backgroundColor = UIColor.red
-//        sms.delegate = self
-//        sms.starVerify()
-//        btn = sms
-//        self.view.addSubview(sms)
         let btn = sender as! SMSVerification
-        btn.starVerify()
-//
-//        //先判断电话格式是否正确
-//        if phoneTextF.text!.isPhoneNum() {
-//           //倒计时
-//            self.authCodeTextF.becomeFirstResponder()
-//            btn.time = 60
-//        } else {
-//            Hud.showError(text: "请输入有效的手机号")
-//
-//
-//        }
+        //先判断电话格式是否正确
+        if phoneTextF.text!.isPhoneNum() {
+            weak var weakSelf = self
+            btn.starVerify(phone: phoneTextF.text!, success: {
+                //倒计时
+                weakSelf?.authCodeTextF.becomeFirstResponder()
+                btn.time = 60
+            })
+           
+        } else {
+            Hud.showError(text: "请输入有效的手机号")
+        }
     }
-    func localizedString(_ key:String) -> String {
-        return NSLocalizedString(key, comment: "")
-    }
+    
+    
     //隐私条款
     @IBAction func secretClick(_ sender: Any) {
-        phoneTextF.text = localizedString("aaa")
+        let m = TokenModel.dicToModel(dic: ["b":"a"])
     }
+    
     //登陆
     @IBAction func loginBtnClick(_ sender: Any) {
         //先判断电话，验证码，格式
-        if phoneTextF.text!.isPhoneNum() && authCodeTextF.text!.isNum() && authCodeTextF.text!.count == 4 {
-            //进行登陆请求
+        if phoneTextF.text!.isPhoneNum() && authCodeTextF.text!.isNum() && authCodeTextF.text!.count > 0 {
+            
             self.view.endEditing(true)
+            //进行登陆请求
+            let param = ["account":phoneTextF.text!,"verifyCode":authCodeTextF.text!]
+            Network.dataRequest(url: Url.getEnvironment() + "v1/login-verify", param: param, reqmethod: .POST, callBack: { (result) in
+                guard let data: [String:Any] = result?.responseDic["data"] as?  [String:Any] else {
+                    return
+                }
+                _ = TokenModel.initWithDic(dic: data)
+            })
         } else {
             if !phoneTextF.text!.isPhoneNum() {
                 Hud.showError(text: "请输入有效的手机号")
@@ -87,13 +89,6 @@ class LoginViewController: BaseViewController,SMSVerificationDelegate {
                 Hud.showError(text: "请输入有效的验证码")
             }
         }
-    }
-    
-    func verifySuccessfully() {
-//        Hud.showError(text: "验证崇高了")
-    }
-    func verifyFailed(error: String) {
-//        Hud.showError(text: "朱晓峰说验证失败了")
     }
 }
 

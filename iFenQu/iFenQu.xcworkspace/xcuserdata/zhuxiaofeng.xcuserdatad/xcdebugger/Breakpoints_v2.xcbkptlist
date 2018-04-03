@@ -9,126 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Login/LoginViewController.swift"
-            timestampString = "544207089.743561"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "verifySuccessfully()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Login/LoginViewController.swift"
-            timestampString = "544207089.743668"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "verifyFailed(error:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/Network.swift"
-            timestampString = "544204933.254923"
+            timestampString = "544374670.938506"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "dataRequest(url:param:reqmethod:callBack:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/Tools/Network.swift"
-            timestampString = "544204933.2552609"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "dataRequest(url:param:reqmethod:callBack:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/Tools/Network.swift"
-            timestampString = "544204933.255542"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "dataRequest(header:url:param:reqmethod:callBack:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/Tools/Network.swift"
-            timestampString = "544204933.255789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "dataRequest(header:url:param:reqmethod:callBack:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static IFenQu.Network.dataRequest(header: Swift.String, url: Swift.String, param: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, reqmethod: IFenQu.ReqMethod, callBack: (Swift.Optional&lt;(code: Swift.Int, responseDic: Swift.Dictionary&lt;Swift.String, Any&gt;)&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "IFenQu"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhuxiaofeng/Desktop/IFenQu/IFenQu/Tools/Network.swift"
-                  timestampString = "544204987.487988"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "1312">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__ObjC.URLResponse, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static IFenQu.Network.dataRequest(header: Swift.String, url: Swift.String, param: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, reqmethod: IFenQu.ReqMethod, callBack: (Swift.Optional&lt;(code: Swift.Int, responseDic: Swift.Dictionary&lt;Swift.String, Any&gt;)&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "IFenQu"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhuxiaofeng/Desktop/IFenQu/IFenQu/Tools/Network.swift"
-                  timestampString = "544204987.4896899"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "28">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/SMSVerification.swift"
-            timestampString = "544204933.2559609"
+            timestampString = "544374670.93874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/SMSVerification.swift"
-            timestampString = "544204933.256546"
+            timestampString = "544374670.938841"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "gtCaptcha(_:errorHandler:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "starVerify(phone:success:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,43 +58,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/SMSVerification.swift"
-            timestampString = "544204933.2569979"
+            timestampString = "544374670.938941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "starVerify()"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "starVerify(phone:success:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "IFenQu.SMSVerification.starVerify() -&gt; ()"
+                  symbolName = "IFenQu.SMSVerification.starVerify(phone: Swift.String, success: () -&gt; ()) -&gt; ()"
                   moduleName = "IFenQu"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhuxiaofeng/Desktop/IFenQu/IFenQu/Tools/SMSVerification.swift"
-                  timestampString = "544204987.512566"
+                  urlString = "file:///Users/zhuxiaofeng/Workspace/IOS/ProJ/IFenQuGit/IFenQu/IFenQu/Tools/SMSVerification.swift"
+                  timestampString = "544374671.182416"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "60">
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "275">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;(code: Swift.Int, responseDic: Swift.Dictionary&lt;Swift.String, Any&gt;)&gt;) -&gt; () in IFenQu.SMSVerification.starVerify() -&gt; ()"
+                  symbolName = "closure #1 (Swift.Optional&lt;(code: Swift.Int, responseDic: Swift.Dictionary&lt;Swift.String, Any&gt;)&gt;) -&gt; () in IFenQu.SMSVerification.starVerify(phone: Swift.String, success: () -&gt; ()) -&gt; ()"
                   moduleName = "IFenQu"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhuxiaofeng/Desktop/IFenQu/IFenQu/Tools/SMSVerification.swift"
-                  timestampString = "544204987.514562"
+                  urlString = "file:///Users/zhuxiaofeng/Workspace/IOS/ProJ/IFenQuGit/IFenQu/IFenQu/Tools/SMSVerification.swift"
+                  timestampString = "544374671.1863641"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "32">
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "34">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -218,45 +106,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/SMSVerification.swift"
-            timestampString = "544204933.2573971"
+            timestampString = "544374670.9390531"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "starVerify()"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "starVerify(phone:success:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "IFenQu.SMSVerification.starVerify() -&gt; ()"
-                  moduleName = "IFenQu"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhuxiaofeng/Desktop/IFenQu/IFenQu/Tools/SMSVerification.swift"
-                  timestampString = "544204987.519508"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;(code: Swift.Int, responseDic: Swift.Dictionary&lt;Swift.String, Any&gt;)&gt;) -&gt; () in IFenQu.SMSVerification.starVerify() -&gt; ()"
-                  moduleName = "IFenQu"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhuxiaofeng/Desktop/IFenQu/IFenQu/Tools/SMSVerification.swift"
-                  timestampString = "544204987.521026"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IFenQu/Tools/SMSVerification.swift"
+            timestampString = "544374670.939171"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "gtCaptcha(_:didReceiveCaptchaCode:result:message:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IFenQu/Tools/SMSVerification.swift"
+            timestampString = "544374670.939256"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "deinit"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IFenQu/ViewControllers/Login/LoginViewController.swift"
+            timestampString = "544374670.939347"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "loginBtnClick(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IFenQu/Tools/ModelManager.swift"
+            timestampString = "544374670.939447"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
