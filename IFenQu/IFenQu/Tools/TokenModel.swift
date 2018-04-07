@@ -10,25 +10,43 @@ import UIKit
 ///手机号码+短信登陆成功返回模型数据
 class TokenModel: NSObject {
     ///刷新令牌
-    var refreshToken: String = ""
+    @objc var refreshToken: String?
     ///访问令牌过期时间
-    var accessTokenExpire: String = ""
+    @objc var accessTokenExpire: String?
     ///访问令牌
-    var accessToken: String = ""
+    @objc var accessToken: String?
     ///用户ID
-    var userId: String = ""
+    var userId: Int?
     ///刷新令牌过期时间
-    var refreshTokenExpire: String = ""
+    @objc var refreshTokenExpire: String?
     
     
-    class func initWithDic(dic:[String:Any]) -> TokenModel{
+    class func initWithDict(dict:[String:Any]) -> TokenModel {
         let model = TokenModel()
-        model.refreshToken = dic["refreshToken"] as! String
-        model.accessTokenExpire = dic["accessTokenExpire"] as! String
-        model.accessToken = dic["accessToken"] as! String
-        model.refreshTokenExpire = dic["refreshTokenExpire"] as! String
-        model.userId = dic["userId"] as! String
+        var count: UInt32 = 0
+        //获取类的属性列表,返回属性列表的数组,可选项
+        let list = class_copyIvarList(TokenModel.self, &count)
+        
+        //遍历数组
+        for i in 0..<Int(count) {
+            //根据下标获取属性
+            let pty = list?[i]
+            //获取属性的名称<C语言字符串>
+            //转换过程:Int8 -> Byte -> Char -> C语言字符串
+            let cName = ivar_getName(pty!)
+            //转换成String的字符串
+            let name = String(utf8String: cName!)
+//            objc_setAssociatedObject(self, cName!, dict[name!], .OBJC_ASSOCIATION_RETAIN)
+            if name == "userId" {
+                model.userId = dict["userId"] as? Int
+            } else {
+            model.setValue(dict[name!], forKey: name!)
+            }
+        }
+        free(list) //释放list
         return model
     }
-    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+        
+    }
 }

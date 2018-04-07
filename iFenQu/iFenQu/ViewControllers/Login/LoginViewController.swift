@@ -9,6 +9,7 @@
 
 import UIKit
 import SDWebImage
+
 class LoginViewController: BaseViewController {
     
     //MARK: xib上的视图控件
@@ -34,16 +35,13 @@ class LoginViewController: BaseViewController {
 //        iconImageView.image = UIImage.init(named: "iconImage")
 //        iconImageView.contentMode = .center
         iconsuperView.addSubview(iconImageView)
-        
     }
-    
     //MARK:xib上的事件
     //返回按钮的点击事件
     @IBAction func back(_ sender: Any) {
         authCodeBtn.time = nil
         self.dismiss(animated: true, completion: nil)
     }
-    var btn:SMSVerification?
     
     //获取验证码
     @IBAction func getCodeClick(_ sender: Any) {
@@ -65,7 +63,7 @@ class LoginViewController: BaseViewController {
     
     //隐私条款
     @IBAction func secretClick(_ sender: Any) {
-        let m = TokenModel.dicToModel(dic: ["b":"a"])
+        
     }
     
     //登陆
@@ -80,7 +78,8 @@ class LoginViewController: BaseViewController {
                 guard let data: [String:Any] = result?.responseDic["data"] as?  [String:Any] else {
                     return
                 }
-                _ = TokenModel.initWithDic(dic: data)
+                let model = TokenModel.initWithDict(dict: data)
+                CacheManager.storeCache(key: "token", obj: data)
             })
         } else {
             if !phoneTextF.text!.isPhoneNum() {

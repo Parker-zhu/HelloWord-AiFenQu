@@ -76,7 +76,10 @@ class XButton: UIButton {
             self.setTitle("重新请求", for: .normal)
         }
     }    
-    
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        self.time = nil
+    }
     
 }
 

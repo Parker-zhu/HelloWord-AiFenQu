@@ -21,17 +21,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         self.setSDKInfo()
-        self.monitorNet()
+//        self.monitorNet()
         self.initViewStatus()
         
-        let tabVc = BaseTabBarViewController()
-        
-        self.window?.rootViewController = BaseNavigationController.init(rootViewController: tabVc)
-        
+        weak var weakSelf = self
+        self.setBootPage {
+            let tabVc = BaseTabBarViewController()
+            
+            weakSelf?.window?.rootViewController = BaseNavigationController.init(rootViewController: tabVc)
+        }
         
         return true
     }
 
+    ///加载启动页
+    func setBootPage(loadMain:@escaping ()->()) {
+        if monitorNet() {
+            let vc = BootPageViewController()
+            vc.loadMainBlock = loadMain
+            self.window?.rootViewController = vc
+        } else {
+           loadMain()
+        }
+        
+    }
     
     ///初始化一些基本设置，颜色等
     func initViewStatus() {
@@ -48,21 +61,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     ///监听网络
-    func monitorNet() {
+    func monitorNet() -> Bool {
+//        let net = AFNetworkReachabilityManager.shared()
+//        net.setReachabilityStatusChange { (status) in
+//            switch status {
+//            case .notReachable:
+//                print("没有连接")
+//            case .unknown:
+//                print("网络错误")
+//            case .reachableViaWWAN:
+//                print("自带网络")
+//            case .reachableViaWiFi:
+//                print("WIFI")
+//            }
+//        }
+//        net.startMonitoring()
         let net = AFNetworkReachabilityManager.shared()
-        net.setReachabilityStatusChange { (status) in
-            switch status {
-            case .notReachable:
-                print("没有连接")
-            case .unknown:
-                print("网络错误")
-            case .reachableViaWWAN:
-                print("自带网络")
-            case .reachableViaWiFi:
-                print("WIFI")
-            }
+        if net.networkReachabilityStatus == .unknown || net.networkReachabilityStatus == .notReachable {
+            return false
         }
-        net.startMonitoring()
+        return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
