@@ -32,7 +32,7 @@ class ShopCollectionViewCell: UICollectionViewCell {
         
         let lable3 = UILabel.init(frame: CGRect.init(x: 10, y: lable2.frame.maxY, width: frame.width - 20, height: frame.height/32*3))
         
-        lable3.shopLable(text: "12期", textColor: UIColor.red, textBackColor: UIColor.white, textFont: 10, lineColor: UIColor.red, lineType: .circle, priceText: "¥ 566.00起", priceColor: UIColor.red, isChangeSize: nil, priceFont: 12)
+        lable3.shopLable(text: "12期", textColor: UIColor.red, textBackColor: UIColor.white, textFont: 10, lineColor: UIColor.red, lineType: .circle, priceText: "¥ 566.00起", priceColor: UIColor.red, isChangeSize: true, priceFont: 12)
         self.contentView.addSubview(lable3)
         
     }

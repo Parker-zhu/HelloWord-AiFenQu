@@ -107,8 +107,5 @@ extension UIButton {
     @objc private func btnClick() {
         self.block!()
     }
-    
-    
-    
-    
+     
 }

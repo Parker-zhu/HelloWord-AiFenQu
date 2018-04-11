@@ -11,14 +11,14 @@ import UIKit
 
 class ShopViewController: BaseViewController {
     
-//    var slideView: SlideshowView!
+    ///轮播图视图
     lazy var slideView = { () -> SlideshowView in
         
         let slide = SlideshowView.SlideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: 200), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
-            
+            let vc = MobileViewController()
+            vc.isChangeMobile = true
+            self.navigationController?.pushViewController(vc, animated: true)
         })
-        
-//        slide.delegate = self
         
         return slide
     }()
@@ -58,11 +58,8 @@ class ShopViewController: BaseViewController {
     
 }
 
-extension ShopViewController: SlideshowViewDelegate,UITableViewDelegate,UITableViewDataSource {
+extension ShopViewController: UITableViewDelegate,UITableViewDataSource {
     
-    func slideshowViewScrollView(_ slideshowView: SlideshowView, didSelectItemIndex index: NSInteger) {
-        
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MainShopTableViewCell
@@ -78,6 +75,7 @@ extension ShopViewController: SlideshowViewDelegate,UITableViewDelegate,UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 3 {

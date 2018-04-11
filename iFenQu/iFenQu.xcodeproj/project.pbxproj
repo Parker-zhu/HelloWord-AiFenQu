@@ -73,6 +73,8 @@
 		B4BB6997207CC00500E6D33B /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6995207CC00500E6D33B /* CardTableViewCell.swift */; };
 		B4BB6998207CC00500E6D33B /* CardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BB6996207CC00500E6D33B /* CardTableViewCell.xib */; };
 		B4BB699A207CD2EC00E6D33B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6999207CD2EC00E6D33B /* AlertView.swift */; };
+		B4BB699C207DE45000E6D33B /* MobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB699B207DE45000E6D33B /* MobileViewController.swift */; };
+		B4BB699E207E077200E6D33B /* InvoiceInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB699D207E077200E6D33B /* InvoiceInformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +174,8 @@
 		B4BB6995207CC00500E6D33B /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		B4BB6996207CC00500E6D33B /* CardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTableViewCell.xib; sourceTree = "<group>"; };
 		B4BB6999207CD2EC00E6D33B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		B4BB699B207DE45000E6D33B /* MobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileViewController.swift; sourceTree = "<group>"; };
+		B4BB699D207E077200E6D33B /* InvoiceInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceInformationViewController.swift; sourceTree = "<group>"; };
 		B854E04AC75C622A426668D5 /* Pods_IFenQuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFenQuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0D483ACF68BF15AC83CD8 /* Pods-IFenQu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQu.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQu/Pods-IFenQu.release.xcconfig"; sourceTree = "<group>"; };
 		D22D21FDBC9A90CA4879C26E /* Pods-IFenQuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQuUITests/Pods-IFenQuUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +339,7 @@
 				B4B12EA72067A6F500EB90D8 /* ReceiverInfoViewController.swift */,
 				B4B89EAC20791AAE009B3D4C /* BootPageViewController.swift */,
 				B4B12EA82067A6F500EB90D8 /* ShippingAddressViewController.xib */,
+				B4BB699D207E077200E6D33B /* InvoiceInformationViewController.swift */,
 				B4B12EA92067A6F500EB90D8 /* Shop */,
 				B4B12EAB2067A6F500EB90D8 /* About */,
 				B4B12EAD2067A6F500EB90D8 /* ChangePhone */,
@@ -384,6 +389,7 @@
 				B4BB6987207B988800E6D33B /* MineHeaderView.swift */,
 				B4BB6989207B9D9400E6D33B /* MineTableViewCell.swift */,
 				B4BB698A207B9D9400E6D33B /* MineTableViewCell.xib */,
+				B4BB699B207DE45000E6D33B /* MobileViewController.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -774,6 +780,7 @@
 				B4BB6988207B988800E6D33B /* MineHeaderView.swift in Sources */,
 				B4B12E7E2067A6B400EB90D8 /* BaseNavigationController.swift in Sources */,
 				B4B12EC82067A6F500EB90D8 /* ReceiverInfoTableViewCell.swift in Sources */,
+				B4BB699C207DE45000E6D33B /* MobileViewController.swift in Sources */,
 				B4B89EAB2079039F009B3D4C /* CacheManager.swift in Sources */,
 				B4BB6994207CBF0E00E6D33B /* CardViewController.swift in Sources */,
 				B4B12E9B2067A6EC00EB90D8 /* ImagePageControl.swift in Sources */,
@@ -785,6 +792,7 @@
 				B4B12EA12067A6EC00EB90D8 /* Hud.swift in Sources */,
 				B4B12EC32067A6F500EB90D8 /* MessageViewController.swift in Sources */,
 				B4B89EE9207A4027009B3D4C /* MainShopTableViewCell.swift in Sources */,
+				B4BB699E207E077200E6D33B /* InvoiceInformationViewController.swift in Sources */,
 				B4B12EC72067A6F500EB90D8 /* IconImageView.swift in Sources */,
 				B4B12EBA2067A6F500EB90D8 /* ShippingAddressViewController.swift in Sources */,
 				B4B89EEB207A5992009B3D4C /* ShopCollectionViewCell.swift in Sources */,

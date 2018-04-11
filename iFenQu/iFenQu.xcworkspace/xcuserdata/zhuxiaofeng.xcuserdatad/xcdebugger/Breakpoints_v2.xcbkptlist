@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545119176.537791"
+            timestampString = "545150531.265277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "awakeFromNib()"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545119176.539681"
+            timestampString = "545150531.267091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545119176.540495"
+            timestampString = "545150531.268792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "initHeaderLable()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545119176.5409549"
+            timestampString = "545150531.2697819"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "21"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545119176.541376"
+            timestampString = "545150531.271016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/PopView.swift"
-            timestampString = "545119176.5417809"
+            timestampString = "545150531.27192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/PopView.swift"
-            timestampString = "545119176.54185"
+            timestampString = "545150531.272004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -138,28 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/AlertView.swift"
-            timestampString = "545119176.5419101"
+            timestampString = "545150531.272073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "show(text:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Mine/MineViewController.swift"
-            timestampString = "545119176.54197"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "show(text:btn1Text:btn1TextColor:btn2Text:btn2TextColor:btn2Block:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -170,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Extensions/UILable_extension.swift"
-            timestampString = "545119176.542025"
+            timestampString = "545150531.272131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "shopLable(text:textColor:textBackColor:textFont:lineColor:lineType:priceText:priceColor:isChangeSize:priceFont:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -185,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545119176.542086"
+            filePath = "IFenQu/ViewControllers/Shop/ShopViewController.swift"
+            timestampString = "545150531.2722189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "collectionView"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "slideView"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -201,14 +185,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545119176.542341"
+            filePath = "IFenQu/Extensions/UILable_extension.swift"
+            timestampString = "545150531.272279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "dirction"
-            landmarkType = "24">
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "shopLable(text:textColor:textBackColor:textFont:lineColor:lineType:priceText:priceColor:isChangeSize:priceFont:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -19,7 +19,7 @@ class MainShopTableViewCell: UITableViewCell {
     }
     lazy var headerLable = { () -> UILabel in
         let bgView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 30))
-        self.contentView.addSubview(bgView)
+        bgCView.addSubview(bgView)
         let lable = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 20))
         lable.shopLable(text: "商品详情", textColor: UIColor.red, textBackColor: UIColor.white, textFont: 10, lineColor: UIColor.red, lineType: .circle, priceText: nil, priceColor: nil, isChangeSize: nil, priceFont: nil)
         lable.textAlignment = .center
@@ -31,9 +31,17 @@ class MainShopTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        self.separatorInset = UIEdgeInsets.init(top: 10, left: 0, bottom: 0, right: 0)
     }
     
+    lazy var bgCView = { () -> UIView in
+        let v = UIView.init(frame: self.bounds)
+        v.y = 50
+        v.height -= 50
+        v.backgroundColor = UIColor.white
+        self.contentView.addSubview(v)
+        self.backgroundColor = UIColor.clear
+        return v
+    }()
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -84,7 +92,7 @@ class MainShopTableViewCell: UITableViewCell {
         c.delegate = self
         c.showsVerticalScrollIndicator = false
         c.showsHorizontalScrollIndicator = false
-        self.contentView.addSubview(c)
+        bgCView.addSubview(c)
         return c
     }()
     ///初始化collectionView

@@ -21,69 +21,7 @@ extension UILabel {
         return s
     }
     
-    func agingLable(agingText:String,priceText:String) {
-        let slayer = CAShapeLayer.init()
-        let path = UIBezierPath.init()
-        
-        path.lineWidth = 1
-        path.move(to: CGPoint.init(x: self.height/2, y: 0))
-        path.addLine(to: CGPoint.init(x: self.height / 2 + agingText.getTextWidth(font: UIFont.systemFont(ofSize: 12), size: CGSize.init(width: 375, height: self.height)), y: 0))
-        path.addArc(withCenter: CGPoint.init(x: self.height/2 + agingText.getTextWidth(font: UIFont.systemFont(ofSize: 12), size: CGSize.init(width: 375, height: self.height)), y: self.height/2), radius: self.height/2, startAngle: CGFloat(-M_PI/2), endAngle: CGFloat(M_PI/2), clockwise: true)
-        
-        path.addLine(to: CGPoint.init(x: self.height/2, y: self.height))
-        path.addArc(withCenter: CGPoint.init(x: self.height/2, y: self.height/2), radius: self.height/2, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
-        slayer.fillColor = UIColor.clear.cgColor
-        slayer.strokeColor = UIColor.red.cgColor
-        slayer.lineWidth = 1
-        slayer.path = path.cgPath
-        self.layer.addSublayer(slayer)
-        
-        let attr = NSMutableAttributedString.init(string: agingText + priceText)
-        
-
-        let mParagraphStyle = NSMutableParagraphStyle.init()
-        mParagraphStyle.lineBreakMode = .byWordWrapping
-        
-        mParagraphStyle.firstLineHeadIndent = self.height/2
-        attr.addAttribute(.paragraphStyle, value: mParagraphStyle, range: NSRange.init(location: 0, length: attr.length))
-        let a = NSMutableAttributedString.init(string: agingText)
-        attr.addAttribute(.kern, value: self.height/2 + 5, range: NSRange.init(location: a.length - 1, length: 1))
-        attr.addAttribute(.foregroundColor, value: UIColor.red, range: NSRange.init(location: 0, length: a.length))
-        self.attributedText = attr
-    }
-    func agingLable(agingText:String,agingTextColor:UIColor,agingTextFont:UIFont,agingTextBackColor:UIColor,priceText:String,priceTextColor:UIColor,priceTextFont:UIFont,lineColor:UIColor) {
-        let slayer = CAShapeLayer.init()
-        let path = UIBezierPath.init()
-        
-        path.lineWidth = 1
-        path.move(to: CGPoint.init(x: self.height/2, y: 0))
-        path.addLine(to: CGPoint.init(x: self.height / 2 + agingText.getTextWidth(font: UIFont.systemFont(ofSize: 12), size: CGSize.init(width: 375, height: self.height)), y: 0))
-        path.addArc(withCenter: CGPoint.init(x: self.height/2 + agingText.getTextWidth(font: UIFont.systemFont(ofSize: 12), size: CGSize.init(width: 375, height: self.height)), y: self.height/2), radius: self.height/2, startAngle: CGFloat(-M_PI/2), endAngle: CGFloat(M_PI/2), clockwise: true)
-        
-        path.addLine(to: CGPoint.init(x: self.height/2, y: self.height))
-        path.addArc(withCenter: CGPoint.init(x: self.height/2, y: self.height/2), radius: self.height/2, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
-        slayer.fillColor = agingTextBackColor.cgColor
-        slayer.strokeColor = lineColor.cgColor
-        slayer.lineWidth = 1
-        slayer.path = path.cgPath
-        self.layer.addSublayer(slayer)
-        
-        let attr = NSMutableAttributedString.init(string: agingText + priceText)
-        
-        
-        let mParagraphStyle = NSMutableParagraphStyle.init()
-        mParagraphStyle.lineBreakMode = .byWordWrapping
-        
-        mParagraphStyle.firstLineHeadIndent = self.height/2
-        attr.addAttribute(.paragraphStyle, value: mParagraphStyle, range: NSRange.init(location: 0, length: attr.length))
-        let a = NSMutableAttributedString.init(string: agingText)
-        attr.addAttribute(.kern, value: self.height/2 + 5, range: NSRange.init(location: a.length - 1, length: 1))
-        attr.addAttribute(.font, value: agingTextFont, range: NSRange.init(location: 0, length: a.length))
-        attr.addAttribute(.foregroundColor, value: agingTextColor, range: NSRange.init(location: 0, length: a.length))
-        self.attributedText = attr
-    }
     
-
     /// 定制Lable
     ///
     /// - Parameters:
@@ -103,14 +41,14 @@ extension UILabel {
         let path = UIBezierPath.init()
         let textWidth = text.getTextWidth(font: UIFont.systemFont(ofSize: textFont), size: CGSize.init(width: 375, height: self.height))
         if lineType == .circle {
-            path.move(to: CGPoint.init(x: self.height/2, y: 0))
+            path.move(to: CGPoint.init(x: 0, y: 0))
             path.addLine(to: CGPoint.init(x: textWidth, y: 0))
             path.addArc(withCenter: CGPoint.init(x: textWidth, y: self.height/2), radius: self.height/2, startAngle: CGFloat(-M_PI/2), endAngle: CGFloat(M_PI/2), clockwise: true)
-            path.addLine(to: CGPoint.init(x: self.height/2, y: self.height))
-            path.addArc(withCenter: CGPoint.init(x: self.height/2, y: self.height/2), radius: self.height/2, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
+            path.addLine(to: CGPoint.init(x: 0, y: self.height))
+            path.addArc(withCenter: CGPoint.init(x: 0, y: self.height/2), radius: self.height/2, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
             slayer.fillColor = textBackColor.cgColor
             slayer.strokeColor = lineColor.cgColor
-            slayer.lineWidth = 1
+            slayer.lineWidth = 0.5
             slayer.path = path.cgPath
             self.layer.addSublayer(slayer)
         } else{
@@ -169,24 +107,27 @@ extension UILabel {
         let attr = NSMutableAttributedString.init(string: text + price!)
         
         
-        let mParagraphStyle = NSMutableParagraphStyle.init()
-        mParagraphStyle.lineBreakMode = .byWordWrapping
-        
-        mParagraphStyle.firstLineHeadIndent = self.height/4
-        attr.addAttribute(.paragraphStyle, value: mParagraphStyle, range: NSRange.init(location: 0, length: attr.length))
         let a = NSMutableAttributedString.init(string: text)
-        //缩进
+//        let mParagraphStyle = NSMutableParagraphStyle.init()
+////        mParagraphStyle.lineBreakMode = .byWordWrapping
+//        mParagraphStyle.firstLineHeadIndent = self.height/4
+//        attr.addAttribute(.paragraphStyle, value: mParagraphStyle, range: NSRange.init(location: 0, length: attr.length))
+        
         attr.addAttribute(.kern, value: self.height/2 + 5, range: NSRange.init(location: a.length - 1, length: 1))
         //字体
         attr.addAttribute(.font, value: UIFont.systemFont(ofSize: textFont), range: NSRange.init(location: 0, length: a.length))
         ///背景色
         attr.addAttribute(.foregroundColor, value: textColor, range: NSRange.init(location: 0, length: a.length))
-        attr.addAttribute(.backgroundColor, value: textBackColor, range: NSRange.init(location: 0, length: a.length))
+//        attr.addAttribute(.backgroundColor, value: textBackColor, range: NSRange.init(location: 0, length: a.length))
         if price != "" {
-            let range = NSRange.init(location: a.length - 1, length: attr.length - a.length + 1)
+            let range = NSRange.init(location: a.length, length: attr.length - a.length)
             
             attr.addAttribute(.font, value: UIFont.systemFont(ofSize: priceFont!), range: range)
             attr.addAttribute(.foregroundColor, value: priceColor!, range: range)
+        }
+        if isChangeSize != nil && isChangeSize! && priceFont != nil{
+            let r = ((text + price!) as NSString).range(of: ".")
+            attr.addAttribute(.font, value: UIFont.systemFont(ofSize: priceFont!/3*2), range: NSRange.init(location: r.location, length: attr.length - r.location))
         }
         
         self.attributedText = attr

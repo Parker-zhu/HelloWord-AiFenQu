@@ -25,6 +25,7 @@ extension String {
         let pre = NSPredicate.init(format: "SELF MATCHES %@", regex)
         return pre.evaluate(with:self)
     }
+    
     func getTextWidth(font:UIFont,size:CGSize) -> CGFloat {
         let attributes = [NSAttributedStringKey.font: font]
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
