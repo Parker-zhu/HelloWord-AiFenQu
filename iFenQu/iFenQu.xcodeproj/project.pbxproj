@@ -43,8 +43,8 @@
 		B4B12EBF2067A6F500EB90D8 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12EAC2067A6F500EB90D8 /* AboutViewController.swift */; };
 		B4B12EC02067A6F500EB90D8 /* ChangePhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12EAE2067A6F500EB90D8 /* ChangePhoneViewController.swift */; };
 		B4B12EC12067A6F500EB90D8 /* ChangePhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4B12EAF2067A6F500EB90D8 /* ChangePhoneViewController.xib */; };
-		B4B12EC22067A6F500EB90D8 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12EB12067A6F500EB90D8 /* MeViewController.swift */; };
-		B4B12EC32067A6F500EB90D8 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12EB32067A6F500EB90D8 /* DiscoverViewController.swift */; };
+		B4B12EC22067A6F500EB90D8 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12EB12067A6F500EB90D8 /* MineViewController.swift */; };
+		B4B12EC32067A6F500EB90D8 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12EB32067A6F500EB90D8 /* MessageViewController.swift */; };
 		B4B12EC42067A6F500EB90D8 /* ReceiverInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4B12EB42067A6F500EB90D8 /* ReceiverInfoTableViewCell.xib */; };
 		B4B12EC52067A6F500EB90D8 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4B12EB62067A6F500EB90D8 /* LoginViewController.xib */; };
 		B4B12EC62067A6F500EB90D8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B12EB72067A6F500EB90D8 /* LoginViewController.swift */; };
@@ -60,6 +60,19 @@
 		B4B29FC9206FED6200C34E43 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4B29FCB206FED6200C34E43 /* Localizable.strings */; };
 		B4B89EAB2079039F009B3D4C /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B89EAA2079039F009B3D4C /* CacheManager.swift */; };
 		B4B89EAD20791AAE009B3D4C /* BootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B89EAC20791AAE009B3D4C /* BootPageViewController.swift */; };
+		B4B89EE9207A4027009B3D4C /* MainShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B89EE8207A4027009B3D4C /* MainShopTableViewCell.swift */; };
+		B4B89EEB207A5992009B3D4C /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B89EEA207A5992009B3D4C /* ShopCollectionViewCell.swift */; };
+		B4B89EED207A5C58009B3D4C /* UILable_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B89EEC207A5C58009B3D4C /* UILable_extension.swift */; };
+		B4BB6988207B988800E6D33B /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6987207B988800E6D33B /* MineHeaderView.swift */; };
+		B4BB698B207B9D9400E6D33B /* MineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6989207B9D9400E6D33B /* MineTableViewCell.swift */; };
+		B4BB698C207B9D9400E6D33B /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BB698A207B9D9400E6D33B /* MineTableViewCell.xib */; };
+		B4BB698F207CB8E500E6D33B /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB698D207CB8E500E6D33B /* MessageTableViewCell.swift */; };
+		B4BB6990207CB8E500E6D33B /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BB698E207CB8E500E6D33B /* MessageTableViewCell.xib */; };
+		B4BB6992207CBD5A00E6D33B /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6991207CBD5A00E6D33B /* PopView.swift */; };
+		B4BB6994207CBF0E00E6D33B /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6993207CBF0E00E6D33B /* CardViewController.swift */; };
+		B4BB6997207CC00500E6D33B /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6995207CC00500E6D33B /* CardTableViewCell.swift */; };
+		B4BB6998207CC00500E6D33B /* CardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4BB6996207CC00500E6D33B /* CardTableViewCell.xib */; };
+		B4BB699A207CD2EC00E6D33B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6999207CD2EC00E6D33B /* AlertView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,8 +138,8 @@
 		B4B12EAC2067A6F500EB90D8 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B4B12EAE2067A6F500EB90D8 /* ChangePhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePhoneViewController.swift; sourceTree = "<group>"; };
 		B4B12EAF2067A6F500EB90D8 /* ChangePhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangePhoneViewController.xib; sourceTree = "<group>"; };
-		B4B12EB12067A6F500EB90D8 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
-		B4B12EB32067A6F500EB90D8 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		B4B12EB12067A6F500EB90D8 /* MineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		B4B12EB32067A6F500EB90D8 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		B4B12EB42067A6F500EB90D8 /* ReceiverInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReceiverInfoTableViewCell.xib; sourceTree = "<group>"; };
 		B4B12EB62067A6F500EB90D8 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B4B12EB72067A6F500EB90D8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +159,19 @@
 		B4B29FCC206FED6400C34E43 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		B4B89EAA2079039F009B3D4C /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		B4B89EAC20791AAE009B3D4C /* BootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootPageViewController.swift; sourceTree = "<group>"; };
+		B4B89EE8207A4027009B3D4C /* MainShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainShopTableViewCell.swift; sourceTree = "<group>"; };
+		B4B89EEA207A5992009B3D4C /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
+		B4B89EEC207A5C58009B3D4C /* UILable_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILable_extension.swift; sourceTree = "<group>"; };
+		B4BB6987207B988800E6D33B /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
+		B4BB6989207B9D9400E6D33B /* MineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineTableViewCell.swift; sourceTree = "<group>"; };
+		B4BB698A207B9D9400E6D33B /* MineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineTableViewCell.xib; sourceTree = "<group>"; };
+		B4BB698D207CB8E500E6D33B /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		B4BB698E207CB8E500E6D33B /* MessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
+		B4BB6991207CBD5A00E6D33B /* PopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
+		B4BB6993207CBF0E00E6D33B /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		B4BB6995207CC00500E6D33B /* CardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
+		B4BB6996207CC00500E6D33B /* CardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTableViewCell.xib; sourceTree = "<group>"; };
+		B4BB6999207CD2EC00E6D33B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B854E04AC75C622A426668D5 /* Pods_IFenQuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFenQuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0D483ACF68BF15AC83CD8 /* Pods-IFenQu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQu.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQu/Pods-IFenQu.release.xcconfig"; sourceTree = "<group>"; };
 		D22D21FDBC9A90CA4879C26E /* Pods-IFenQuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQuUITests/Pods-IFenQuUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +280,7 @@
 				B4B12E832067A6C000EB90D8 /* Sting_extension.swift */,
 				B4B12E842067A6C000EB90D8 /* UIButton_extension.swift */,
 				B4B12E852067A6C000EB90D8 /* UIView_extension.swift */,
+				B4B89EEC207A5C58009B3D4C /* UILable_extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -281,6 +308,8 @@
 				B4AB59022072534300751DF1 /* TokenModel.swift */,
 				B4AB59042072557F00751DF1 /* ModelManager.swift */,
 				B4B89EAA2079039F009B3D4C /* CacheManager.swift */,
+				B4BB6991207CBD5A00E6D33B /* PopView.swift */,
+				B4BB6999207CD2EC00E6D33B /* AlertView.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -314,6 +343,9 @@
 				B4B12EB42067A6F500EB90D8 /* ReceiverInfoTableViewCell.xib */,
 				B4B12EB52067A6F500EB90D8 /* Login */,
 				B4B12EB92067A6F500EB90D8 /* ReceiverInfoTableViewCell.swift */,
+				B4BB6993207CBF0E00E6D33B /* CardViewController.swift */,
+				B4BB6995207CC00500E6D33B /* CardTableViewCell.swift */,
+				B4BB6996207CC00500E6D33B /* CardTableViewCell.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -322,6 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				B4B12EAA2067A6F500EB90D8 /* ShopViewController.swift */,
+				B4B89EE8207A4027009B3D4C /* MainShopTableViewCell.swift */,
+				B4B89EEA207A5992009B3D4C /* ShopCollectionViewCell.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -346,7 +380,10 @@
 		B4B12EB02067A6F500EB90D8 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				B4B12EB12067A6F500EB90D8 /* MeViewController.swift */,
+				B4B12EB12067A6F500EB90D8 /* MineViewController.swift */,
+				B4BB6987207B988800E6D33B /* MineHeaderView.swift */,
+				B4BB6989207B9D9400E6D33B /* MineTableViewCell.swift */,
+				B4BB698A207B9D9400E6D33B /* MineTableViewCell.xib */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -354,7 +391,9 @@
 		B4B12EB22067A6F500EB90D8 /* Find */ = {
 			isa = PBXGroup;
 			children = (
-				B4B12EB32067A6F500EB90D8 /* DiscoverViewController.swift */,
+				B4B12EB32067A6F500EB90D8 /* MessageViewController.swift */,
+				B4BB698D207CB8E500E6D33B /* MessageTableViewCell.swift */,
+				B4BB698E207CB8E500E6D33B /* MessageTableViewCell.xib */,
 			);
 			path = Find;
 			sourceTree = "<group>";
@@ -529,7 +568,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4B12EC52067A6F500EB90D8 /* LoginViewController.xib in Resources */,
+				B4BB6998207CC00500E6D33B /* CardTableViewCell.xib in Resources */,
 				B4B12ED82069182E00EB90D8 /* GT3Captcha.bundle in Resources */,
+				B4BB6990207CB8E500E6D33B /* MessageTableViewCell.xib in Resources */,
+				B4BB698C207B9D9400E6D33B /* MineTableViewCell.xib in Resources */,
 				B4B29FC9206FED6200C34E43 /* Localizable.strings in Resources */,
 				B4B12EC42067A6F500EB90D8 /* ReceiverInfoTableViewCell.xib in Resources */,
 				B4B12ED22067A71300EB90D8 /* LaunchScreen.storyboard in Resources */,
@@ -729,9 +771,11 @@
 				B4AB59032072534300751DF1 /* TokenModel.swift in Sources */,
 				B4AB59012072530100751DF1 /* DataManager.swift in Sources */,
 				B4B12EBC2067A6F500EB90D8 /* ReceiverInfoViewController.swift in Sources */,
+				B4BB6988207B988800E6D33B /* MineHeaderView.swift in Sources */,
 				B4B12E7E2067A6B400EB90D8 /* BaseNavigationController.swift in Sources */,
 				B4B12EC82067A6F500EB90D8 /* ReceiverInfoTableViewCell.swift in Sources */,
 				B4B89EAB2079039F009B3D4C /* CacheManager.swift in Sources */,
+				B4BB6994207CBF0E00E6D33B /* CardViewController.swift in Sources */,
 				B4B12E9B2067A6EC00EB90D8 /* ImagePageControl.swift in Sources */,
 				B4B12E9A2067A6EC00EB90D8 /* Network.swift in Sources */,
 				B4B12EC62067A6F500EB90D8 /* LoginViewController.swift in Sources */,
@@ -739,24 +783,32 @@
 				B4B12ED42067A71300EB90D8 /* AppDelegate.swift in Sources */,
 				B4B12E882067A6C000EB90D8 /* Sting_extension.swift in Sources */,
 				B4B12EA12067A6EC00EB90D8 /* Hud.swift in Sources */,
-				B4B12EC32067A6F500EB90D8 /* DiscoverViewController.swift in Sources */,
+				B4B12EC32067A6F500EB90D8 /* MessageViewController.swift in Sources */,
+				B4B89EE9207A4027009B3D4C /* MainShopTableViewCell.swift in Sources */,
 				B4B12EC72067A6F500EB90D8 /* IconImageView.swift in Sources */,
 				B4B12EBA2067A6F500EB90D8 /* ShippingAddressViewController.swift in Sources */,
+				B4B89EEB207A5992009B3D4C /* ShopCollectionViewCell.swift in Sources */,
 				B4B12E892067A6C000EB90D8 /* UIButton_extension.swift in Sources */,
 				B4B12E872067A6C000EB90D8 /* UITextField_extension.swift in Sources */,
 				B4B89EAD20791AAE009B3D4C /* BootPageViewController.swift in Sources */,
 				B4B12E862067A6C000EB90D8 /* UITextView_extension.swift in Sources */,
+				B4BB6997207CC00500E6D33B /* CardTableViewCell.swift in Sources */,
 				B4B12E9D2067A6EC00EB90D8 /* SlideshowView.swift in Sources */,
+				B4B89EED207A5C58009B3D4C /* UILable_extension.swift in Sources */,
 				B4B12EA02067A6EC00EB90D8 /* SnakePageControl.swift in Sources */,
 				B4B12E992067A6EC00EB90D8 /* Constant.swift in Sources */,
 				B4B12E7F2067A6B400EB90D8 /* BaseTabBarViewController.swift in Sources */,
-				B4B12EC22067A6F500EB90D8 /* MeViewController.swift in Sources */,
+				B4BB698B207B9D9400E6D33B /* MineTableViewCell.swift in Sources */,
+				B4B12EC22067A6F500EB90D8 /* MineViewController.swift in Sources */,
 				B4B12E9C2067A6EC00EB90D8 /* FilledPageControl.swift in Sources */,
 				B4B12EBF2067A6F500EB90D8 /* AboutViewController.swift in Sources */,
 				B4B12E7D2067A6B400EB90D8 /* BaseViewController.swift in Sources */,
+				B4BB6992207CBD5A00E6D33B /* PopView.swift in Sources */,
 				B4B12E9F2067A6EC00EB90D8 /* PillPageControl.swift in Sources */,
+				B4BB698F207CB8E500E6D33B /* MessageTableViewCell.swift in Sources */,
 				B4AB59052072557F00751DF1 /* ModelManager.swift in Sources */,
 				B4B12EBE2067A6F500EB90D8 /* ShopViewController.swift in Sources */,
+				B4BB699A207CD2EC00E6D33B /* AlertView.swift in Sources */,
 				B4B12EA32067A6EC00EB90D8 /* Tools.swift in Sources */,
 				B4B12EDA206918A000EB90D8 /* SMSVerification.swift in Sources */,
 				B4B12E9E2067A6EC00EB90D8 /* SlideshowViewCell.swift in Sources */,

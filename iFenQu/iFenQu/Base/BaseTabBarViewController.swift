@@ -15,9 +15,9 @@ class BaseTabBarViewController: UITabBarController {
         
         self.initSubVcStatus(vc: ShopViewController(), imageName: "Group 623", selectImageName: "Group 626", title: "商城")
         
-        self.initSubVcStatus(vc: DiscoverViewController(), imageName: "Group 624", selectImageName: "Group 624", title: "发现")
+        self.initSubVcStatus(vc: MessageViewController(), imageName: "message icon", selectImageName: "message02", title: "消息")
         
-        self.initSubVcStatus(vc: MeViewController(), imageName: "Group 627", selectImageName: "Group 625", title: "我的")
+        self.initSubVcStatus(vc: MineViewController(), imageName: "Group 627", selectImageName: "Group 625", title: "我的")
         
     }
     

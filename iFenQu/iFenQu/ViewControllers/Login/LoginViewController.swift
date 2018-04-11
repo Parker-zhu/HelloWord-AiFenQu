@@ -63,7 +63,9 @@ class LoginViewController: BaseViewController {
     
     //隐私条款
     @IBAction func secretClick(_ sender: Any) {
-        
+        Network.dataRequest(url: Url.getEnvironment() + "product/v1/products", param: nil, reqmethod: .GET) { (result) in
+            
+        }
     }
     
     //登陆

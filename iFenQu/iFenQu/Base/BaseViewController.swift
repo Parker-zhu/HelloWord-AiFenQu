@@ -13,7 +13,7 @@ class BaseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //在主界面隐藏navBar
-        if self is ShopViewController || self is MeViewController || self is DiscoverViewController {
+        if self is ShopViewController || self is MineViewController{
             self.navigationController?.setNavigationBarHidden(true, animated: false)
         } else {
             self.navigationController?.setNavigationBarHidden(false, animated: false)

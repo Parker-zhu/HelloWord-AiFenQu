@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="MineTableViewCell" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MineTableViewCell" customModule="IFenQu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 629" translatesAutoresizingMaskIntoConstraints="NO" id="CbU-eJ-Xzc">
+                        <rect key="frame" x="20" y="0.0" width="40" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="Eh8-GY-T6c"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 积分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmN-My-xHS">
+                        <rect key="frame" x="70" y="0.0" width="250" height="43.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="UmN-My-xHS" secondAttribute="bottom" id="CCX-US-Np3"/>
+                    <constraint firstItem="CbU-eJ-Xzc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Mo3-Dc-dLE"/>
+                    <constraint firstItem="UmN-My-xHS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="P4C-Jl-lDH"/>
+                    <constraint firstItem="CbU-eJ-Xzc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="TtI-dp-ffS"/>
+                    <constraint firstItem="UmN-My-xHS" firstAttribute="leading" secondItem="CbU-eJ-Xzc" secondAttribute="trailing" constant="10" id="XIK-Sq-sOc"/>
+                    <constraint firstAttribute="trailing" secondItem="UmN-My-xHS" secondAttribute="trailing" id="iK7-6Z-HSM"/>
+                    <constraint firstAttribute="bottom" secondItem="CbU-eJ-Xzc" secondAttribute="bottom" id="mnv-Cb-tXY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="headerImageView" destination="CbU-eJ-Xzc" id="TYy-4i-qnC"/>
+                <outlet property="textLable" destination="UmN-My-xHS" id="s5e-7I-n9r"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Group 629" width="32" height="32"/>
+    </resources>
+</document>

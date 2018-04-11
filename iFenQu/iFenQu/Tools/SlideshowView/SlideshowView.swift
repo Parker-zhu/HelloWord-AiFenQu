@@ -296,6 +296,7 @@ class SlideshowView: UIView {
         if didSelectItemAtIndex != nil {
             llcycleScrollView.didSelectItemAtIndex = didSelectItemAtIndex
         }
+        llcycleScrollView.setupTimer()
         return llcycleScrollView
     }
     

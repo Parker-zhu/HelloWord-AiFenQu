@@ -7,16 +7,22 @@
 //
 ///启动页
 import UIKit
-
+import WebKit
 class BootPageViewController: UIViewController {
 
     ///返回事件调用block
     var loadMainBlock: (() -> Void)?
-    
+//    var webView: WKWebView!
+    lazy var webView = { () -> WKWebView in
+        let web = WKWebView.init(frame: self.view.bounds)
+        web.uiDelegate = self
+        web.navigationDelegate = self
+        return web
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -28,4 +34,8 @@ class BootPageViewController: UIViewController {
 
     
 
+}
+
+extension BootPageViewController: WKNavigationDelegate,WKUIDelegate{
+    
 }
