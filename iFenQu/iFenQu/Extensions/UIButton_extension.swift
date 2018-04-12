@@ -7,37 +7,56 @@
 //
 
 import UIKit
-
-enum Position {
-    case left,right
+///图片文字排版位置
+enum WordPosition {
+    case left,right,centerLeft,centerRight
 }
 
 class XButton: UIButton {
 
-    ///是否开启下划线
-    var isShowBottomLine = false
-    ///下划线颜色，默认浅灰色，前提开启下划线
-    var bottomLineColor: UIColor = UIColor.lightGray
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        if self.isShowBottomLine {
-            let path = UIBezierPath.init()
-            path.move(to: CGPoint.init(x: 0, y: rect.maxY))
-            path.addLine(to: CGPoint.init(x: rect.maxX, y: rect.maxY))
-            bottomLineColor.setStroke()
-            path.lineWidth = 1
-            path.stroke()
-
+    var position: WordPosition = .centerRight {
+        didSet{
+            self.setNeedsLayout()
         }
     }
+//    ///是否开启下划线
+//    var isShowBottomLine = false
+//    ///下划线颜色，默认浅灰色，前提开启下划线
+//    var bottomLineColor: UIColor = UIColor.lightGray
+//
+//    override func draw(_ rect: CGRect) {
+//        super.draw(rect)
+//        if self.isShowBottomLine {
+//            let path = UIBezierPath.init()
+//            path.move(to: CGPoint.init(x: 0, y: rect.maxY))
+//            path.addLine(to: CGPoint.init(x: rect.maxX, y: rect.maxY))
+//            bottomLineColor.setStroke()
+//            path.lineWidth = 1
+//            path.stroke()
+//
+//        }
+//    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if self.isShowBottomLine {
-        self.titleLabel?.frame = self.bounds
-        self.titleLabel?.textAlignment = .left
-        self.imageView?.x = self.width - self.imageView!.width
+        switch position {
+        case .centerLeft:
+            if self.imageView != nil {
+                self.titleLabel?.x = self.imageView!.x
+                self.imageView?.x = self.titleLabel!.frame.maxX
+            }
+        case .right:
+            self.titleLabel?.textAlignment = .right
+            self.titleLabel?.x = self.width - self.titleLabel!.width
+            self.imageView?.x = 0
+        case .left:
+            self.titleLabel?.textAlignment = .left
+            self.titleLabel?.x = 0
+            if self.imageView != nil {
+            self.imageView?.x = self.width - self.imageView!.width
+            }
+        default:
+           print("")
         }
     }
 

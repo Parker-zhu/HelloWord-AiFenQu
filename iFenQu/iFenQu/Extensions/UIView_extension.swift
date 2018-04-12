@@ -58,8 +58,18 @@ extension UIView {
     }
     
     func drawLine(types:[DrawLine]) {
+        var arr = [(DrawLine,UIColor)]()
+        for t in types {
+            let l = (t,xlightGray)
+            arr.append(l)
+        }
+        drawLine(types: arr)
+    }
+    
+    
+    func drawLine(types:[(t:DrawLine,c:UIColor)]) {
         for type in types {
-            switch type {
+            switch type.t {
             case .bottom:
                 let slayer = CAShapeLayer.init()
                 let path = UIBezierPath.init()
@@ -67,7 +77,7 @@ extension UIView {
                 path.addLine(to: CGPoint.init(x: self.width, y: self.height))
                 slayer.path = path.cgPath
                 slayer.lineWidth = 1
-                slayer.strokeColor = xlightGray.cgColor
+                slayer.strokeColor = type.c.cgColor
                 self.layer.addSublayer(slayer)
             case .top:
                 let slayer = CAShapeLayer.init()
@@ -76,7 +86,7 @@ extension UIView {
                 path.addLine(to: CGPoint.init(x: self.width, y: 0))
                 slayer.path = path.cgPath
                 slayer.lineWidth = 1
-                slayer.strokeColor = xlightGray.cgColor
+                slayer.strokeColor = type.c.cgColor
                 self.layer.addSublayer(slayer)
             case .left:
                 let slayer = CAShapeLayer.init()
@@ -85,7 +95,7 @@ extension UIView {
                 path.addLine(to: CGPoint.init(x: 0, y: self.height))
                 slayer.path = path.cgPath
                 slayer.lineWidth = 1
-                slayer.strokeColor = xlightGray.cgColor
+                slayer.strokeColor = type.c.cgColor
                 self.layer.addSublayer(slayer)
             case .right:
                 let slayer = CAShapeLayer.init()
@@ -94,7 +104,7 @@ extension UIView {
                 path.addLine(to: CGPoint.init(x: self.width, y: self.height))
                 slayer.path = path.cgPath
                 slayer.lineWidth = 1
-                slayer.strokeColor = xlightGray.cgColor
+                slayer.strokeColor = type.c.cgColor
                 self.layer.addSublayer(slayer)
                 
             }

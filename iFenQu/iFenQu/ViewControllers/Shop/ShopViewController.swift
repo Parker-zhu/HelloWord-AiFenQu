@@ -11,23 +11,30 @@ import UIKit
 
 class ShopViewController: BaseViewController {
     
+    ///tableView竖直滚动的高度
+    var cellHeight: CGFloat?
+    var dataArr = [(String,TitleType)]()
+    
     ///轮播图视图
     lazy var slideView = { () -> SlideshowView in
         
-        let slide = SlideshowView.SlideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: 200), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
-            let vc = MobileViewController()
-            vc.isChangeMobile = true
-            self.navigationController?.pushViewController(vc, animated: true)
+        let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: 130), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
+//            let vc = LoginViewController()
+//
+//            self.navigationController?.pushViewController(vc, animated: true)
+            
         })
-        
+        slide.setupTimer()
         return slide
     }()
     
+    ///tableView视图
     lazy var tableView = { () -> UITableView in
         let table = UITableView.init(frame: self.view.bounds, style: .plain)
         table.delegate = self
         table.dataSource = self
         
+        table.tableHeaderView = slideView
         table.register(MainShopTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(table)
         table.tableFooterView = UIView()
@@ -36,16 +43,10 @@ class ShopViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initSlideView()
-        
-        
+        dataArr = [("热销榜",TitleType.line),("新品首发",TitleType.cicrl),("品牌专区",TitleType.cicrl),("甄选好物",TitleType.arrows)]
+        tableView.backgroundColor = xlightGray
     }
     
-    ///初始化顶部轮播图
-    func initSlideView() {
-        tableView.tableHeaderView = slideView
-    }
     
     func loadData() {
         let param = ["":""]
@@ -54,7 +55,6 @@ class ShopViewController: BaseViewController {
         }
     }
     
-    var cellHeight:CGFloat?
     
 }
 
@@ -63,17 +63,23 @@ extension ShopViewController: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MainShopTableViewCell
-        cell.setModel(model: "")
-        cell.cellHeaderText = "商品详情"
         
-        cell.dirction = indexPath.row != 3
-        if indexPath.row == 3 && cellHeight == nil {
-            cellHeight = cell.cellHeight
+        let direction: UICollectionViewScrollDirection = indexPath.row == 3 ? .vertical : .horizontal
+        cell.setModel(model: [], title: dataArr[indexPath.row], scrollDirection: direction) { (result) in
+            print(result)
+            ///返回点击的位置，会有不同跳转
+            let vc = BrandZoneViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        if indexPath.row == 3 && self.cellHeight == nil {
+            
+            self.cellHeight = cell.cellHeight
+            
         }
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return dataArr.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -78,9 +78,9 @@ class ShippingAddressViewController: BaseViewController {
         addressBtn.setImage(UIImage.init(named: "Group 634"), for: .normal)
         addressBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         addressBtn.setTitleColor(UIColor.lightGray, for: .normal)
-        addressBtn.isShowBottomLine = true
-        addressBtn.bottomLineColor = xlightGray
-        
+//        addressBtn.isShowBottomLine = true
+//        addressBtn.bottomLineColor = xlightGray
+        addressBtn.drawLine(types: [(.bottom,xlightGray)])
         nameTextF.linePosition = [.bottom]
         nameTextF.delegate = self
         phoneTextF.delegate = self

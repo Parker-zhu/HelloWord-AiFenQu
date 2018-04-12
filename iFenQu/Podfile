@@ -28,5 +28,6 @@ target 'IFenQu' do
   pod 'MJRefresh'
   pod 'Bugly'
   pod 'MJExtension'
+  pod 'WechatOpenSDK'
 
 end

@@ -31,9 +31,10 @@ class MessageViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "消息"
         self.view.backgroundColor = UIColor.init(red: 240/250, green: 240/250, blue: 240/250, alpha: 1)
         tableView.backgroundColor = UIColor.init(red: 240/250, green: 240/250, blue: 240/250, alpha: 1)
-        self.navigationItem.title = "消息"
+        
 //        initDataNull()
         
         

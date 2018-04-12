@@ -8,7 +8,7 @@
 ///启动页
 import UIKit
 import WebKit
-class BootPageViewController: UIViewController {
+class BootPageViewController: BaseViewController {
 
     ///返回事件调用block
     var loadMainBlock: (() -> Void)?
@@ -23,14 +23,18 @@ class BootPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        Network.dataRequest(url: Url.getBootPage(), param: nil, reqmethod: .GET) { (result) in
+            
+        }
+    }
 
     
 

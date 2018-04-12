@@ -12,6 +12,8 @@ class MineHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.backgroundColor = UIColor.init(red: 255/255, green: 209/255, blue: 0, alpha: 1)
         //背景Image
         let imageView = UIImageView.init(frame: self.bounds)
         imageView.image = UIImage.init(named: "")
@@ -21,20 +23,23 @@ class MineHeaderView: UIView {
         headImage.image = UIImage.init(named: "timg (1)")
         self.addSubview(headImage)
         headImage.mas_makeConstraints { (make) in
-            make?.left.equalTo()(self)?.offset()(20)
-            make?.bottom.equalTo()(self)?.offset()(-20)
-            make?.width.equalTo()(40)
-            make?.height.equalTo()(40)
+            make?.left.equalTo()(self.mas_left)?.offset()(20)
+            make?.bottom.equalTo()(self.mas_bottom)?.offset()(-20)
+            make?.width.equalTo()(60)
+            make?.height.equalTo()(60)
         }
         //btn
-        let btn = UIButton.init()
+        let btn = XButton.init()
         self.addSubview(btn)
         btn.setTitle("登陆/注册", for: .normal)
+        btn.setTitleColor(UIColor.black, for: .normal)
+        btn.setImage(UIImage.init(named: "path"), for: .normal)
+        btn.position = .centerLeft
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         btn.mas_makeConstraints { (make) in
-            make?.left.equalTo()(headImage)?.offset()(40)
-            make?.bottom.equalTo()(self)?.offset()(-20)
-            make?.width.equalTo()(btn.titleLabel!.getLableWidth(size: CGSize.init(width: SCREEN_Width, height: 40)) + 20)
+            make?.left.equalTo()(headImage.mas_right)?.offset()(20)
+            make?.centerY.equalTo()(headImage.mas_centerY)
+            make?.width.equalTo()(btn.titleLabel!.text!.getTextSize(font: 14, size: CGSize.init(width: SCREEN_Width, height: 40)).width + 20)
             make?.height.equalTo()(40)
         }
         weak var weakSelf = self
@@ -46,8 +51,8 @@ class MineHeaderView: UIView {
         self.addSubview(quit)
         quit.setImage(UIImage.init(named: "Group 618"), for: .normal)
         quit.mas_makeConstraints { (make) in
-            make?.right.equalTo()(self)?.offset()(-20)
-            make?.top.equalTo()(self)?.offset()(40)
+            make?.right.equalTo()(self.mas_right)?.offset()(-20)
+            make?.top.equalTo()(self.mas_top)?.offset()(40)
             make?.width.equalTo()(40)
             make?.height.equalTo()(40)
         }
@@ -56,12 +61,14 @@ class MineHeaderView: UIView {
         self.addSubview(q)
         q.setImage(UIImage.init(named: "Group 618"), for: .normal)
         q.mas_makeConstraints { (make) in
-            make?.right.equalTo()(quit)?.offset()(-60)
-            make?.top.equalTo()(self)?.offset()(40)
+            make?.right.equalTo()(quit.mas_left)?.offset()(-20)
+            make?.top.equalTo()(self.mas_top)?.offset()(40)
             make?.width.equalTo()(40)
             make?.height.equalTo()(40)
         }
-        
+        q.block = {
+            
+        }
         
     }
     func findVc(vc:UIView) -> UIViewController? {

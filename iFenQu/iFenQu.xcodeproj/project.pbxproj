@@ -75,6 +75,9 @@
 		B4BB699A207CD2EC00E6D33B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6999207CD2EC00E6D33B /* AlertView.swift */; };
 		B4BB699C207DE45000E6D33B /* MobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB699B207DE45000E6D33B /* MobileViewController.swift */; };
 		B4BB699E207E077200E6D33B /* InvoiceInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB699D207E077200E6D33B /* InvoiceInformationViewController.swift */; };
+		B4EC8B56207EF72A00D97708 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EC8B55207EF72A00D97708 /* ShopDetailViewController.swift */; };
+		B4EC8B58207FB22A00D97708 /* BrandZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EC8B57207FB22A00D97708 /* BrandZoneViewController.swift */; };
+		B4EC8B5A207FB65100D97708 /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EC8B59207FB65100D97708 /* CouponViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +179,9 @@
 		B4BB6999207CD2EC00E6D33B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B4BB699B207DE45000E6D33B /* MobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileViewController.swift; sourceTree = "<group>"; };
 		B4BB699D207E077200E6D33B /* InvoiceInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceInformationViewController.swift; sourceTree = "<group>"; };
+		B4EC8B55207EF72A00D97708 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
+		B4EC8B57207FB22A00D97708 /* BrandZoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandZoneViewController.swift; sourceTree = "<group>"; };
+		B4EC8B59207FB65100D97708 /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
 		B854E04AC75C622A426668D5 /* Pods_IFenQuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFenQuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0D483ACF68BF15AC83CD8 /* Pods-IFenQu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQu.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQu/Pods-IFenQu.release.xcconfig"; sourceTree = "<group>"; };
 		D22D21FDBC9A90CA4879C26E /* Pods-IFenQuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQuUITests/Pods-IFenQuUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -340,6 +346,9 @@
 				B4B89EAC20791AAE009B3D4C /* BootPageViewController.swift */,
 				B4B12EA82067A6F500EB90D8 /* ShippingAddressViewController.xib */,
 				B4BB699D207E077200E6D33B /* InvoiceInformationViewController.swift */,
+				B4EC8B55207EF72A00D97708 /* ShopDetailViewController.swift */,
+				B4EC8B57207FB22A00D97708 /* BrandZoneViewController.swift */,
+				B4EC8B59207FB65100D97708 /* CouponViewController.swift */,
 				B4B12EA92067A6F500EB90D8 /* Shop */,
 				B4B12EAB2067A6F500EB90D8 /* About */,
 				B4B12EAD2067A6F500EB90D8 /* ChangePhone */,
@@ -781,6 +790,7 @@
 				B4B12E7E2067A6B400EB90D8 /* BaseNavigationController.swift in Sources */,
 				B4B12EC82067A6F500EB90D8 /* ReceiverInfoTableViewCell.swift in Sources */,
 				B4BB699C207DE45000E6D33B /* MobileViewController.swift in Sources */,
+				B4EC8B58207FB22A00D97708 /* BrandZoneViewController.swift in Sources */,
 				B4B89EAB2079039F009B3D4C /* CacheManager.swift in Sources */,
 				B4BB6994207CBF0E00E6D33B /* CardViewController.swift in Sources */,
 				B4B12E9B2067A6EC00EB90D8 /* ImagePageControl.swift in Sources */,
@@ -795,6 +805,7 @@
 				B4BB699E207E077200E6D33B /* InvoiceInformationViewController.swift in Sources */,
 				B4B12EC72067A6F500EB90D8 /* IconImageView.swift in Sources */,
 				B4B12EBA2067A6F500EB90D8 /* ShippingAddressViewController.swift in Sources */,
+				B4EC8B5A207FB65100D97708 /* CouponViewController.swift in Sources */,
 				B4B89EEB207A5992009B3D4C /* ShopCollectionViewCell.swift in Sources */,
 				B4B12E892067A6C000EB90D8 /* UIButton_extension.swift in Sources */,
 				B4B12E872067A6C000EB90D8 /* UITextField_extension.swift in Sources */,
@@ -805,6 +816,7 @@
 				B4B89EED207A5C58009B3D4C /* UILable_extension.swift in Sources */,
 				B4B12EA02067A6EC00EB90D8 /* SnakePageControl.swift in Sources */,
 				B4B12E992067A6EC00EB90D8 /* Constant.swift in Sources */,
+				B4EC8B56207EF72A00D97708 /* ShopDetailViewController.swift in Sources */,
 				B4B12E7F2067A6B400EB90D8 /* BaseTabBarViewController.swift in Sources */,
 				B4BB698B207B9D9400E6D33B /* MineTableViewCell.swift in Sources */,
 				B4B12EC22067A6F500EB90D8 /* MineViewController.swift in Sources */,

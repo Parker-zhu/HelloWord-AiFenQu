@@ -27,8 +27,7 @@ class MineViewController: BaseViewController {
         tableView = UITableView.init(frame: self.view.bounds, style: .plain)
         
         tableView.register(UINib.init(nibName: "MineTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        let header = MineHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 200))
-        header.backgroundColor = UIColor.brown
+        let header = MineHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 150))
         tableView.tableHeaderView = header
         tableView.tableFooterView = initFooterView()
         tableView.delegate = self
@@ -71,6 +70,9 @@ extension MineViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = CouponViewController()
+        vc.titleSting = tableCellData[indexPath.row].text
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 extension MineViewController: UICollectionViewDelegate,UICollectionViewDataSource {

@@ -18,28 +18,37 @@ class LoginViewController: BaseViewController {
     
     @IBOutlet weak var secretTextBtn: XButton!
     
-    @IBOutlet weak var iconsuperView: UIView!
-   
+    @IBOutlet weak var loginBtn: UIButton!
+    
     @IBOutlet weak var authCodeBtn: SMSVerification!
+    
+    @IBOutlet weak var weChatBgView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        phoneTextF.delegate = self
-        phoneTextF.keyboardType = .numberPad
-        authCodeTextF.delegate = self
-        authCodeTextF.keyboardType = .numberPad
-        secretTextBtn.isShowBottomLine = true
-        phoneTextF.clearButtonMode = .whileEditing
-        authCodeTextF.clearButtonMode = .whileEditing
-        let iconImageView = IconImageView.init(frame: iconsuperView.bounds)
-//        iconImageView.image = UIImage.init(named: "iconImage")
-//        iconImageView.contentMode = .center
-        iconsuperView.addSubview(iconImageView)
+        
+        self.view.backgroundColor = xlightGray
+        
+        secretTextBtn.drawLine(types: [(DrawLine.bottom,UIColor.lightGray)])
+        initTextF(textF: phoneTextF)
+        initTextF(textF: authCodeTextF)
+        loginBtn.layer.cornerRadius = 5
+        loginBtn.layer.masksToBounds = true
+        
+        ///检查微信是否安装，没有安装隐藏微信登陆View
+//        weChatBgView.isHidden = true
+        
+    }
+    ///配置UITextField基本信息
+    func initTextF(textF:UITextField) {
+        textF.delegate = self
+        textF.keyboardType = .numberPad
+        textF.clearButtonMode = .whileEditing
     }
     //MARK:xib上的事件
     //返回按钮的点击事件
     @IBAction func back(_ sender: Any) {
-        authCodeBtn.time = nil
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -63,9 +72,7 @@ class LoginViewController: BaseViewController {
     
     //隐私条款
     @IBAction func secretClick(_ sender: Any) {
-        Network.dataRequest(url: Url.getEnvironment() + "product/v1/products", param: nil, reqmethod: .GET) { (result) in
-            
-        }
+        
     }
     
     //登陆
@@ -76,7 +83,7 @@ class LoginViewController: BaseViewController {
             self.view.endEditing(true)
             //进行登陆请求
             let param = ["account":phoneTextF.text!,"verifyCode":authCodeTextF.text!]
-            Network.dataRequest(url: Url.getEnvironment() + "v1/login-verify", param: param, reqmethod: .POST, callBack: { (result) in
+            Network.dataRequest(url: Url.getLogin(), param: param, reqmethod: .POST, callBack: { (result) in
                 guard let data: [String:Any] = result?.responseDic["data"] as?  [String:Any] else {
                     return
                 }
@@ -103,9 +110,23 @@ extension LoginViewController: UITextFieldDelegate {
                 return false
             }
             return string.isNum()
-            
         }
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let color = UIColor.init(red: 255/255, green: 170/255, blue: 0, alpha: 1)
         
+            textField.superview?.drawLine(types: [(.top,color),(.right,color),(.left,color),(.bottom,color)])
+        
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        for l in textField.superview!.layer.sublayers! {
+            if l is CAShapeLayer {
+                l.removeFromSuperlayer()
+            }
+        }
         return true
     }
 }

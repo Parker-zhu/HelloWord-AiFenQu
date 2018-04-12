@@ -8,23 +8,18 @@
 
 import UIKit
 
-class MainShopTableViewCell: UITableViewCell {
+enum TitleType {
+    case line,cicrl,arrows
+}
 
-    ///为nil就没有
-    var cellHeaderText: String? {
-        didSet{
-            headerLable.width = headerLable.getLableWidth(size: CGSize.init(width: 900, height: 30))
-            headerLable.center = headerLable.superview!.center
-        }
-    }
+class MainShopTableViewCell: UITableViewCell {
+    
     lazy var headerLable = { () -> UILabel in
-        let bgView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 30))
-        bgCView.addSubview(bgView)
-        let lable = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 20))
-        lable.shopLable(text: "商品详情", textColor: UIColor.red, textBackColor: UIColor.white, textFont: 10, lineColor: UIColor.red, lineType: .circle, priceText: nil, priceColor: nil, isChangeSize: nil, priceFont: nil)
+        let lable = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 30))
+        lable.font = UIFont.systemFont(ofSize: 12)
         lable.textAlignment = .center
-        bgView.addSubview(lable)
-        lable.center = bgView.center
+        bgCView.addSubview(lable)
+        lable.backgroundColor = UIColor.white
         return lable
     }()
     
@@ -32,16 +27,21 @@ class MainShopTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
     }
+
+    var didSelectItem: ((Any) -> ())?
+    ///cell的偏移
+    var offSet = CGFloat(5)
     
     lazy var bgCView = { () -> UIView in
         let v = UIView.init(frame: self.bounds)
-        v.y = 50
-        v.height -= 50
+        v.y = offSet
+        v.height = self.height - offSet
         v.backgroundColor = UIColor.white
         self.contentView.addSubview(v)
         self.backgroundColor = UIColor.clear
         return v
     }()
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -50,68 +50,66 @@ class MainShopTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-    ///初始化collectionView
-    private func initCollectionView(){
-        
-    }
-    var dirction: Bool = false {
+    
+    ///滚动方向
+    var dirction: UICollectionViewScrollDirection = .horizontal {
         didSet{
-            if !dirction {
-                
-                cellWidth = SCREEN_Width/2 - 10
-                cellHeight = 10/2 * 200 + 50
+            if dirction == .vertical {
+                cellWidth = SCREEN_Width/2
             }
             
             collectionView.reloadData()
         }
     }
+    ///collectioncell的宽度
     var cellWidth = SCREEN_Width/5*2
+    ///cell的高度
+    var cellHeight: CGFloat!
     
-    var cellHeight = CGFloat(250) {
-        didSet{
-            
-        }
-    }
+    let selfHeight = CGFloat(250)
     
     lazy var collectionView = { () -> UICollectionView in
-        let layout = UICollectionViewFlowLayout.init()
-        if dirction {
-            layout.scrollDirection = .horizontal
-        } else {
-            layout.scrollDirection = .vertical
-        }
-//        layout.minimumLineSpacing = 0
-//        layout.minimumInteritemSpacing = 0
         
-        layout.itemSize = CGSize.init(width: cellWidth, height: 200)
-        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: 30, width: SCREEN_Width, height: cellHeight - 50), collectionViewLayout: layout)
-        c.isScrollEnabled = dirction
+        let layout = UICollectionViewFlowLayout.init()
+        
+        layout.scrollDirection = dirction
+        layout.itemSize = CGSize.init(width: cellWidth, height: selfHeight - 30 - offSet)
+        
+        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: 30, width: SCREEN_Width, height: cellHeight), collectionViewLayout: layout)
+        c.isScrollEnabled = dirction != .vertical
         c.backgroundColor = UIColor.white
         c.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        c.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footer")
         c.dataSource = self
         c.delegate = self
         c.showsVerticalScrollIndicator = false
         c.showsHorizontalScrollIndicator = false
-        bgCView.addSubview(c)
+        self.contentView.addSubview(c)
         return c
     }()
-    ///初始化collectionView
-    private func initHeaderLable(){
-        
-        
-    }
-    ///初始化collectionView
-    private func initHeaderImageView(){
-        
-        
-    }
+    
     ///设置数据
-    func setModel(model:Any) {
-//        collectionView.reloadData()
+    func setModel(model:[Any],title:(String,TitleType),scrollDirection:UICollectionViewScrollDirection,selectModel:@escaping (Any)->()) {
+        
+        didSelectItem = selectModel
+        
+        headerLable.text = title.0
+        headerLable.textColor = UIColor.white
+//        headerLable.drawCircle(lineColor: UIColor.lightGray, backColor: UIColor.clear)
+        headerLable.drawCircle(lineColor: UIColor.white, backColor: UIColor.red, isDrawArrows: true)
+//        headerLable.drawLine(lineColor: UIColor.black)
+        
+        if scrollDirection == .vertical {
+            cellHeight = (selfHeight - 30 - offSet) * 5 + 30 + offSet + 60
+        } else {
+            cellHeight = selfHeight - 30 - offSet
+        }
+        
+        dirction = scrollDirection
+        
     }
     
     
-
 }
 
 extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -123,12 +121,44 @@ extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
         
         return cell
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize.init(width: SCREEN_Width/5*2, height: 200)
-//    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if didSelectItem != nil {
+            didSelectItem!("aaa")
+        }
+        
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footer", for: indexPath)
+        footerView.backgroundColor = xlightGray
+        if footerView.subviews.last is UIButton {
+            
+        } else {
+        let btn = XButton.init(frame:CGRect.init(x: 0, y: 3, width: SCREEN_Width, height: 50))
+        btn.setTitle("查看更多", for: .normal)
+        btn.setTitleColor(UIColor.black, for: .normal)
+        btn.block = {
+            print("查看更多")
+        }
+        btn.setImage(UIImage.init(named: "path"), for: .normal)
+        btn.position = .centerLeft
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        footerView.addSubview(btn)
+        }
+        return footerView
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize.init(width: SCREEN_Width, height: 60)
+    }
+    
 }
 

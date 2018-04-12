@@ -27,7 +27,7 @@ class Network {
         var resultData: (code: Int, responseDic: [String: Any]) = (0,["":""])
         
         let net = AFNetworkReachabilityManager.shared()
-        if net.networkReachabilityStatus == .unknown || net.networkReachabilityStatus == .notReachable {
+        if net.networkReachabilityStatus == .notReachable {
             Hud.showError(text: "网络不可用")
             callBack(resultData)
             return

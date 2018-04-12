@@ -26,10 +26,11 @@ extension String {
         return pre.evaluate(with:self)
     }
     
-    func getTextWidth(font:UIFont,size:CGSize) -> CGFloat {
-        let attributes = [NSAttributedStringKey.font: font]
+    ///获取文字长度或高度
+    func getTextSize(font:CGFloat,size:CGSize) -> CGSize {
+        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: font)]
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
-        let s = (self as NSString).boundingRect(with: size, options: option, attributes: attributes, context: nil).width
+        let s = (self as NSString).boundingRect(with: size, options: option, attributes: attributes, context: nil).size
         
         return s
     }

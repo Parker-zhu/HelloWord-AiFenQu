@@ -30,6 +30,7 @@ class BaseViewController: UIViewController {
         self.setNeedsStatusBarAppearanceUpdate()
         
         self.view.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [.font:UIFont.systemFont(ofSize: 14)]
         // Do any additional setup after loading the view.
     }
     

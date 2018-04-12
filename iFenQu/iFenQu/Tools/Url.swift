@@ -22,5 +22,18 @@ class Url {
         return Environment.rest.rawValue
     }
     
+    ///获取启动页地址
+    class func getBootPage() -> String {
+        return Url.getEnvironment() + "cms/v1/content/1"
+    }
+    
+    ///产品列表接口
+    class func getProducts() -> String{
+        return Url.getEnvironment() + "product/v1/products"
+    }
+    ///登陆界面，登陆接口
+    class func getLogin() -> String {
+        return Url.getEnvironment() + "v1/login-verify"
+    }
     
 }

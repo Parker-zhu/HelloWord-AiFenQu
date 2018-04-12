@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545150531.265277"
+            timestampString = "545240282.915854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -38,75 +38,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545150531.267091"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "init(style:reuseIdentifier:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545150531.268792"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "initHeaderLable()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545150531.2697819"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "headerLable"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Shop/MainShopTableViewCell.swift"
-            timestampString = "545150531.271016"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "cellHeaderText"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/PopView.swift"
-            timestampString = "545150531.27192"
+            timestampString = "545151497.122377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -122,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/PopView.swift"
-            timestampString = "545150531.272004"
+            timestampString = "545151497.122479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -138,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/AlertView.swift"
-            timestampString = "545150531.272073"
+            timestampString = "545151497.122587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
@@ -153,14 +89,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IFenQu/Extensions/UILable_extension.swift"
-            timestampString = "545150531.272131"
+            filePath = "IFenQu/ViewControllers/ShopDetailViewController.swift"
+            timestampString = "545240282.916104"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "shopLable(text:textColor:textBackColor:textFont:lineColor:lineType:priceText:priceColor:isChangeSize:priceFont:)"
-            landmarkType = "7">
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "slideView"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; IFenQu.SlideshowView in IFenQu.ShopDetailViewController.slideView.getter : IFenQu.SlideshowView"
+                  moduleName = "IFenQu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhuxiaofeng/Workspace/IOS/ProJ/IFenQuGit/IFenQu/IFenQu/ViewControllers/ShopDetailViewController.swift"
+                  timestampString = "545241206.301927"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "17">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; () in closure #1 () -&gt; IFenQu.SlideshowView in IFenQu.ShopDetailViewController.slideView.getter : IFenQu.SlideshowView"
+                  moduleName = "IFenQu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhuxiaofeng/Workspace/IOS/ProJ/IFenQuGit/IFenQu/IFenQu/ViewControllers/ShopDetailViewController.swift"
+                  timestampString = "545241206.303923"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -169,13 +137,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IFenQu/ViewControllers/Shop/ShopViewController.swift"
-            timestampString = "545150531.2722189"
+            filePath = "IFenQu/ViewControllers/ShopDetailViewController.swift"
+            timestampString = "545240282.916185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "slideView"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "contentScrollView"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,14 +153,78 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IFenQu/Extensions/UILable_extension.swift"
-            timestampString = "545150531.272279"
+            filePath = "IFenQu/ViewControllers/BrandZoneViewController.swift"
+            timestampString = "545240282.916417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "shopLable(text:textColor:textBackColor:textFont:lineColor:lineType:priceText:priceColor:isChangeSize:priceFont:)"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "collectionView"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IFenQu/ViewControllers/Find/MessageViewController.swift"
+            timestampString = "545240282.9164881"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IFenQu/Tools/Network.swift"
+            timestampString = "545241369.121038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "dataRequest(header:url:param:reqmethod:callBack:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static IFenQu.Network.dataRequest(header: Swift.Optional&lt;Swift.String&gt;, url: Swift.String, param: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, reqmethod: IFenQu.ReqMethod, callBack: (Swift.Optional&lt;(code: Swift.Int, responseDic: Swift.Dictionary&lt;Swift.String, Any&gt;)&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "IFenQu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhuxiaofeng/Workspace/IOS/ProJ/IFenQuGit/IFenQu/IFenQu/Tools/Network.swift"
+                  timestampString = "545241206.280635"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.URLResponse, Swift.Optional&lt;Any&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static IFenQu.Network.dataRequest(header: Swift.Optional&lt;Swift.String&gt;, url: Swift.String, param: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, reqmethod: IFenQu.ReqMethod, callBack: (Swift.Optional&lt;(code: Swift.Int, responseDic: Swift.Dictionary&lt;Swift.String, Any&gt;)&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "IFenQu"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhuxiaofeng/Workspace/IOS/ProJ/IFenQuGit/IFenQu/IFenQu/Tools/Network.swift"
+                  timestampString = "545241206.2826771"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

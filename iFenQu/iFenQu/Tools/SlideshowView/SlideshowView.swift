@@ -42,23 +42,8 @@ class SlideshowView: UIView {
     // 滚动间隔时间,默认2s
     open var autoScrollTimeInterval: TimeInterval = 5.0
     
-    // 加载状态图 -- 这个是有数据，等待加载的占位图
-    open var placeHolderImage: UIImage? = nil {
-        didSet {
-            if placeHolderImage != nil {
-//                placeHolderViewImage = placeHolderImage
-            }
-        }
-    }
-    
     // 空数据页面显示占位图 -- 这个是没有数据，整个轮播器的占位图
-    open var coverImage: UIImage? = nil {
-        didSet {
-            if coverImage != nil {
-//                coverViewImage = coverImage
-            }
-        }
-    }
+    open var coverImage: UIImage?
     
     // 背景色
     open var collectionViewBackgroundColor: UIColor! = UIColor.clear
@@ -104,22 +89,13 @@ class SlideshowView: UIView {
         }
     }
     
-    // PageControl x轴间距
-    open var pageControlLeadingOrTrialingContact: CGFloat = 28 {
+    // 调整pageControll到底部的距离
+    open var pageControlBottom: CGFloat = 15 {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    // PageControl bottom间距
-    open var pageControlBottom: CGFloat = 11 {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-    
-    // 开启/关闭URL特殊字符处理
-    open var isAddingPercentEncodingForURLString: Bool = false
     
     // PageControl x轴文本间距
     open var titleLeading: CGFloat = 15
@@ -184,9 +160,6 @@ class SlideshowView: UIView {
             collectionView.reloadData()
         }
     }
-    
-    // MARK: 间距属性
-    
     
     // MARK: 文本相关属性
     // 文本颜色
@@ -263,14 +236,6 @@ class SlideshowView: UIView {
     // 计时器
     fileprivate var timer: Timer?
     
-    // 加载状态图
-    fileprivate var placeHolderViewImage: UIImage!
-//        = UIImage(named: "LLCycleScrollView.bundle/llplaceholder.png", in: Bundle(for: LLCycleScrollView.self), compatibleWith: nil)
-    
-    // 空数据页面显示占位图
-    fileprivate var coverViewImage: UIImage!
-//        = UIImage(named: "LLCycleScrollView.bundle/llplaceholder.png", in: Bundle(for: LLCycleScrollView.self), compatibleWith: nil)
-    
     // MARK: Init
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -279,7 +244,7 @@ class SlideshowView: UIView {
     }
     
     // MARK: 初始化
-    open class func SlideshowViewWithFrame(_ frame: CGRect, imageURLPaths: [String]? = [], titles:[String]? = [], didSelectItemAtIndex: didSelectItemAtIndexClosure? = nil) -> SlideshowView {
+    open class func slideshowViewWithFrame(_ frame: CGRect, imageURLPaths: [String]? = [], titles:[String]? = [], didSelectItemAtIndex: didSelectItemAtIndexClosure? = nil) -> SlideshowView {
         let llcycleScrollView: SlideshowView = SlideshowView.init(frame: frame)
         // Nil
         llcycleScrollView.imagePaths = []
@@ -296,7 +261,7 @@ class SlideshowView: UIView {
         if didSelectItemAtIndex != nil {
             llcycleScrollView.didSelectItemAtIndex = didSelectItemAtIndex
         }
-        llcycleScrollView.setupTimer()
+        
         return llcycleScrollView
     }
     
@@ -385,6 +350,7 @@ class SlideshowView: UIView {
         if customPageControlStyle == .system {
             pageControl = UIPageControl.init()
             pageControl?.pageIndicatorTintColor = pageControlTintColor
+            
             pageControl?.currentPageIndicatorTintColor = pageControlCurrentPageColor
             pageControl?.numberOfPages = self.imagePaths.count
             self.addSubview(pageControl!)
@@ -446,7 +412,7 @@ class SlideshowView: UIView {
         flowLayout?.itemSize = self.frame.size
         // Page Frame
         if customPageControlStyle == .none || customPageControlStyle == .system || customPageControlStyle == .image {
-            pageControl?.frame = CGRect.init(x: 0, y: self.height - pageControlBottom, width: UIScreen.main.bounds.width, height: 10)
+            pageControl?.frame = CGRect.init(x: 0, y: self.height - pageControlBottom, width: UIScreen.main.bounds.width, height: 4)
             
         }else{
             var y = self.height - pageControlBottom
@@ -457,7 +423,7 @@ class SlideshowView: UIView {
             }
             
             let oldFrame = customPageControl?.frame
-            customPageControl?.frame = CGRect.init(x: (oldFrame?.origin.x)!, y: y, width: (oldFrame?.size.width)!, height: 10)
+            customPageControl?.frame = CGRect.init(x: (oldFrame?.origin.x)!, y: y, width: (oldFrame?.size.width)!, height: 6)
             
         }
         
@@ -570,7 +536,10 @@ extension SlideshowView: UICollectionViewDelegate, UICollectionViewDataSource, U
 
     // MARK: ScrollView End Drag
     open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        setupTimer()
+        if autoScrollTimeInterval != 0 {
+           setupTimer()
+        }
+        
     }
 
 
@@ -604,7 +573,7 @@ extension SlideshowView: UICollectionViewDelegate, UICollectionViewDataSource, U
             
             // 0==count 占位图
             if imagePaths.count == 0 {
-//                cell.imageView.image = coverViewImage
+                
             }else{
                 let itemIndex = pageControlIndexWithCurrentCellIndex(index: indexPath.item)
                 let imagePath = imagePaths[itemIndex]
@@ -612,7 +581,6 @@ extension SlideshowView: UICollectionViewDelegate, UICollectionViewDataSource, U
                 // 根据imagePath，来判断是网络图片还是本地图
                 if imagePath.hasPrefix("http") {
                     
-//                    cell.imageView.setImageWith(<#T##url: URL##URL#>, placeholderImage: <#T##UIImage?#>)
                 }else{
                     if let image = UIImage.init(named: imagePath) {
                         cell.imageView.image = image;

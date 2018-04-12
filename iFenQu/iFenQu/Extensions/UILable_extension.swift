@@ -8,20 +8,8 @@
 
 import UIKit
 
-enum LineType {
-    case line,circle
-}
-
 extension UILabel {
-    func getLableWidth(size:CGSize) -> CGFloat {
-        let attributes = [NSAttributedStringKey.font: self.font ?? UIFont.systemFont(ofSize: 14)]
-        let option = NSStringDrawingOptions.usesLineFragmentOrigin
-        let s = (self.text! as NSString).boundingRect(with: size, options: option, attributes: attributes, context: nil).width
-        
-        return s
-    }
-    
-    
+    ///弃用
     /// 定制Lable
     ///
     /// - Parameters:
@@ -35,32 +23,36 @@ extension UILabel {
     ///   - priceColor: <#priceColor description#>
     ///   - isChangeSize: <#isChangeSize description#>
     ///   - priceFont: <#priceFont description#>
-    func shopLable(text:String,textColor:UIColor,textBackColor:UIColor,textFont:CGFloat,lineColor:UIColor,lineType:LineType,priceText:String?,priceColor:UIColor?,isChangeSize:Bool?,priceFont:CGFloat?) {
+    func shopLable(text:String,textColor:UIColor,textBackColor:UIColor,textFont:CGFloat,lineColor:UIColor,lineType:TitleType,priceText:String?,priceColor:UIColor?,isChangeSize:Bool?,priceFont:CGFloat?) {
         
         let slayer = CAShapeLayer.init()
         let path = UIBezierPath.init()
-        let textWidth = text.getTextWidth(font: UIFont.systemFont(ofSize: textFont), size: CGSize.init(width: 375, height: self.height))
-        if lineType == .circle {
-            path.move(to: CGPoint.init(x: 0, y: 0))
-            path.addLine(to: CGPoint.init(x: textWidth, y: 0))
-            path.addArc(withCenter: CGPoint.init(x: textWidth, y: self.height/2), radius: self.height/2, startAngle: CGFloat(-M_PI/2), endAngle: CGFloat(M_PI/2), clockwise: true)
-            path.addLine(to: CGPoint.init(x: 0, y: self.height))
-            path.addArc(withCenter: CGPoint.init(x: 0, y: self.height/2), radius: self.height/2, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
+        
+        ///文本绘制区域
+        let textRect = self.textRect(forBounds: self.bounds, limitedToNumberOfLines: 0)
+        
+        let textWidth = text.getTextSize(font:textFont, size: CGSize.init(width: SCREEN_Width, height: self.height)).width
+        if lineType == .cicrl {
+            path.move(to: CGPoint.init(x: textRect.origin.x, y: 0))
+            path.addLine(to: CGPoint.init(x: textRect.maxX, y: 0))
+            path.addArc(withCenter: CGPoint.init(x: textRect.maxX, y: self.height/2), radius: self.height/2, startAngle: CGFloat(-M_PI/2), endAngle: CGFloat(M_PI/2), clockwise: true)
+            path.addLine(to: CGPoint.init(x: textRect.origin.x, y: self.height))
+            path.addArc(withCenter: CGPoint.init(x: textRect.origin.x, y: self.height/2), radius: self.height/2, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
             slayer.fillColor = textBackColor.cgColor
             slayer.strokeColor = lineColor.cgColor
             slayer.lineWidth = 0.5
             slayer.path = path.cgPath
             self.layer.addSublayer(slayer)
-        } else{
+        } else if lineType == .line {
             
-            path.move(to: CGPoint.init(x: 0, y: self.center.y))
-            path.addLine(to: CGPoint.init(x:-30, y: self.center.y))
+            path.move(to: CGPoint.init(x: textRect.origin.x - 10, y: self.center.y))
+            path.addLine(to: CGPoint.init(x:textRect.origin.x - 40, y: self.center.y))
             
             let slayer1 = CAShapeLayer.init()
             let path1 = UIBezierPath.init()
 
-            path.move(to: CGPoint.init(x: textWidth + 10, y: self.center.y))
-            path.addLine(to: CGPoint.init(x: textWidth + 40, y: self.center.y))
+            path.move(to: CGPoint.init(x: textRect.maxX + 10, y: self.center.y))
+            path.addLine(to: CGPoint.init(x: textRect.maxX + 40, y: self.center.y))
 
 //            slayer1.fillColor = textBackColor.cgColor
             slayer1.strokeColor = UIColor.red.cgColor
@@ -74,14 +66,10 @@ extension UILabel {
             slayer.path = path.cgPath
             self.layer.addSublayer(slayer)
             
-        }
-        
-        var price = priceText
-        if price == nil {
-            price = ""
+        } else {
             //画箭头
             let l = CAShapeLayer.init()
-            let x = textWidth + self.height
+            let x = textRect.maxX + self.height + 10
             let y = self.center.y
             let p = UIBezierPath.init(arcCenter: CGPoint.init(x: x, y: y), radius: self.height/2, startAngle: 0, endAngle: CGFloat(M_PI * 2), clockwise: true)
             l.strokeColor = UIColor.red.cgColor
@@ -100,6 +88,13 @@ extension UILabel {
             line.lineWidth = 1
             line.path = pa.cgPath
             self.layer.addSublayer(line)
+        }
+        
+        var price = priceText
+        if price == nil {
+            price = ""
+            
+            
             
         }
         
@@ -132,6 +127,64 @@ extension UILabel {
         
         self.attributedText = attr
     }
+    
+    
+    func drawCircle(lineColor:UIColor,backColor:UIColor,isDrawArrows:Bool = false) {
+        
+        let slayer = CAShapeLayer.init()
+        let path = UIBezierPath.init()
+        let textRect = self.textRect(forBounds: self.bounds, limitedToNumberOfLines: 0)
+        path.move(to: CGPoint.init(x: textRect.origin.x, y: 5))
+        path.addLine(to: CGPoint.init(x: textRect.maxX, y: 5))
+        path.addArc(withCenter: CGPoint.init(x: textRect.maxX, y: self.height/2), radius: self.height/2 - 5, startAngle: CGFloat(-M_PI/2), endAngle: CGFloat(M_PI/2), clockwise: true)
+        path.addLine(to: CGPoint.init(x: textRect.origin.x, y: self.height - 5))
+        path.addArc(withCenter: CGPoint.init(x: textRect.origin.x, y: self.height/2), radius: self.height/2 - 5, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
+        slayer.fillColor = backColor.cgColor
+        slayer.strokeColor = lineColor.cgColor
+        slayer.lineWidth = 0.5
+        slayer.path = path.cgPath
+        self.layer.addSublayer(slayer)
+        
+        if isDrawArrows {
+            let imageView = UIImageView.init(frame: CGRect.init(x: textRect.maxX + 10, y: 0, width: self.height, height: self.height))
+            imageView.image = UIImage.init(named: "path")
+            imageView.contentMode = .center
+            
+            self.addSubview(imageView)
+        }
+    }
+    func drawLine(lineColor:UIColor) {
+        
+        let textRect = self.textRect(forBounds: self.bounds, limitedToNumberOfLines: 0)
+        let layer1 = drawLineWithPoint(startPoint: CGPoint.init(x: textRect.origin.x - 15, y: self.center.y), endPoint: CGPoint.init(x: textRect.origin.x - 45, y: self.center.y))
+        layer1.strokeColor = lineColor.cgColor
+        let layer2 = drawLineWithPoint(startPoint: CGPoint.init(x: textRect.maxX + 15, y: self.center.y), endPoint: CGPoint.init(x: textRect.maxX + 45, y: self.center.y))
+        layer2.strokeColor = lineColor.cgColor
+        self.layer.addSublayer(layer1)
+        self.layer.addSublayer(layer2)
+    }
+    func drawLineWithPoint(startPoint:CGPoint,endPoint:CGPoint)  -> CAShapeLayer {
+        let slayer = CAShapeLayer.init()
+        let path = UIBezierPath.init()
+        path.move(to: startPoint)
+        path.addLine(to: endPoint)
+        slayer.lineWidth = 0.5
+        slayer.path = path.cgPath
+        return slayer
+    }
+    
+    func adjustSize(title:String,newFont:CGFloat) {
+        let attr = NSMutableAttributedString.init(string: title)
+        let r = (title as NSString).range(of: ".")
+        attr.addAttribute(.font, value: UIFont.systemFont(ofSize: newFont/3*2), range: NSRange.init(location: r.location, length: attr.length - r.location))
+        attr.addAttribute(.font, value: UIFont.systemFont(ofSize: newFont), range: NSRange.init(location: 0, length: r.location))
+    
+    
+        self.attributedText = attr
+    }
 }
+
+
+
 
 
