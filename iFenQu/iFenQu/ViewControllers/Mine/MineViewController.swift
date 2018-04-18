@@ -21,11 +21,17 @@ class MineViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
+        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     func initTableView() {
         tableView = UITableView.init(frame: self.view.bounds, style: .plain)
-        
+        self.view.addSubview(tableView)
         tableView.register(UINib.init(nibName: "MineTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         let header = MineHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 150))
         tableView.tableHeaderView = header
@@ -34,7 +40,7 @@ class MineViewController: BaseViewController {
         tableView.dataSource = self
         tableView.rowHeight = 50
         
-        self.view.addSubview(tableView)
+        
     }
     func initFooterView() -> UICollectionView {
         let layout = UICollectionViewFlowLayout.init()
@@ -49,13 +55,6 @@ class MineViewController: BaseViewController {
         return c
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let loginVc = LoginViewController()
-        self.present(loginVc, animated: true) {
-            
-        }
-        
-    }
 }
 
 extension MineViewController: UITableViewDelegate,UITableViewDataSource {

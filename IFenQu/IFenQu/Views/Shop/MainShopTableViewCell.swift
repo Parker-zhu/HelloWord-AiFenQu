@@ -92,7 +92,7 @@ class MainShopTableViewCell: UITableViewCell {
     func setModel(model:[Any],title:(String,TitleType),scrollDirection:UICollectionViewScrollDirection,selectModel:@escaping (Any)->()) {
         
         didSelectItem = selectModel
-        
+        bgCView.backgroundColor = UIColor.white
         headerLable.text = title.0
         headerLable.textColor = UIColor.white
 //        headerLable.drawCircle(lineColor: UIColor.lightGray, backColor: UIColor.clear)

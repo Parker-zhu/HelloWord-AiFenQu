@@ -67,7 +67,7 @@ class MineHeaderView: UIView {
             make?.height.equalTo()(40)
         }
         q.block = {
-            
+            weakSelf?.findVc(vc: self)?.navigationController?.pushViewController(AboutViewController(), animated: true)
         }
         
     }

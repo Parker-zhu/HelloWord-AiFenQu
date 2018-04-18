@@ -42,7 +42,7 @@ class Network {
             afn.requestSerializer.setValue(header, forHTTPHeaderField: "Ifenqu-Validate")
         }
         
-        afn.responseSerializer.acceptableContentTypes = NSSet.init(objects: "application/json") as? Set<String>
+        afn.responseSerializer.acceptableContentTypes = NSSet.init(objects: "application/json","text/json","text/javascript","text/html") as? Set<String>
         var error: NSError?
         
         let request =  afn.requestSerializer.request(withMethod: reqmethod.rawValue, urlString: url, parameters: param, error: &error)

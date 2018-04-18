@@ -8,6 +8,7 @@
 ///启动页
 import UIKit
 import WebKit
+import AFNetworking
 class BootPageViewController: BaseViewController {
 
     ///返回事件调用block
@@ -32,11 +33,9 @@ class BootPageViewController: BaseViewController {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         Network.dataRequest(url: Url.getBootPage(), param: nil, reqmethod: .GET) { (result) in
-            
+
         }
     }
-
-    
 
 }
 

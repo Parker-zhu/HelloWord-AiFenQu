@@ -110,6 +110,14 @@ extension UIView {
             }
         }
     }
-    
-    
+    ///渐变色
+    func shadeColor(starColor:UIColor,endColor:UIColor){
+        let gradientLayer = CAGradientLayer.init()
+        gradientLayer.colors = [starColor.cgColor,endColor.cgColor]
+//        gradientLayer.locations = [NSNumber.init(value: 0.5)]
+        gradientLayer.startPoint = CGPoint.init(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint.init(x: 1.0, y: 0)
+        gradientLayer.frame = self.bounds
+        self.layer.addSublayer(gradientLayer)
+    }
 }

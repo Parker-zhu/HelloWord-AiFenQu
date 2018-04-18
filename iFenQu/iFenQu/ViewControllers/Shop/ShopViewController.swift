@@ -19,9 +19,11 @@ class ShopViewController: BaseViewController {
     lazy var slideView = { () -> SlideshowView in
         
         let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: 130), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
+            self.tableView.reloadData()
 //            let vc = LoginViewController()
 //
 //            self.navigationController?.pushViewController(vc, animated: true)
+            
             
         })
         slide.setupTimer()
@@ -45,6 +47,7 @@ class ShopViewController: BaseViewController {
         super.viewDidLoad()
         dataArr = [("热销榜",TitleType.line),("新品首发",TitleType.cicrl),("品牌专区",TitleType.cicrl),("甄选好物",TitleType.arrows)]
         tableView.backgroundColor = xlightGray
+        
     }
     
     
@@ -54,7 +57,13 @@ class ShopViewController: BaseViewController {
             
         }
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        let param = ["productId":67]
+//        Network.dataRequest(url: Url.getShopInformation(), param: nil, reqmethod: .GET) { (result) in
+//
+//        }
+    }
     
 }
 
@@ -68,7 +77,7 @@ extension ShopViewController: UITableViewDelegate,UITableViewDataSource {
         cell.setModel(model: [], title: dataArr[indexPath.row], scrollDirection: direction) { (result) in
             print(result)
             ///返回点击的位置，会有不同跳转
-            let vc = BrandZoneViewController()
+            let vc = ShopDetailViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         if indexPath.row == 3 && self.cellHeight == nil {

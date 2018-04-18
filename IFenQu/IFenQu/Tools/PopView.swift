@@ -55,4 +55,19 @@ class PopView: NSObject {
         }
         self.contentView.removeFromSuperview()
     }
+    class func show(view:UIView,isAnmation:Bool) {
+        view.backgroundColor = UIColor.white
+        view.frame = CGRect.init(x: 0, y: SCREEN_Height - view.height, width: view.width, height: view.height)
+        let window = UIApplication.shared.keyWindow
+        
+        PopView.share.isHiddenWhenTouch = true
+        window?.addSubview(PopView.share.contentView)
+        PopView.share.contentView.addSubview(view)
+        view.y = SCREEN_Height
+        UIView.animate(withDuration: 1) {
+            view.y = SCREEN_Height - view.height
+        }
+        
+    }
+    
 }

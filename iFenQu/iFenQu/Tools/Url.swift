@@ -35,5 +35,40 @@ class Url {
     class func getLogin() -> String {
         return Url.getEnvironment() + "v1/login-verify"
     }
-    
+    ///获取商品信息
+    class func getShopInformation() -> String {
+        return Url.getEnvironment() + "mall/v1/product"
+    }
+    ///获取商品关联素材
+    class func getProductRelation() -> String {
+        return Url.getEnvironment() + "products/1/contents"
+    }
+    ///保存寄存地址
+    class func getAddress() -> String {
+        return Url.getEnvironment() + "mall/address"
+    }
+    ///返回指定商品的优惠券信息
+    class func getGoodCoupon() -> String {
+        return Url.getEnvironment() + "v1/mall/goods_ticket/371"
+    }
+    ///下单
+    class func getOrder() -> String {
+        return Url.getEnvironment() + "v1/mall/order"
+    }
+    ///获取卡券
+    class func getCards() -> String {
+        return Url.getEnvironment() + "v1/cards"
+    }
+    ///获取订单列表
+    class func getGoodsLiet() -> String {
+        return Url.getEnvironment() + "personal/v1/order/list"
+    }
+    ///车险详情
+    class func getCarInsuranceDetail() -> String {
+        return Url.getEnvironment() + "personal/v1/order/790"
+    }
+    ///保单摘要
+    class func getCarInsurance() -> String {
+        return Url.getEnvironment() + "personal/v1/order/783/policy/831"
+    }
 }
