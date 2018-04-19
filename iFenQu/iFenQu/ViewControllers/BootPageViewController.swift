@@ -13,26 +13,32 @@ class BootPageViewController: BaseViewController {
 
     ///返回事件调用block
     var loadMainBlock: (() -> Void)?
-//    var webView: WKWebView!
     lazy var webView = { () -> WKWebView in
         let web = WKWebView.init(frame: self.view.bounds)
         web.uiDelegate = self
         web.navigationDelegate = self
-        self.view.addSubview(web)
-//        web.isUserInteractionEnabled = false
+        
         return web
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Hud.show()
         loadData()
-        
+        self.view.addSubview(webView)
+        ignoreBtn.mas_makeConstraints { (make) in
+            make?.right.equalTo()(self.view.mas_right)?.offset()(-20)
+            make?.top.equalTo()(self.view.mas_top)?.offset()(20)
+            make?.width.equalTo()(50)
+            make?.height.equalTo()(30)
+        }
     }
 
-    lazy var ignoreBtn: XButton = {
-        let btn = XButton.init()
-        
+    lazy var ignoreBtn: UIButton = {
+        let btn = UIButton.init()
+        btn.setTitle("跳过", for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        btn.backgroundColor = UIColor.red
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         self.view.addSubview(btn)
         btn.block = {
             self.loadMainBlock!()
@@ -59,7 +65,5 @@ class BootPageViewController: BaseViewController {
 
 extension BootPageViewController: WKNavigationDelegate,WKUIDelegate{
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        ignoreBtn.time = 6
-//        Hud.dismiss()
     }
 }
