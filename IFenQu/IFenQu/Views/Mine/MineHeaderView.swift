@@ -76,8 +76,8 @@ class MineHeaderView: UIView {
             return vc.viewController
         }
         if vc.superview != nil {
-            findVc(vc: vc.superview!)
-            print(vc)
+            let v = findVc(vc: vc.superview!)
+            print(v ?? "")
         }
         return nil
     }

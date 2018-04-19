@@ -89,7 +89,7 @@ class LoginViewController: BaseViewController {
                 guard let data: [String:Any] = result?.responseDic["data"] as?  [String:Any] else {
                     return
                 }
-                let model = TokenModel.initWithDict(dict: data)
+                
                 CacheManager.storeCache(key: "token", obj: data)
             })
         } else {

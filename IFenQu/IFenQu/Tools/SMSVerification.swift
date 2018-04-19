@@ -56,6 +56,7 @@ class SMSVerification: XButton,GT3CaptchaManagerDelegate,GT3CaptchaManagerViewDe
         let param = ["mobile":phoneNumb]
         Network.dataRequest(header: convertDictionaryToString(dict: dic), url: "https://account.ifenqu.com/v1/send-login-verify-code", param: param, reqmethod: .POST) { (result) in
             if result?.code == 1 {
+                Hud.showError(text: "成功发送验证码")
                 self.succesBlock()
             }
         }
