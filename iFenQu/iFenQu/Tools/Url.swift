@@ -12,7 +12,7 @@ import UIKit
 enum Environment: String {
     case dev = "https://dev-rest.ifenqu.com/account/"
     case sit = "https://sit-rest.ifenqu.com/account/"
-    case rest = "https://rest.ifenqu.com/account/"
+    case rest = "https://rest.ifenqu.com/"
 }
 
 class Url {

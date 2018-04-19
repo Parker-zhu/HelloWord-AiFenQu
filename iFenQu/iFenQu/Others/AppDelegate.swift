@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //        net.startMonitoring()
         let net = AFNetworkReachabilityManager.shared()
-        if net.networkReachabilityStatus == .unknown || net.networkReachabilityStatus == .notReachable {
+        if net.networkReachabilityStatus == .notReachable {
             return false
         }
         return true

@@ -59,10 +59,6 @@ class ShopViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        let param = ["productId":67]
-//        Network.dataRequest(url: Url.getShopInformation(), param: nil, reqmethod: .GET) { (result) in
-//
-//        }
     }
     
 }
