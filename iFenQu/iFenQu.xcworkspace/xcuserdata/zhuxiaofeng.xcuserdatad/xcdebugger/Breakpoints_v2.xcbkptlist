@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/SMSVerification.swift"
-            timestampString = "545843126.680753"
+            timestampString = "545845197.099905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/SMSVerification.swift"
-            timestampString = "545843126.680863"
+            timestampString = "545845197.100057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/SMSVerification.swift"
-            timestampString = "545843126.680934"
+            timestampString = "545845197.100179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/Tools/SMSVerification.swift"
-            timestampString = "545843126.681008"
+            timestampString = "545845197.100299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
@@ -218,13 +218,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IFenQu/ViewControllers/BootPageViewController.swift"
-            timestampString = "545843126.68108"
+            timestampString = "545845197.10042"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "loadData()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IFenQu/ViewControllers/BootPageViewController.swift"
+            timestampString = "545845197.101027"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "time"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

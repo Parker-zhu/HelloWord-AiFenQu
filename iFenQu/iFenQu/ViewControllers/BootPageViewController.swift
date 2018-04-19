@@ -17,7 +17,6 @@ class BootPageViewController: BaseViewController {
         let web = WKWebView.init(frame: self.view.bounds)
         web.uiDelegate = self
         web.navigationDelegate = self
-        
         return web
     }()
     
@@ -27,24 +26,56 @@ class BootPageViewController: BaseViewController {
         self.view.addSubview(webView)
         ignoreBtn.mas_makeConstraints { (make) in
             make?.right.equalTo()(self.view.mas_right)?.offset()(-20)
-            make?.top.equalTo()(self.view.mas_top)?.offset()(20)
+            if #available(iOS 11.0, *) {
+                make?.top.equalTo()(self.view.mas_safeAreaLayoutGuideTop)?.offset()(20)
+            } else {
+                make?.top.equalTo()(self.view.mas_top)?.offset()(20)
+            }
+
             make?.width.equalTo()(50)
             make?.height.equalTo()(30)
         }
+        timer?.fireDate = NSDate.distantPast
+        timer?.fire()
     }
 
     lazy var ignoreBtn: UIButton = {
         let btn = UIButton.init()
-        btn.setTitle("跳过", for: .normal)
+//        btn.setTitle("跳过", for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = UIColor.red
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         self.view.addSubview(btn)
-        btn.block = {
-            self.loadMainBlock!()
-        }
+        btn.addTarget(self, action: #selector(back), for: .touchUpInside)
         return btn
     }()
+    
+    var time: Int = 7 {
+        didSet{
+            if time > 0 {
+                ignoreBtn.setTitle("\(time)s", for: .normal)
+            } else {
+                ignoreBtn.setTitle("跳过", for: .normal)
+                timer?.invalidate()
+                timer = nil
+            }
+        }
+    }
+    
+    lazy var timer: Timer? = {
+        let t = Timer.init(timeInterval: 1, target: self, selector: #selector(timeAction), userInfo: nil, repeats: true)
+        RunLoop.current.add(t, forMode: .commonModes)
+//        t.fire()
+        return t
+    }()
+    @objc func timeAction() {
+        time -= 1
+    }
+    @objc func back() {
+        if loadMainBlock != nil {
+            loadMainBlock!()
+        }
+    }
     func loadData() {
         Network.dataRequest(url: Url.getBootPage(), param: nil, reqmethod: .GET) { (result) in
             if result?.code == 1 {
@@ -64,6 +95,5 @@ class BootPageViewController: BaseViewController {
 }
 
 extension BootPageViewController: WKNavigationDelegate,WKUIDelegate{
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    }
+    
 }
