@@ -82,6 +82,8 @@
 		B4C37BFF2087939D0099937C /* BrandZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37BF72087939D0099937C /* BrandZoneViewController.swift */; };
 		B4C37C002087939D0099937C /* ShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37BF82087939D0099937C /* ShippingAddressViewController.swift */; };
 		B4C37C012087939D0099937C /* InvoiceInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37BF92087939D0099937C /* InvoiceInformationViewController.swift */; };
+		B4F2BFA320897BB700CA7F2E /* NSObject_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2BFA220897BB700CA7F2E /* NSObject_extension.swift */; };
+		B4F6A98520890131003155E3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F6A98420890131003155E3 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +192,8 @@
 		B4C37BF72087939D0099937C /* BrandZoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandZoneViewController.swift; sourceTree = "<group>"; };
 		B4C37BF82087939D0099937C /* ShippingAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingAddressViewController.swift; sourceTree = "<group>"; };
 		B4C37BF92087939D0099937C /* InvoiceInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceInformationViewController.swift; sourceTree = "<group>"; };
+		B4F2BFA220897BB700CA7F2E /* NSObject_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject_extension.swift; sourceTree = "<group>"; };
+		B4F6A98420890131003155E3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B854E04AC75C622A426668D5 /* Pods_IFenQuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IFenQuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B0D483ACF68BF15AC83CD8 /* Pods-IFenQu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQu.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQu/Pods-IFenQu.release.xcconfig"; sourceTree = "<group>"; };
 		D22D21FDBC9A90CA4879C26E /* Pods-IFenQuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IFenQuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IFenQuUITests/Pods-IFenQuUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				B4B12E852067A6C000EB90D8 /* UIView_extension.swift */,
 				B4B89EEC207A5C58009B3D4C /* UILable_extension.swift */,
 				B4AF0437208744A0005FDA9E /* UIColor_extension.swift */,
+				B4F2BFA220897BB700CA7F2E /* NSObject_extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 		B4C37BDF208792930099937C /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				B4F6A98420890131003155E3 /* UserModel.swift */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -878,6 +884,7 @@
 				B4B12E992067A6EC00EB90D8 /* Constant.swift in Sources */,
 				B4C37BD62087905F0099937C /* ShopCollectionViewCell.swift in Sources */,
 				B4B12E7F2067A6B400EB90D8 /* BaseTabBarViewController.swift in Sources */,
+				B4F2BFA320897BB700CA7F2E /* NSObject_extension.swift in Sources */,
 				B4B12EC22067A6F500EB90D8 /* MineViewController.swift in Sources */,
 				B4C37BFD2087939D0099937C /* CardViewController.swift in Sources */,
 				B4B12E9C2067A6EC00EB90D8 /* FilledPageControl.swift in Sources */,
@@ -892,6 +899,7 @@
 				B4B12EBE2067A6F500EB90D8 /* ShopViewController.swift in Sources */,
 				B4BB699A207CD2EC00E6D33B /* AlertView.swift in Sources */,
 				B4B12EA32067A6EC00EB90D8 /* Tools.swift in Sources */,
+				B4F6A98520890131003155E3 /* UserModel.swift in Sources */,
 				B4B12EDA206918A000EB90D8 /* SMSVerification.swift in Sources */,
 				B4B12E9E2067A6EC00EB90D8 /* SlideshowViewCell.swift in Sources */,
 				B4C37C012087939D0099937C /* InvoiceInformationViewController.swift in Sources */,

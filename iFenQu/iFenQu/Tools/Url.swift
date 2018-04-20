@@ -33,7 +33,7 @@ class Url {
     }
     ///登陆界面，登陆接口
     class func getLogin() -> String {
-        return Url.getEnvironment() + "v1/login-verify"
+        return Url.getEnvironment() + "account/v1/login-verify"
     }
     ///获取商品信息
     class func getShopInformation() -> String {

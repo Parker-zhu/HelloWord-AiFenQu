@@ -19,11 +19,7 @@ class ShopViewController: BaseViewController {
     lazy var slideView = { () -> SlideshowView in
         
         let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: 130), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
-            self.tableView.reloadData()
-//            let vc = LoginViewController()
-//
-//            self.navigationController?.pushViewController(vc, animated: true)
-            
+//            self.tableView.reloadData()
             
         })
         slide.setupTimer()
@@ -45,6 +41,11 @@ class ShopViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        if #available(iOS 11.0, *) {
+//            tableView.contentInsetAdjustmentBehavior = .never
+//        } else {
+//            self.automaticallyAdjustsScrollViewInsets = false
+//        }
         dataArr = [("热销榜",TitleType.line),("新品首发",TitleType.cicrl),("品牌专区",TitleType.cicrl),("甄选好物",TitleType.arrows)]
         tableView.backgroundColor = xlightGray
         

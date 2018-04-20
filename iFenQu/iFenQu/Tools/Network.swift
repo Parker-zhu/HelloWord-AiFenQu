@@ -22,7 +22,7 @@ class Network {
         
     }
     
-    class func dataRequest(header: String?,url:String,param:[String:Any]?,reqmethod:ReqMethod,callBack: @escaping (_ result: (code: Int, responseDic: [String: Any])?) -> Void) {
+    class func dataRequest(header: (header:String,content:String)?,url:String,param:[String:Any]?,reqmethod:ReqMethod,callBack: @escaping (_ result: (code: Int, responseDic: [String: Any])?) -> Void) {
         
         var resultData: (code: Int, responseDic: [String: Any]) = (0,["":""])
         
@@ -39,7 +39,7 @@ class Network {
         afn.requestSerializer.timeoutInterval = 15
         afn.requestSerializer.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if header != nil {
-            afn.requestSerializer.setValue(header, forHTTPHeaderField: "Ifenqu-Validate")
+            afn.requestSerializer.setValue(header!.content, forHTTPHeaderField: header!.header)
         }
         
         afn.responseSerializer.acceptableContentTypes = NSSet.init(objects: "application/json","text/json","text/javascript","text/html") as? Set<String>

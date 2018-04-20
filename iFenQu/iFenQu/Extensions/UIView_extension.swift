@@ -121,3 +121,78 @@ extension UIView {
         self.layer.addSublayer(gradientLayer)
     }
 }
+
+///图片文字排版位置
+enum PositionType {
+    case wl_il, il_wl, wl_c_ir, il_c_wr, wr_ir, ir_wr, wl_ir, wr_il
+}
+class IButton: UIView {
+    lazy var titleLable = { () -> UILabel in
+        let lable = UILabel.init(frame: CGRect.init(x: 3, y: 3, width: 0, height: self.height - 6))
+        self.addSubview(lable)
+        return lable
+    }()
+    lazy var imageView = { () -> UIImageView in
+        let image = UIImageView.init()
+        image.frame = CGRect.init(x: 0, y: 3, width: self.height - 6, height: self.height - 6)
+        image.contentMode = .center
+        self.addSubview(image)
+        return image
+    }()
+    var targetBlock: (()->())?
+    
+    var positionType:PositionType? {
+        didSet{
+            let selfHeight = self.height - 6
+            titleLable.width = titleLable.text!.getTextSizeB(font: titleLable.font, size: CGSize.init(width: 400, height: selfHeight)).width
+            if self.width < titleLable.width + imageView.width {
+                self.width = titleLable.width + imageView.width + 9
+            }
+            switch positionType! {
+            case .il_c_wr:
+                let ix = (self.width - 3 - imageView.width - titleLable.width)/2.0
+                imageView.x = ix
+                titleLable.x = imageView.frame.maxX + 3
+            case .il_wl:
+                
+                imageView.x = 3
+                titleLable.x = imageView.frame.maxX + 3
+            case .ir_wr:
+                imageView.x = self.width - imageView.width - 3
+                titleLable.x = imageView.x - titleLable.width - 3
+            case .wl_c_ir:
+                let ix = (self.width - 3 - imageView.width - titleLable.width)/2.0
+                titleLable.x = ix
+                imageView.x = titleLable.frame.maxX + 3
+                
+            case .wr_ir:
+                titleLable.x = self.width - titleLable.width - 3
+                imageView.x = titleLable.x - imageView.width - 3
+            case .wr_il:
+                titleLable.x = self.width - titleLable.width - 3
+                imageView.x = 3
+            case .wl_ir:
+                titleLable.x = 3
+                imageView.x = self.width - imageView.width - 3
+            case .wl_il:
+                titleLable.x = 3
+                imageView.x = titleLable.frame.maxX + 3
+        }
+        }
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(iButtonAction))
+        self.addGestureRecognizer(tap)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    @objc func iButtonAction() {
+        if targetBlock != nil {
+            targetBlock!()
+        }
+    }
+}

@@ -28,7 +28,12 @@ extension String {
     
     ///获取文字长度或高度
     func getTextSize(font:CGFloat,size:CGSize) -> CGSize {
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: font)]
+        let f = UIFont.systemFont(ofSize: font)
+        return getTextSizeB(font: f, size: size)
+    }
+    ///获取文字长度或高度
+    func getTextSizeB(font:UIFont,size:CGSize) -> CGSize {
+        let attributes = [NSAttributedStringKey.font: font]
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
         let s = (self as NSString).boundingRect(with: size, options: option, attributes: attributes, context: nil).size
         

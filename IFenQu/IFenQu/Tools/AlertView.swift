@@ -14,7 +14,7 @@ class AlertView: UIView {
         super.init(frame: frame)
         self.backgroundColor = UIColor.red
     }
-    class func show(text:String,btn1Text:String,btn1TextColor:UIColor,btn2Text:String?,btn2TextColor:UIColor?,btn2Block:@escaping ()->()?) -> AlertView{
+    class func show(text:String,btn1Text:String,btn1TextColor:UIColor,btn2Text:String?,btn2TextColor:UIColor?,btn2Block:@escaping ()->Void?) -> AlertView{
         let alert = AlertView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width/7*5, height: 140))
         alert.layer.cornerRadius = 5
         alert.layer.masksToBounds = true

@@ -21,38 +21,48 @@ class MineViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initTableView()
-        self.automaticallyAdjustsScrollViewInsets = false
+        
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
+        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+    }
     func initTableView() {
         tableView = UITableView.init(frame: self.view.bounds, style: .plain)
         self.view.addSubview(tableView)
         tableView.register(UINib.init(nibName: "MineTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         let header = MineHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 150))
-        tableView.tableHeaderView = header
+        let headerSuperView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 170))
+        headerSuperView.addSubview(header)
+        headerSuperView.backgroundColor = UIColor.clear
+        tableView.tableHeaderView = headerSuperView
         tableView.tableFooterView = initFooterView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 50
-        
+        tableView.backgroundColor = xlightGray
         
     }
-    func initFooterView() -> UICollectionView {
+    func initFooterView() -> UIView {
+        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 00, width: SCREEN_Width, height: 220))
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize.init(width: SCREEN_Width/3 - 10, height: 200)
         layout.scrollDirection = .vertical
-        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 200), collectionViewLayout: layout)
+        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: 20, width: SCREEN_Width, height: 200), collectionViewLayout: layout)
         c.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         c.dataSource = self
         c.delegate = self
         c.isScrollEnabled = false
         c.backgroundColor = UIColor.white
-        return c
+        footerView.addSubview(c)
+        footerView.backgroundColor = UIColor.clear
+        return footerView
     }
     
 }

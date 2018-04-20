@@ -248,8 +248,8 @@
     <resources>
         <image name="Group 635" width="18" height="18"/>
         <image name="Group 951" width="112" height="32"/>
-        <image name="code" width="32" height="32"/>
-        <image name="phone" width="32" height="32"/>
+        <image name="code" width="24" height="24"/>
+        <image name="phone" width="24" height="24"/>
         <image name="weixin2-(1)" width="36" height="36"/>
     </resources>
 </document>

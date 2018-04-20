@@ -9,7 +9,9 @@
 
 import UIKit
 import SDWebImage
-
+protocol LoginSuccess {
+    func loginSuccess(tokenModel:TokenModel)
+}
 class LoginViewController: BaseViewController {
     
     //MARK: xib上的视图控件
@@ -23,6 +25,9 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var authCodeBtn: SMSVerification!
     
     @IBOutlet weak var weChatBgView: UIView!
+    
+    var delegate: LoginSuccess?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +94,11 @@ class LoginViewController: BaseViewController {
                 guard let data: [String:Any] = result?.responseDic["data"] as?  [String:Any] else {
                     return
                 }
-                
+                let token = TokenModel.initWithDict(dict: data)
+                if self.delegate != nil {
+                self.delegate?.loginSuccess(tokenModel: token)
+                }
+                CacheManager.manager.tokenModel = token
                 CacheManager.storeCache(key: "token", obj: data)
             })
         } else {
