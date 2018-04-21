@@ -77,7 +77,9 @@ class CacheManager: NSObject {
             
         }
     }
+    
     var tokenModel: TokenModel?
+    
     var userModel: UserModel?
     
 }

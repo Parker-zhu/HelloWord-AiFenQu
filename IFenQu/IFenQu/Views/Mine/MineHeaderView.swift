@@ -59,12 +59,10 @@ class MineHeaderView: UIView,LoginSuccess {
             make?.height.equalTo()(40)
         }
         quit.block = {
-            let alert = AlertView.show(text: "退出登陆", btn1Text: "取消", btn1TextColor: UIColor.red, btn2Text: "确认", btn2TextColor: UIColor.blue, btn2Block: { () -> ()? in
+            _ = AlertView.show(text: "确定退出登陆", btn1Text: "取消", btn1TextColor: UIColor.black, btn2Text: "确认", btn2TextColor: xyellow, btn2Block: { () -> ()? in
                 PopView.disMiss()
                 return ()
             })
-            PopView.show(view: alert)
-            
         }
         
         let q = UIButton.init()

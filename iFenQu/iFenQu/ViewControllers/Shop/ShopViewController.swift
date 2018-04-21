@@ -10,15 +10,18 @@
 import UIKit
 
 class ShopViewController: BaseViewController {
+    ///顶部轮播图高度
+    var slideHeight:CGFloat = 130
     
-    ///tableView竖直滚动的高度
-    var cellHeight: CGFloat?
+    ///存放每个cell的高度
+    var cellHeight: [CGFloat]? = [250,250,150,1150]
+    
     var dataArr = [(String,TitleType)]()
     
     ///轮播图视图
     lazy var slideView = { () -> SlideshowView in
         
-        let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: 130), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
+        let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: slideHeight), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
             
         })
         slide.setupTimer()
@@ -40,27 +43,15 @@ class ShopViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
-        }
+//        if #available(iOS 11.0, *) {
+//            tableView.contentInsetAdjustmentBehavior = .never
+//        } else {
+//            self.automaticallyAdjustsScrollViewInsets = false
+//        }
         dataArr = [("热销榜",TitleType.line),("新品首发",TitleType.cicrl),("品牌专区",TitleType.cicrl),("甄选好物",TitleType.arrows)]
         tableView.backgroundColor = xlightGray
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let param = ["productId":"24"]
-        Network.dataRequest(url: Url.getShopInformation(), param: param, reqmethod: .GET) { (result) in
-            if let data = result?.responseDic["data"] as? [[String:Any]] {
-//                let shopModels = ProductModel.initWithArrToArr(arr: data)
-//                let m = ProductModel.ob
-                
-            }
-        }
-    }
-    
     
 }
 
@@ -70,17 +61,14 @@ extension ShopViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! MainShopTableViewCell
         
+        cell.cellHeight = cellHeight![indexPath.row]
+        
         let direction: UICollectionViewScrollDirection = indexPath.row == 3 ? .vertical : .horizontal
         cell.setModel(model: [], title: dataArr[indexPath.row], scrollDirection: direction) { (result) in
-            print(result)
+            
             ///返回点击的位置，会有不同跳转
             let vc = ShopDetailViewController()
             self.navigationController?.pushViewController(vc, animated: true)
-        }
-        if indexPath.row == 3 && self.cellHeight == nil {
-            
-            self.cellHeight = cell.cellHeight
-            
         }
         return cell
     }
@@ -89,14 +77,7 @@ extension ShopViewController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        if indexPath.row == 3 {
-            return cellHeight ?? 250
-        } else if indexPath.row == 2 {
-            return 150
-        }
-        
-        return 250
+        return cellHeight![indexPath.row]
     }
     
 }

@@ -7,8 +7,8 @@
 //
 ///商品信息模型
 import UIKit
-
-class ProductModel: NSObject {
+import HandyJSON
+class ProductModel: HandyJSON {
     ///产品ID
     var productId: Int?
     var updateTime: String?
@@ -81,6 +81,9 @@ class ProductModel: NSObject {
         model.status = dic["status"] as? Int ?? -1
         
         return model
+    }
+    required init() {
+        
     }
     
 }

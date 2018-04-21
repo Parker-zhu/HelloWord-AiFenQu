@@ -134,7 +134,7 @@ class IButton: UIView {
     }()
     lazy var imageView = { () -> UIImageView in
         let image = UIImageView.init()
-        image.frame = CGRect.init(x: 0, y: 3, width: (self.height - 6)/2.0, height: self.height - 6)
+        image.frame = CGRect.init(x: 0, y: 3, width: (self.height - 6), height: self.height - 6)
         image.contentMode = .center
         self.addSubview(image)
         return image

@@ -12,8 +12,9 @@ class AlertView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.red
+        self.backgroundColor = UIColor.white
     }
+    
     class func show(text:String,btn1Text:String,btn1TextColor:UIColor,btn2Text:String?,btn2TextColor:UIColor?,btn2Block:@escaping ()->Void?) -> AlertView{
         let alert = AlertView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width/7*5, height: 140))
         alert.layer.cornerRadius = 5
@@ -21,6 +22,7 @@ class AlertView: UIView {
         
         let lable = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: alert.width, height: 100))
         lable.text = text
+        lable.textAlignment = .center
         lable.textColor = UIColor.darkGray
         alert.addSubview(lable)
         
@@ -45,13 +47,12 @@ class AlertView: UIView {
         btn.block = {
            PopView.disMiss()
         }
-        btn.setTitleColor(UIColor.blue, for: .normal)
+        btn.setTitleColor(btn1TextColor, for: .normal)
         alert.addSubview(btn)
-        
-        
-        
+        PopView.show(view: alert)
         return alert
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
