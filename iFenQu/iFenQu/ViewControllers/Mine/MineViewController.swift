@@ -89,7 +89,8 @@ extension MineViewController: UICollectionViewDelegate,UICollectionViewDataSourc
         return 3
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ShopCollectionViewCell
+        cell.setModel(model: "")
         return cell
     }
 }

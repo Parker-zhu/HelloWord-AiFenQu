@@ -134,11 +134,11 @@ extension UILabel {
         let slayer = CAShapeLayer.init()
         let path = UIBezierPath.init()
         let textRect = self.textRect(forBounds: self.bounds, limitedToNumberOfLines: 0)
-        path.move(to: CGPoint.init(x: textRect.origin.x, y: 5))
-        path.addLine(to: CGPoint.init(x: textRect.maxX, y: 5))
-        path.addArc(withCenter: CGPoint.init(x: textRect.maxX, y: self.height/2), radius: self.height/2 - 5, startAngle: CGFloat(-M_PI/2), endAngle: CGFloat(M_PI/2), clockwise: true)
-        path.addLine(to: CGPoint.init(x: textRect.origin.x, y: self.height - 5))
-        path.addArc(withCenter: CGPoint.init(x: textRect.origin.x, y: self.height/2), radius: self.height/2 - 5, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
+        path.move(to: CGPoint.init(x: textRect.origin.x, y: 0))
+        path.addLine(to: CGPoint.init(x: textRect.maxX, y: 0))
+        path.addArc(withCenter: CGPoint.init(x: textRect.maxX, y: self.height/2), radius: self.height/2, startAngle: CGFloat(-M_PI/2), endAngle: CGFloat(M_PI/2), clockwise: true)
+        path.addLine(to: CGPoint.init(x: textRect.origin.x, y: self.height))
+        path.addArc(withCenter: CGPoint.init(x: textRect.origin.x, y: self.height/2), radius: self.height/2, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(-M_PI/2), clockwise: true)
         slayer.fillColor = backColor.cgColor
         slayer.strokeColor = lineColor.cgColor
         slayer.lineWidth = 0.5

@@ -22,6 +22,7 @@ class BootPageViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initBackView()
         loadData()
         self.view.addSubview(webView)
         ignoreBtn.mas_makeConstraints { (make) in
@@ -39,6 +40,15 @@ class BootPageViewController: BaseViewController {
         timer?.fire()
     }
 
+    func initBackView() {
+        let headerImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: SCREEN_Height/7*5))
+        headerImage.image = UIImage.init(named: "Path 122")
+        self.view.addSubview(headerImage)
+        
+        let bottomImage = UIImageView.init(frame: CGRect.init(x: 0, y: SCREEN_Height/7*5, width: SCREEN_Width, height: SCREEN_Height/7*2))
+        bottomImage.image = UIImage.init(named: "Group 488")
+        self.view.addSubview(bottomImage)
+    }
     lazy var ignoreBtn: UIButton = {
         let btn = UIButton.init()
 //        btn.setTitle("跳过", for: .normal)
@@ -77,13 +87,14 @@ class BootPageViewController: BaseViewController {
         }
     }
     func loadData() {
+        
         Network.dataRequest(url: Url.getBootPage(), param: nil, reqmethod: .GET) { (result) in
             if result?.code == 1 {
                 guard let data = result?.responseDic["data"] as? [[String:Any]] else {
                     return
                 }
                 let content = data[0]["content"] as! String
-                
+
                 self.webView.loadHTMLString(content, baseURL: nil)
             }
         }
@@ -95,5 +106,11 @@ class BootPageViewController: BaseViewController {
 }
 
 extension BootPageViewController: WKNavigationDelegate,WKUIDelegate{
-    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if (navigationAction.request.url?.scheme?.contains("http"))! {
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
+    }
 }

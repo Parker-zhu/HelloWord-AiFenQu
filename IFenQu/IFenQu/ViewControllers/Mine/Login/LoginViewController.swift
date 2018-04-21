@@ -98,6 +98,7 @@ class LoginViewController: BaseViewController {
                 if self.delegate != nil {
                 self.delegate?.loginSuccess(tokenModel: token)
                 }
+                self.back(UIButton())
                 CacheManager.manager.tokenModel = token
                 CacheManager.storeCache(key: "token", obj: data)
             })

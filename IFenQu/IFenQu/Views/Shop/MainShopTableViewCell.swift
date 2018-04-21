@@ -15,7 +15,7 @@ enum TitleType {
 class MainShopTableViewCell: UITableViewCell {
     
     lazy var headerLable = { () -> UILabel in
-        let lable = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 30))
+        let lable = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: bgCView.height))
         lable.font = UIFont.systemFont(ofSize: 12)
         lable.textAlignment = .center
         bgCView.addSubview(lable)
@@ -26,6 +26,7 @@ class MainShopTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
+        self.backgroundColor = UIColor.clear
     }
 
     var didSelectItem: ((Any) -> ())?
@@ -38,7 +39,7 @@ class MainShopTableViewCell: UITableViewCell {
         v.height = self.height - offSet
         v.backgroundColor = UIColor.white
         self.contentView.addSubview(v)
-        self.backgroundColor = UIColor.clear
+//        self.backgroundColor = UIColor.clear
         return v
     }()
     
@@ -55,7 +56,7 @@ class MainShopTableViewCell: UITableViewCell {
     var dirction: UICollectionViewScrollDirection = .horizontal {
         didSet{
             if dirction == .vertical {
-                cellWidth = SCREEN_Width/2
+                cellWidth = SCREEN_Width/2 
             }
             
             collectionView.reloadData()
@@ -75,7 +76,7 @@ class MainShopTableViewCell: UITableViewCell {
         layout.scrollDirection = dirction
         layout.itemSize = CGSize.init(width: cellWidth, height: selfHeight - 30 - offSet)
         
-        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: 30, width: SCREEN_Width, height: cellHeight), collectionViewLayout: layout)
+        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: bgCView.height + 1, width: SCREEN_Width, height: cellHeight), collectionViewLayout: layout)
         c.isScrollEnabled = dirction != .vertical
         c.backgroundColor = UIColor.white
         c.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -90,19 +91,26 @@ class MainShopTableViewCell: UITableViewCell {
     
     ///设置数据
     func setModel(model:[Any],title:(String,TitleType),scrollDirection:UICollectionViewScrollDirection,selectModel:@escaping (Any)->()) {
-        
+        if title.0.contains("品牌") {
+            cellHeight = 150
+        } else {
+            
+        }
         didSelectItem = selectModel
         bgCView.backgroundColor = UIColor.white
         headerLable.text = title.0
         headerLable.textColor = UIColor.white
-//        headerLable.drawCircle(lineColor: UIColor.lightGray, backColor: UIColor.clear)
-        headerLable.drawCircle(lineColor: UIColor.white, backColor: UIColor.red, isDrawArrows: true)
-//        headerLable.drawLine(lineColor: UIColor.black)
+        
+        headerLable.drawCircle(lineColor: UIColor.red, backColor: UIColor.clear, isDrawArrows: true)
         
         if scrollDirection == .vertical {
             cellHeight = (selfHeight - 30 - offSet) * 5 + 30 + offSet + 60
         } else {
+//            if title.0.contains("品牌") {
+//                cellHeight =
+//            } else {
             cellHeight = selfHeight - 30 - offSet
+//            }
         }
         
         dirction = scrollDirection
@@ -117,7 +125,8 @@ extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
         return 10
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ShopCollectionViewCell
+        cell.setModel(model: "")
         
         return cell
     }
@@ -138,26 +147,29 @@ extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footer", for: indexPath)
         footerView.backgroundColor = xlightGray
         if footerView.subviews.last is UIButton {
             
         } else {
-        let btn = XButton.init(frame:CGRect.init(x: 0, y: 3, width: SCREEN_Width, height: 50))
-        btn.setTitle("查看更多", for: .normal)
-        btn.setTitleColor(UIColor.black, for: .normal)
-        btn.block = {
-            print("查看更多")
-        }
-        btn.setImage(UIImage.init(named: "path"), for: .normal)
-        btn.position = .centerLeft
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        let btn = IButton.init(frame:CGRect.init(x: 0, y: 2, width: SCREEN_Width, height: 40))
+        btn.titleLable.text = "查看更多"
+        btn.imageView.image = UIImage.init(named: "path")
+        btn.backgroundColor = UIColor.white
+        btn.titleLable.font = UIFont.systemFont(ofSize: 12)
+        btn.positionType = .wl_c_ir
         footerView.addSubview(btn)
         }
         return footerView
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize.init(width: SCREEN_Width, height: 60)
+        if self.dirction == .vertical {
+            return CGSize.init(width: SCREEN_Width, height: 60)
+        } else {
+            return CGSize.init(width: 0, height: 0)
+        }
+        
     }
     
 }

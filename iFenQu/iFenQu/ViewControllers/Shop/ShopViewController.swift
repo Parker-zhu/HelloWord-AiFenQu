@@ -19,7 +19,6 @@ class ShopViewController: BaseViewController {
     lazy var slideView = { () -> SlideshowView in
         
         let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: 130), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
-//            self.tableView.reloadData()
             
         })
         slide.setupTimer()
@@ -41,26 +40,27 @@ class ShopViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if #available(iOS 11.0, *) {
-//            tableView.contentInsetAdjustmentBehavior = .never
-//        } else {
-//            self.automaticallyAdjustsScrollViewInsets = false
-//        }
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         dataArr = [("热销榜",TitleType.line),("新品首发",TitleType.cicrl),("品牌专区",TitleType.cicrl),("甄选好物",TitleType.arrows)]
         tableView.backgroundColor = xlightGray
         
     }
-    
-    
-    func loadData() {
-        let param = ["":""]
-        Network.dataRequest(url: "", param: param, reqmethod: .GET) { (result) in
-            
-        }
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let param = ["productId":"24"]
+        Network.dataRequest(url: Url.getShopInformation(), param: param, reqmethod: .GET) { (result) in
+            if let data = result?.responseDic["data"] as? [[String:Any]] {
+//                let shopModels = ProductModel.initWithArrToArr(arr: data)
+//                let m = ProductModel.ob
+                
+            }
+        }
     }
+    
     
 }
 
@@ -92,7 +92,10 @@ extension ShopViewController: UITableViewDelegate,UITableViewDataSource {
         
         if indexPath.row == 3 {
             return cellHeight ?? 250
+        } else if indexPath.row == 2 {
+            return 150
         }
+        
         return 250
     }
     
