@@ -27,16 +27,56 @@ extension String {
     }
     
     ///获取文字长度或高度
-    func getTextSize(font:CGFloat,size:CGSize) -> CGSize {
+    func getTextSize(font:CGFloat,size:CGSize = CGSize.init(width: SCREEN_Width, height: SCREEN_Height)) -> CGSize {
         let f = UIFont.systemFont(ofSize: font)
         return getTextSizeB(font: f, size: size)
     }
     ///获取文字长度或高度
-    func getTextSizeB(font:UIFont,size:CGSize) -> CGSize {
+    func getTextSizeB(font:UIFont,size:CGSize = CGSize.init(width: SCREEN_Width, height: SCREEN_Height)) -> CGSize {
         let attributes = [NSAttributedStringKey.font: font]
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
         let s = (self as NSString).boundingRect(with: size, options: option, attributes: attributes, context: nil).size
         
         return s
+    }
+    
+    ///字符串转数据
+    func int() -> Int{
+        return (self as NSString).integerValue
+    }
+    func float() -> Float {
+        return (self as NSString).floatValue
+    }
+   
+    ///保留小数
+    ///
+    /// - Parameter count: 保留几位小数
+    /// - Returns: 处理好的
+    func getDecimals(count:Int = 2,isNeedcomma:Bool = true) -> String {
+        var newS = ""
+        var havePoint = false
+        var num = count
+        for c in self.characters {
+            if havePoint {
+                num -= 1
+                if num < 0 {
+                    break
+                }
+            }
+            if c == "." {
+            havePoint = true
+            }
+            newS.append(c)
+        }
+        if !havePoint || num > 0 {
+            if !havePoint {
+            newS.append(".")
+            }
+            for _ in 0..<num {
+                newS.append("0")
+            }
+        }
+        
+        return newS
     }
 }

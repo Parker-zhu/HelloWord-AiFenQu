@@ -45,7 +45,7 @@ class Url {
     }
     ///保存寄存地址
     class func getAddress() -> String {
-        return Url.getEnvironment() + "mall/address"
+        return Url.getEnvironment() + "v1/mall/address"
     }
     ///返回指定商品的优惠券信息
     class func getGoodCoupon() -> String {

@@ -23,7 +23,8 @@ class ShopViewController: BaseViewController {
     lazy var slideView = { () -> SlideshowView in
         
         let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: slideHeight), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
-            
+            let vc = ProductTableViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
             
         })
         slide.setupTimer()
@@ -77,7 +78,7 @@ extension ShopViewController: UITableViewDelegate,UITableViewDataSource {
         cell.setModel(model: [], title: dataArr[indexPath.row], scrollDirection: direction) { (result) in
             
             ///返回点击的位置，会有不同跳转
-            let vc = ProductTableViewController()
+            let vc = ShopDetailViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
         return cell

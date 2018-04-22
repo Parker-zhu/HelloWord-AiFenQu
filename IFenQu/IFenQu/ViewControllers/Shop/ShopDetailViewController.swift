@@ -53,10 +53,10 @@ class ShopDetailViewController: BaseViewController {
         let btn = XButton.init()
         typeBtnSuperView.addSubview(btn)
         btn.block = {
-            let p = ProductTypesView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 600))
+            let p = ProductTypesView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 500))
             PopView.show(view: p, isAnmation: true)
         }
-        btn.setTitle("已选", for: .normal)
+        btn.setTitle("选择商品款型", for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.setImage(UIImage.init(named: "path"), for: .normal)
         btn.setTitleColor(UIColor.black, for: .normal)
@@ -71,8 +71,10 @@ class ShopDetailViewController: BaseViewController {
     }()
     
     lazy var bottomView = { () -> ConfirmView in
-        let v = ConfirmView.init(frame: CGRect.init(x: 0, y: self.view.height - 80, width: SCREEN_Width, height: 80))
+        let v = ConfirmView.initFormNib() as! ConfirmView
+        v.frame = CGRect.init(x: 0, y: self.view.height - 80, width: SCREEN_Width, height: 80)
         self.view.addSubview(v)
+        v.delegate = self
         v.backgroundColor = UIColor.white
         return v
     }()
@@ -82,23 +84,48 @@ class ShopDetailViewController: BaseViewController {
         super.viewDidLoad()
         self.title = "MacBook Pro 新款15寸 3 mbl"
         self.view.backgroundColor = xlightGray
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "share"), style: .done, target: self, action: #selector(share))
-        shopNameLable.text = "MacBook Pro 新款15寸 3 mblMacBook Pro 新款15寸 3 mbl"
+        loadData()
         
+    }
+    var productModel: ProductModel!
+    
+    ///加载网络数据
+    func loadData() {
+        let param = ["productId" : "24"]
+        Network.dataRequest(url: Url.getShopInformation(), param: param, reqmethod: .GET) { (result) in
+            if result?.code == 1 {
+                if let data = result?.responseDic["data"] as?  [[String:Any]] {
+                    ///只有一个元素
+                    
+                self.productModel = ProductModel.deserialize(from: data.last)!
+                  self.reloadAllData()
+                }
+            }
+        }
+    }
+    
+    ///刷新界面数据
+    func reloadAllData() {
+        self.title = productModel.productName
+        
+        shopNameLable.text = productModel.describe
+        bottomView.loadData(models: productModel.goodsList!)
         shopNameSuperView.mas_makeConstraints { (make) in
             make?.top.equalTo()(slideView.mas_bottom)?.offset()(2)
             make?.left.equalTo()(self.view.mas_left)
             make?.right.equalTo()(self.view.mas_right)
-            make?.height.equalTo()(shopNameLable.text!.getTextSize(font: 14, size: CGSize.init(width: SCREEN_Width - 40, height: 500)).height + 40)
+            make?.height.equalTo()(shopNameLable.text!.getTextSize(font: 14).height + 40)
             
         }
+        
         shopNameLable.mas_makeConstraints { (make) in
             make?.top.equalTo()(slideView.mas_bottom)?.offset()(2)
             make?.left.equalTo()(self.view.mas_left)?.offset()(20)
             make?.right.equalTo()(self.view.mas_right)?.offset()(-20)
-            make?.height.equalTo()(shopNameLable.text!.getTextSize(font: 14, size: CGSize.init(width: SCREEN_Width - 40, height: 500)).height + 40)
+            make?.height.equalTo()(shopNameLable.text!.getTextSize(font: 14).height + 40)
             
         }
+        
         typeBtnSuperView.mas_makeConstraints { (make) in
             make?.top.equalTo()(shopNameSuperView.mas_bottom)?.offset()(2)
             make?.left.equalTo()(self.view.mas_left)
@@ -114,26 +141,25 @@ class ShopDetailViewController: BaseViewController {
             
         }
         bottomView.backgroundColor = UIColor.white
-    }
-
-    @objc func share() {
+        
+        let describeView = ShopDetailDescribeView.init()
+        
+        self.contentScrollView.addSubview(describeView)
+        describeView.mas_makeConstraints { (make) in
+            make?.top.equalTo()(typeBtn.mas_bottom)?.offset()(15)
+            make?.left.equalTo()(self.view.mas_left)
+            make?.right.equalTo()(self.view.mas_right)
+            make?.height.equalTo()(500)
+            
+        }
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+extension ShopDetailViewController: ConfirmViewDelegate{
+    func didConfirm() {
+        let vc = PurchaseViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

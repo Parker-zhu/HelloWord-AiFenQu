@@ -19,7 +19,7 @@ class ShopCollectionViewCell: UICollectionViewCell {
     lazy var imageView = { () -> UIImageView in
         
         let view = UIImageView.init(frame: CGRect.init(x: offSet, y: offSet, width: self.width - offSet*2, height: self.height - offSet*2))
-        view.contentMode = .center
+        view.contentMode = .scaleToFill
         
         self.addSubview(view)
         return view

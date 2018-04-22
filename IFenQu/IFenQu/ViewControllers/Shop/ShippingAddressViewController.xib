@@ -10,9 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShippingAddressViewController" customModule="AiFeiQu" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShippingAddressViewController" customModule="IFenQu" customModuleProvider="target">
             <connections>
-                <outlet property="addressBtn" destination="B1k-Ke-Rwd" id="tcV-vZ-w7s"/>
+                <outlet property="addressView" destination="uB1-g8-Qoh" id="miq-f3-L2R"/>
                 <outlet property="detailedAddressTextView" destination="x7F-xD-eph" id="yT5-Xo-9YW"/>
                 <outlet property="nameTextF" destination="VQA-Xc-glD" id="Kwc-jV-XbZ"/>
                 <outlet property="phoneTextF" destination="ouy-ul-goA" id="rYH-Ov-h0J"/>
@@ -36,7 +36,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAg-fM-oN0">
                     <rect key="frame" x="0.0" y="70" width="375" height="250"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQA-Xc-glD" customClass="XTextField" customModule="AiFeiQu" customModuleProvider="target">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VQA-Xc-glD" customClass="XTextField" customModule="IFenQu" customModuleProvider="target">
                             <rect key="frame" x="20" y="0.0" width="335" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="JWK-2P-yIQ"/>
@@ -45,7 +45,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ouy-ul-goA" customClass="XTextField" customModule="AiFeiQu" customModuleProvider="target">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ouy-ul-goA" customClass="XTextField" customModule="IFenQu" customModuleProvider="target">
                             <rect key="frame" x="20" y="50" width="335" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="KOV-yV-tmL"/>
@@ -54,36 +54,36 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1k-Ke-Rwd" customClass="XButton" customModule="AiFeiQu" customModuleProvider="target">
-                            <rect key="frame" x="20" y="100" width="335" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="xts-6P-Wvx"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                        </button>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x7F-xD-eph" customClass="XTextView" customModule="AiFeiQu" customModuleProvider="target">
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x7F-xD-eph" customClass="XTextView" customModule="IFenQu" customModuleProvider="target">
                             <rect key="frame" x="20" y="150" width="335" height="100"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uB1-g8-Qoh">
+                            <rect key="frame" x="20" y="100" width="335" height="50"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="59f-mU-w8N"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="B1k-Ke-Rwd" firstAttribute="leading" secondItem="GAg-fM-oN0" secondAttribute="leading" constant="20" id="5zI-3F-H9T"/>
                         <constraint firstItem="VQA-Xc-glD" firstAttribute="top" secondItem="GAg-fM-oN0" secondAttribute="top" id="6i0-yU-ytZ"/>
+                        <constraint firstItem="x7F-xD-eph" firstAttribute="top" secondItem="uB1-g8-Qoh" secondAttribute="bottom" id="7aa-Am-dGu"/>
                         <constraint firstAttribute="height" constant="250" id="Ej4-Fh-miE"/>
-                        <constraint firstItem="x7F-xD-eph" firstAttribute="top" secondItem="B1k-Ke-Rwd" secondAttribute="bottom" id="NB0-Hw-1qJ"/>
-                        <constraint firstAttribute="trailing" secondItem="B1k-Ke-Rwd" secondAttribute="trailing" constant="20" id="QqW-eQ-LzD"/>
+                        <constraint firstItem="uB1-g8-Qoh" firstAttribute="leading" secondItem="GAg-fM-oN0" secondAttribute="leading" constant="20" id="G6p-jv-qn1"/>
+                        <constraint firstAttribute="trailing" secondItem="uB1-g8-Qoh" secondAttribute="trailing" constant="20" id="NHU-SM-EkN"/>
                         <constraint firstItem="VQA-Xc-glD" firstAttribute="leading" secondItem="GAg-fM-oN0" secondAttribute="leading" constant="20" id="Rus-Ej-zy9"/>
                         <constraint firstItem="ouy-ul-goA" firstAttribute="leading" secondItem="GAg-fM-oN0" secondAttribute="leading" constant="20" id="ayn-tH-b5J"/>
                         <constraint firstAttribute="trailing" secondItem="ouy-ul-goA" secondAttribute="trailing" constant="20" id="c4D-UK-vD5"/>
                         <constraint firstItem="x7F-xD-eph" firstAttribute="leading" secondItem="GAg-fM-oN0" secondAttribute="leading" constant="20" id="ccA-ls-YNW"/>
                         <constraint firstAttribute="bottom" secondItem="x7F-xD-eph" secondAttribute="bottom" id="mCk-Qn-VAr"/>
                         <constraint firstItem="ouy-ul-goA" firstAttribute="top" secondItem="VQA-Xc-glD" secondAttribute="bottom" id="qCQ-ON-jjH"/>
+                        <constraint firstItem="uB1-g8-Qoh" firstAttribute="top" secondItem="ouy-ul-goA" secondAttribute="bottom" id="s8N-1M-cfU"/>
                         <constraint firstAttribute="trailing" secondItem="x7F-xD-eph" secondAttribute="trailing" constant="20" id="tUF-bz-eMU"/>
                         <constraint firstAttribute="trailing" secondItem="VQA-Xc-glD" secondAttribute="trailing" constant="20" id="toA-Wz-GaC"/>
-                        <constraint firstItem="B1k-Ke-Rwd" firstAttribute="top" secondItem="ouy-ul-goA" secondAttribute="bottom" id="zrd-4B-ncT"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIS-hQ-QGg">

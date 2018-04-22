@@ -40,7 +40,7 @@ class LoginViewController: BaseViewController {
         loginBtn.layer.cornerRadius = 5
         loginBtn.layer.masksToBounds = true
         
-        loginBtn.shadeColor(starColor: UIColor.init(red: 255/255.0, green: 195/255.0, blue: 0, alpha: 1), endColor: UIColor.init(red: 1.0, green: 154/255.0, blue: 0, alpha: 1))
+        loginBtn.shadeColor()
         
         ///检查微信是否安装，没有安装隐藏微信登陆View
 //        weChatBgView.isHidden = true

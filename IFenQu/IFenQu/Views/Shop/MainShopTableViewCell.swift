@@ -157,8 +157,12 @@ extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 //        if dirction != nil && dirction == .vertical {
 //            cell.setModel(model: nil)
 //        } else {
-        cell.setModel(model: "")
-//        }
+        if self.cellHeight < 200 {
+        cell.setModel(model: nil)
+        } else {
+           cell.setModel(model: "")
+        }
+        
         
         return cell
     }

@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class GoodModel: NSObject {
+import HandyJSON
+class GoodModel: HandyJSON{
     
     var companyId: Int?
     var sysCompanyInfos: String?
@@ -47,4 +47,8 @@ class GoodModel: NSObject {
     var updateUserId: String?
     ///商品简介
     var goodsAbout: String?
+    
+    
+    required init() {
+    }
 }

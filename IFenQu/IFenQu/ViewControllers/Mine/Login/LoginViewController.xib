@@ -108,7 +108,7 @@
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其他登陆方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZe-Sf-Npz">
                             <rect key="frame" x="137.5" y="71.5" width="100" height="13.5"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="aR7-aM-8Tp"/>
                             </constraints>
@@ -123,6 +123,7 @@
                         <constraint firstAttribute="trailing" secondItem="7xa-we-g1t" secondAttribute="trailing" constant="70" id="A6v-fw-Jai"/>
                         <constraint firstAttribute="bottom" secondItem="qru-ru-G7e" secondAttribute="bottom" id="Dw1-ke-F2H"/>
                         <constraint firstItem="qru-ru-G7e" firstAttribute="centerX" secondItem="IWT-Vq-x8W" secondAttribute="centerX" id="GqP-MG-Fww"/>
+                        <constraint firstItem="qru-ru-G7e" firstAttribute="top" secondItem="YZe-Sf-Npz" secondAttribute="bottom" constant="3.5" id="bTE-Or-vTo"/>
                         <constraint firstItem="qru-ru-G7e" firstAttribute="top" secondItem="7xa-we-g1t" secondAttribute="bottom" constant="10" id="hvb-sx-P33"/>
                         <constraint firstItem="7xa-we-g1t" firstAttribute="leading" secondItem="IWT-Vq-x8W" secondAttribute="leading" constant="70" id="oeq-uu-smL"/>
                         <constraint firstItem="YZe-Sf-Npz" firstAttribute="centerY" secondItem="7xa-we-g1t" secondAttribute="centerY" id="vpb-fQ-HbU"/>

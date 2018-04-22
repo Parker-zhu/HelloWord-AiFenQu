@@ -111,7 +111,8 @@ extension UIView {
         }
     }
     ///渐变色
-    func shadeColor(starColor:UIColor,endColor:UIColor){
+    
+    func shadeColor(starColor:UIColor = UIColor.init(red: 255/255.0, green: 195/255.0, blue: 0, alpha: 1),endColor:UIColor = UIColor.init(red: 1.0, green: 154/255.0, blue: 0, alpha: 1)){
         let gradientLayer = CAGradientLayer.init()
         gradientLayer.colors = [starColor.cgColor,endColor.cgColor]
 //        gradientLayer.locations = [NSNumber.init(value: 0.5)]
@@ -119,6 +120,14 @@ extension UIView {
         gradientLayer.endPoint = CGPoint.init(x: 1.0, y: 0)
         gradientLayer.frame = self.bounds
         self.layer.addSublayer(gradientLayer)
+    }
+    
+    class func initFormNib() -> UIView {
+        
+        let classNameCopy = NSStringFromClass(self.classForCoder())
+        let name = classNameCopy.components(separatedBy: ".").last
+        let nibView = Bundle.main.loadNibNamed(name!, owner: self, options: nil)!.first
+        return nibView as! UIView
     }
 }
 

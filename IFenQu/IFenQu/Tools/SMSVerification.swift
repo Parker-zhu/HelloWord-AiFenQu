@@ -25,6 +25,7 @@ class SMSVerification: XButton,GT3CaptchaManagerDelegate,GT3CaptchaManagerViewDe
         manger.useVisualView(with: UIBlurEffect.init(style: .dark))
         manger.registerCaptcha {
         }
+        
     }
     
     ///开始验证
@@ -57,6 +58,7 @@ class SMSVerification: XButton,GT3CaptchaManagerDelegate,GT3CaptchaManagerViewDe
         Network.dataRequest(header: ("Ifenqu-Validate",convertDictionaryToString(dict: dic)), url: "https://account.ifenqu.com/v1/send-login-verify-code", param: param, reqmethod: .POST) { (result) in
             if result?.code == 1 {
                 Hud.showError(text: "成功发送验证码")
+                
                 self.succesBlock()
             }
         }

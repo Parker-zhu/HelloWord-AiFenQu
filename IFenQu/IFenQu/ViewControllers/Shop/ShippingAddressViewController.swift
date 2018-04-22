@@ -23,7 +23,7 @@ class ShippingAddressViewController: BaseViewController {
     ///手机号
     @IBOutlet weak var phoneTextF: XTextField!
     ///地址
-    @IBOutlet weak var addressBtn: XButton!
+    @IBOutlet weak var addressView: UIView!
     ///详细地址
     @IBOutlet weak var detailedAddressTextView: XTextView!
     ///保存事件
@@ -39,10 +39,7 @@ class ShippingAddressViewController: BaseViewController {
             return
         }
     
-        Network.dataRequest(url: "", param: nil, reqmethod: .POST) { (result) in
-            self.navigationController?.popViewController(animated: true)
-            self.delegate?.completedInformationModification(infoModel:"")
-        }
+        netRequest()
     
     }
     
@@ -60,40 +57,111 @@ class ShippingAddressViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initBaseInfo()
+        loadJson()
     }
 
+    var areaModels = [AreaModel]()
+    
+    func loadJson() {
+        let path = Bundle.main.path(forResource: "openArea", ofType: "json")
+        let url = URL(fileURLWithPath: path!)
+        // 带throws的方法需要抛异常
+        do {
+            /*
+             * try 和 try! 的区别
+             * try 发生异常会跳到catch代码中
+             * try! 发生异常程序会直接crash
+             */
+            let data = try Data(contentsOf: url)
+            let jsonData:Any = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+            let jsonArr = jsonData as! [[String:Any]]
+            for model in jsonArr {
+                self.areaModels.append(AreaModel.deserialize(from: model)!)
+            }
+            
+        } catch let error as Error! {
+            print("读取本地数据出现错误!",error)
+        }
+    }
     ///配置一些基本设置
     func initBaseInfo() {
         self.navigationItem.title = "新增收货地址"
+        self.view.backgroundColor = xlightGray
         
         let lable = UILabel.init()
         lable.text = "详细地址"
         lable.textColor = UIColor.lightGray
         detailedAddressTextView.placeholderLable = lable
         
+        let addressBtn = IButton.init(frame: addressView.bounds)
+        addressView.addSubview(addressBtn)
         addressBtn.layer.cornerRadius = 5
         addressBtn.layer.masksToBounds = true
         
-        addressBtn.setTitle("地区选择", for: .normal)
-        addressBtn.setImage(UIImage.init(named: "Group 634"), for: .normal)
-        addressBtn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        addressBtn.setTitleColor(UIColor.lightGray, for: .normal)
-//        addressBtn.isShowBottomLine = true
-//        addressBtn.bottomLineColor = xlightGray
+        addressBtn.titleLable.text = "地区选择"
+        addressBtn.imageView.image = UIImage.init(named: "Group 634")
+        addressBtn.titleLable.font = UIFont.systemFont(ofSize: 13)
+        addressBtn.positionType = .wl_ir
+        addressBtn.titleLable.textColor = UIColor.lightGray
         addressBtn.drawLine(types: [(.bottom,xlightGray)])
+        let tap = UITapGestureRecognizer.init()
+        tap.addTarget(self, action: #selector(showAreaView))
+        addressBtn.addGestureRecognizer(tap)
+        
         nameTextF.linePosition = [.bottom]
         nameTextF.delegate = self
         phoneTextF.delegate = self
         detailedAddressTextView.delegate = self
+        detailedAddressTextView.drawLine(types: [(.bottom,xlightGray)])
         phoneTextF.linePosition = [.bottom]
         
-        addressBtn.block = {
-            //修改地址信息后，设置Btn的text
-            
-        }
         
     }
 
+    var areaPickerView: UIPickerView!
+    
+    @objc func areaViewMiss() {
+//        self.areaPickerView.superview?.isUserInteractionEnabled = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.areaPickerView.y = self.view.height
+        }, completion: { (isEnd) in
+            self.areaPickerView.superview!.removeFromSuperview()
+        })
+    }
+    ///弹出地区选择
+    @objc func showAreaView() {
+        let bgView = UIView.init(frame: self.view.bounds)
+        bgView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+//        let tap = UITapGestureRecognizer.init()
+//        tap.addTarget(self, action: #selector(areaViewMiss))
+//        bgView.addGestureRecognizer(tap)
+        self.view.addSubview(bgView)
+        let areaView = UIPickerView.init(frame: CGRect.init(x: 0, y: self.view.height, width: SCREEN_Width, height: 200))
+        areaPickerView = areaView
+        areaView.backgroundColor = UIColor.red
+        
+        let sureBtn = UIButton.init(frame: CGRect.init(x: 0, y: self.view.height + 50, width: SCREEN_Width, height: 50))
+        bgView.addSubview(sureBtn)
+        sureBtn.setTitle("确定", for: .normal)
+        sureBtn.addTarget(self, action: #selector(areaViewMiss), for: .touchUpInside)
+        sureBtn.backgroundColor = xyellow
+        UIView.animate(withDuration: 0.5) {
+            areaView.y = self.view.height - 250
+            sureBtn.y = self.view.height - 50
+        }
+        bgView.addSubview(areaView)
+        
+        
+    }
+    func netRequest() {
+        let param = ["provinceName":"上海市","cityName":"上海市","areaName":"浦东新区","address":"神龙教","addressee":"神龙教","mobile":"17602138417"]
+        Network.dataRequest(header: nil, url: Url.getAddress(), param: param, reqmethod: .POST, responseSerializerType: .responseHttp) { (result) in
+            self.navigationController?.popViewController(animated: true)
+            self.delegate?.completedInformationModification(infoModel:"")
+        }
+        
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

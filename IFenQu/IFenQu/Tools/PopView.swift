@@ -20,7 +20,7 @@ class PopView: NSObject {
     
     lazy private var contentView: UIView = {
         let view = UIView.init(frame: UIScreen.main.bounds)
-        view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.7)
+        view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
         view.isUserInteractionEnabled = true
         if isHiddenWhenTouch {
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(miss))
@@ -60,11 +60,11 @@ class PopView: NSObject {
         view.frame = CGRect.init(x: 0, y: SCREEN_Height - view.height, width: view.width, height: view.height)
         let window = UIApplication.shared.keyWindow
         
-        PopView.share.isHiddenWhenTouch = true
+        PopView.share.isHiddenWhenTouch = false
         window?.addSubview(PopView.share.contentView)
         PopView.share.contentView.addSubview(view)
         view.y = SCREEN_Height
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.5) {
             view.y = SCREEN_Height - view.height
         }
         
