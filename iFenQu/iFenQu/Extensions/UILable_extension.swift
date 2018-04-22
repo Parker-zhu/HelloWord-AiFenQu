@@ -130,7 +130,14 @@ extension UILabel {
     
     
     func drawCircle(lineColor:UIColor,backColor:UIColor,isDrawArrows:Bool = false) {
-        
+        if self.layer.sublayers == nil {
+            return
+        }
+        for l in self.layer.sublayers! {
+            if l is CAShapeLayer {
+            return
+            }
+        }
         let slayer = CAShapeLayer.init()
         let path = UIBezierPath.init()
         let textRect = self.textRect(forBounds: self.bounds, limitedToNumberOfLines: 0)
@@ -143,7 +150,8 @@ extension UILabel {
         slayer.strokeColor = lineColor.cgColor
         slayer.lineWidth = 0.5
         slayer.path = path.cgPath
-        self.layer.addSublayer(slayer)
+        self.layer.sublayers?.insert(slayer, at: 0)
+        
         
         if isDrawArrows {
             let imageView = UIImageView.init(frame: CGRect.init(x: textRect.maxX + 10, y: 0, width: self.height, height: self.height))

@@ -33,6 +33,21 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [.font:UIFont.systemFont(ofSize: 14)]
         // Do any additional setup after loading the view.
     }
+    ///开启
+    var loadingView:LoadingView?
+    
+    var openLoadingStatus = false {
+        didSet{
+            if openLoadingStatus {
+                loadingView = LoadingView.init(frame: self.view.bounds)
+                loadingView?.loading()
+                self.view.addSubview(loadingView!)
+            }
+            else {
+                loadingView?.removeFromSuperview()
+            }
+        }
+    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .default

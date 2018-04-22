@@ -71,7 +71,7 @@ class MainShopTableViewCell: UITableViewCell {
         } else {
         layout.itemSize = CGSize.init(width: cellWidth, height: cHeight)
         }
-        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: headerLable.height + 1, width: SCREEN_Width, height: cHeight + footerHeight), collectionViewLayout: layout)
+        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: headerLable.height, width: SCREEN_Width, height: cHeight + footerHeight), collectionViewLayout: layout)
         c.isScrollEnabled = dirction != .vertical
         c.backgroundColor = UIColor.white
         c.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")

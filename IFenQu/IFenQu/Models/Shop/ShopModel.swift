@@ -7,8 +7,8 @@
 //
 ///商品模型
 import UIKit
-
-class ShopModel: NSObject {
+import HandyJSON
+class ShopModel: HandyJSON {
     /// 产品缩略图
     var productName: String?
     /// 分期数
@@ -43,5 +43,8 @@ class ShopModel: NSObject {
         model.totalPrice = dic["totalPrice"] as? Float ?? 0.0
         
         return model
+    }
+    required init() {
+        
     }
 }

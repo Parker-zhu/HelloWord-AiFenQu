@@ -32,6 +32,7 @@ class ShopCollectionViewCell: UICollectionViewCell {
         self.addSubview(view)
         return view
     }()
+    
     lazy var lable2 = { () -> UILabel in
         
         let view = UILabel.init(frame: CGRect.init(x: offSet, y: lable1.frame.maxY, width: self.width - offSet*2, height: (self.height - offSet*2)/32*3))
@@ -41,21 +42,24 @@ class ShopCollectionViewCell: UICollectionViewCell {
         self.addSubview(view)
         return view
     }()
+    
     lazy var lable3 = { () -> UILabel in
         
         let view = UILabel.init(frame: CGRect.init(x: offSet + (self.height - offSet*2)/64*3, y: lable2.frame.maxY, width: self.width - offSet*2, height: (self.height - offSet*2)/32*3))
         view.numberOfLines = 0
         view.font = UIFont.systemFont(ofSize: 10)
-        view.textColor = UIColor.lightGray
+        view.textColor = UIColor.white
+        view.backgroundColor = UIColor.red
         self.addSubview(view)
         return view
     }()
+    
     lazy var lable4 = { () -> UILabel in
         
         let view = UILabel.init(frame: CGRect.init(x: lable3.frame.maxX + (self.height - offSet*2)/64*3 + 10, y: lable2.frame.maxY, width: self.width - offSet*2, height: (self.height - offSet*2)/32*3))
         view.numberOfLines = 0
         view.font = UIFont.systemFont(ofSize: 10)
-        view.textColor = UIColor.lightGray
+        view.textColor = UIColor.red
         self.addSubview(view)
         return view
     }()
@@ -66,7 +70,11 @@ class ShopCollectionViewCell: UICollectionViewCell {
         lable1.text = "Apple X 国行4G智能手机智能手机"
         lable2.text = "总价 ¥8388.00起"
         lable3.text = "12期"
-        lable3.drawCircle(lineColor: UIColor.red, backColor: UIColor.clear)
+        
+        lable3.drawCircle(lineColor: UIColor.red, backColor: UIColor.red)
+            
+            
+        
         lable3.width = lable3.text!.getTextSize(font: 10, size: CGSize.init(width: 300, height: lable3.height)).width
         lable4.adjustSize(title: "¥ 566.00起", newFont: 12)
         lable4.x = lable3.frame.maxX + (self.height - offSet*2)/64*3 + 5
