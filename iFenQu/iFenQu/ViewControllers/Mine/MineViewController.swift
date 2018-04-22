@@ -52,13 +52,12 @@ class MineViewController: BaseViewController {
     func initFooterView() -> UIView {
         let footerView = UIView.init(frame: CGRect.init(x: 0, y: 00, width: SCREEN_Width, height: 220))
         let layout = UICollectionViewFlowLayout.init()
-        layout.itemSize = CGSize.init(width: SCREEN_Width/3 - 10, height: 200)
-        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize.init(width: SCREEN_Width/2.5, height: 200)
+        layout.scrollDirection = .horizontal
         let c = UICollectionView.init(frame: CGRect.init(x: 0, y: 20, width: SCREEN_Width, height: 200), collectionViewLayout: layout)
         c.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         c.dataSource = self
         c.delegate = self
-        c.isScrollEnabled = false
         c.backgroundColor = UIColor.white
         footerView.addSubview(c)
         footerView.backgroundColor = UIColor.clear

@@ -186,7 +186,11 @@ extension UILabel {
         let r = (title as NSString).range(of: ".")
         attr.addAttribute(.font, value: UIFont.systemFont(ofSize: newFont/3*2), range: NSRange.init(location: r.location, length: attr.length - r.location))
         attr.addAttribute(.font, value: UIFont.systemFont(ofSize: newFont), range: NSRange.init(location: 0, length: r.location))
-    
+        ///保留两位
+        if attr.length - r.location > 3 {
+            attr.replaceCharacters(in: NSRange.init(location: r.location + 3, length: attr.length - r.location - 4), with: "")
+        }
+        
     
         self.attributedText = attr
     }

@@ -30,7 +30,10 @@ class ProductTableViewController: BaseViewController,UITableViewDelegate,UITable
         openLoadingStatus = true
         loadData()
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        openLoadingStatus = false
+    }
     
     func loadData() {
         Network.dataRequest(url: Url.getProducts(), param: nil, reqmethod: .GET) { (result) in

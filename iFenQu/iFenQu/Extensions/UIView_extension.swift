@@ -129,9 +129,11 @@ enum PositionType {
 class IButton: UIView {
     lazy var titleLable = { () -> UILabel in
         let lable = UILabel.init(frame: CGRect.init(x: 3, y: 3, width: 0, height: self.height - 6))
+        lable.textAlignment = .center
         self.addSubview(lable)
         return lable
     }()
+    
     lazy var imageView = { () -> UIImageView in
         let image = UIImageView.init()
         image.frame = CGRect.init(x: 0, y: 3, width: (self.height - 6), height: self.height - 6)

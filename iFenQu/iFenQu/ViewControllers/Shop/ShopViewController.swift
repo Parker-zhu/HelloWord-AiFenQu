@@ -10,11 +10,12 @@
 import UIKit
 
 class ShopViewController: BaseViewController {
+    @IBOutlet weak var contentTableView: UITableView!
     ///顶部轮播图高度
     var slideHeight:CGFloat = 130
     
     ///存放每个cell的高度
-    var cellHeight: [CGFloat]? = [250,250,150,1150]
+    var cellHeight: [CGFloat]? = [250,250,150,1310]
     
     var dataArr = [(String,TitleType)]()
     
@@ -30,17 +31,17 @@ class ShopViewController: BaseViewController {
     }()
     
     ///tableView视图
-    lazy var tableView = { () -> UITableView in
-        let table = UITableView.init(frame: self.view.bounds, style: .plain)
-        table.delegate = self
-        table.dataSource = self
-        
-        table.tableHeaderView = slideView
-        table.register(MainShopTableViewCell.self, forCellReuseIdentifier: "cell")
-        self.view.addSubview(table)
-        table.tableFooterView = UIView()
-        return table
-    }()
+//    lazy var tableView = { () -> UITableView in
+//        let table = UITableView.init(frame: self.view.bounds, style: .plain)
+//        table.delegate = self
+//        table.dataSource = self
+//
+//        table.tableHeaderView = slideView
+//        table.register(MainShopTableViewCell.self, forCellReuseIdentifier: "cell")
+//        self.view.addSubview(table)
+//        table.tableFooterView = UIView()
+//        return table
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,16 @@ class ShopViewController: BaseViewController {
 //        } else {
 //            self.automaticallyAdjustsScrollViewInsets = false
 //        }
+        
+        contentTableView.delegate = self
+        contentTableView.dataSource = self
+        
+        
+        contentTableView.tableHeaderView = slideView
+        contentTableView.register(MainShopTableViewCell.self, forCellReuseIdentifier: "cell")
+        contentTableView.tableFooterView = UIView()
         dataArr = [("热销榜",TitleType.line),("新品首发",TitleType.cicrl),("品牌专区",TitleType.cicrl),("甄选好物",TitleType.arrows)]
-        tableView.backgroundColor = xlightGray
+        contentTableView.backgroundColor = xlightGray
         
     }
     

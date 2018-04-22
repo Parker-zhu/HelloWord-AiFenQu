@@ -45,10 +45,11 @@ class ShopCollectionViewCell: UICollectionViewCell {
     
     lazy var lable3 = { () -> UILabel in
         
-        let view = UILabel.init(frame: CGRect.init(x: offSet + (self.height - offSet*2)/64*3, y: lable2.frame.maxY, width: self.width - offSet*2, height: (self.height - offSet*2)/32*3))
+        let view = UILabel.init(frame: CGRect.init(x: offSet, y: lable2.frame.maxY, width: 0, height: (self.height - offSet*2)/32*3))
         view.numberOfLines = 0
         view.font = UIFont.systemFont(ofSize: 10)
         view.textColor = UIColor.white
+        view.textAlignment = .center
         view.backgroundColor = UIColor.red
         self.addSubview(view)
         return view
@@ -56,7 +57,7 @@ class ShopCollectionViewCell: UICollectionViewCell {
     
     lazy var lable4 = { () -> UILabel in
         
-        let view = UILabel.init(frame: CGRect.init(x: lable3.frame.maxX + (self.height - offSet*2)/64*3 + 10, y: lable2.frame.maxY, width: self.width - offSet*2, height: (self.height - offSet*2)/32*3))
+        let view = UILabel.init(frame: CGRect.init(x: 0, y: lable2.frame.maxY, width: 0, height: (self.height - offSet*2)/32*3))
         view.numberOfLines = 0
         view.font = UIFont.systemFont(ofSize: 10)
         view.textColor = UIColor.red
@@ -71,14 +72,20 @@ class ShopCollectionViewCell: UICollectionViewCell {
         lable2.text = "总价 ¥8388.00起"
         lable3.text = "12期"
         
-        lable3.drawCircle(lineColor: UIColor.red, backColor: UIColor.red)
-            
-            
+//        lable3.drawCircle(lineColor: UIColor.red, backColor: UIColor.red)
+            let lable3Width = "12期".getTextSizeB(font: lable3.font, size: CGSize.init(width: SCREEN_Width, height: SCREEN_Height)).width
+            lable3.width = lable3Width + 10
+            lable3.layer.cornerRadius = lable3.height/2
+            lable3.layer.masksToBounds = true
+            lable3.layer.borderWidth = 0.5
+            lable3.layer.borderColor = UIColor.lightGray.cgColor
+            lable3.backgroundColor = UIColor.red
+            lable3.textColor = UIColor.white
         
-        lable3.width = lable3.text!.getTextSize(font: 10, size: CGSize.init(width: 300, height: lable3.height)).width
+//        lable3.width = lable3.text!.getTextSize(font: 10, size: CGSize.init(width: 300, height: lable3.height)).width
         lable4.adjustSize(title: "¥ 566.00起", newFont: 12)
-        lable4.x = lable3.frame.maxX + (self.height - offSet*2)/64*3 + 5
-        
+        lable4.x = lable3.frame.maxX  + 5
+            lable4.width = (lable4.text?.getTextSizeB(font: lable4.font, size: CGSize.init(width: SCREEN_Width, height: SCREEN_Height)).width)!
             imageView.height = (self.height - offSet*2)/8*5
         }
 
