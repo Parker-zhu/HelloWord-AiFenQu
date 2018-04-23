@@ -5,7 +5,7 @@
 //  Created by 朱晓峰 on 2018/4/13.
 //  Copyright © 2018年 朱晓峰. All rights reserved.
 //
-
+///选择商品型号
 import UIKit
 
 class ProductTypesView: UIView {
@@ -20,7 +20,7 @@ class ProductTypesView: UIView {
         collection.delegate = self
         collection.dataSource = self
         collection.register(ProductTypeItemCellCell.self, forCellWithReuseIdentifier: "cell")
-        collection.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
+//        collection.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
         collection.backgroundColor = UIColor.white
         return collection
     }()
@@ -39,7 +39,7 @@ class ProductTypesView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = xlightGray
+        self.backgroundColor = UIColor.white
         
         self.addSubview(contentCollection)
         self.addSubview(sureBtn)
@@ -61,7 +61,7 @@ class ProductTypesView: UIView {
         headerView.addSubview(lable2)
     }
     
-    var data = ["银色","银色银色","银色银银色","银色","银色银色","银色银银色"]
+    var data = ["银色1","银色银色2","银色银银色3","银色4","银色银色5","银色银银色6"]
     
     
     func setModel(model:Any) {
@@ -90,23 +90,24 @@ extension ProductTypesView: UICollectionViewDelegate,UICollectionViewDataSource,
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize.init(width: SCREEN_Width, height: 30)
-    }
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header", for: indexPath)
-        if (v.subviews.last is UILabel) {
-            let lable = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: 100, height:30))
-            lable.text = "颜色"
-            v.addSubview(lable)
-        }
-        
-        return v
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        return CGSize.init(width: SCREEN_Width, height: 30)
+//    }
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        let v = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header", for: indexPath)
+//        if (v.subviews.last is UILabel) {
+//            let lable = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: 100, height:30))
+//            lable.text = "颜色"
+//
+//            v.addSubview(lable)
+//        }
+//
+//        return v
+//    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: data[indexPath.row].getTextSize(font: 12).width + 20, height: 30)
+        return CGSize.init(width: data[indexPath.row].getTextSize(font: 12).width + 15, height: 25)
     }
 }

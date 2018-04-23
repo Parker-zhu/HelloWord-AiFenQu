@@ -82,7 +82,7 @@ class ShopDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "MacBook Pro 新款15寸 3 mbl"
+        
         self.view.backgroundColor = xlightGray
         loadData()
         

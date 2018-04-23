@@ -34,7 +34,7 @@ class MainShopTableViewCell: UITableViewCell {
 
     func initSubView() {
         
-        headerLable = IButton.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: headerHeight))
+        headerLable = IButton.init(frame: CGRect.init(x: 0, y: offSet, width: SCREEN_Width, height: headerHeight))
         headerLable.titleLable.font = UIFont.systemFont(ofSize: 12)
         headerLable.backgroundColor = UIColor.white
         
@@ -43,7 +43,7 @@ class MainShopTableViewCell: UITableViewCell {
         let cHeight = cellHeight - headerHeight - offSet
         layout = UICollectionViewFlowLayout.init()
         
-        collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: headerLable.height, width: SCREEN_Width, height: cHeight + footerHeight), collectionViewLayout: layout)
+        collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: headerLable.frame.maxY, width: SCREEN_Width, height: cHeight), collectionViewLayout: layout)
         
         collectionView.backgroundColor = UIColor.white
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -72,18 +72,19 @@ class MainShopTableViewCell: UITableViewCell {
     var dirction: UICollectionViewScrollDirection = .horizontal {
         didSet{
             let cHeight = cellHeight - headerHeight - offSet
-            if dirction == .vertical {
-                cellWidth = SCREEN_Width/2 
-            }
             
             layout.scrollDirection = dirction
             if dirction == .vertical {
+                cellWidth = SCREEN_Width/2
                 layout.itemSize = CGSize.init(width: cellWidth, height: cHeight/5)
                 footerHeight = 40
             } else {
+                cellWidth = SCREEN_Width/5*2
                 layout.itemSize = CGSize.init(width: cellWidth, height: cHeight)
+                footerHeight = 0
             }
             collectionView.isScrollEnabled = dirction != .vertical
+            collectionView.height = cHeight + footerHeight
         }
     }
     ///collectioncell的宽度
@@ -92,29 +93,6 @@ class MainShopTableViewCell: UITableViewCell {
     var cellHeight: CGFloat = 0
     var collectionView: UICollectionView!
     var layout: UICollectionViewFlowLayout!
-//    lazy var collectionView = { () -> UICollectionView in
-//
-//        let cHeight = cellHeight - headerHeight - offSet
-//        let layout = UICollectionViewFlowLayout.init()
-//        layout.scrollDirection = dirction
-//        if dirction == .vertical {
-//            layout.itemSize = CGSize.init(width: cellWidth, height: cHeight/5)
-//            footerHeight = 40
-//        } else {
-//        layout.itemSize = CGSize.init(width: cellWidth, height: cHeight)
-//        }
-//        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: headerLable.height, width: SCREEN_Width, height: cHeight + footerHeight), collectionViewLayout: layout)
-//        c.isScrollEnabled = dirction != .vertical
-//        c.backgroundColor = UIColor.white
-//        c.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-//        c.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footer")
-//        c.dataSource = self
-//        c.delegate = self
-//        c.showsVerticalScrollIndicator = false
-//        c.showsHorizontalScrollIndicator = false
-//        self.contentView.addSubview(c)
-//        return c
-//    }()
     
     ///设置数据
     func setModel(model:[Any],title:(String,TitleType),scrollDirection:UICollectionViewScrollDirection,selectModel:@escaping (Any)->()) {
@@ -140,7 +118,7 @@ class MainShopTableViewCell: UITableViewCell {
         default:
             headerLable.titleLable.drawCircle(lineColor: UIColor.lightGray, backColor: UIColor.clear, isDrawArrows: true)
         }
-        collectionView.height = cellHeight
+//        collectionView.height = cellHeight
         dirction = scrollDirection
         
     }
@@ -154,9 +132,7 @@ extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ShopCollectionViewCell
-//        if dirction != nil && dirction == .vertical {
-//            cell.setModel(model: nil)
-//        } else {
+        
         if self.cellHeight < 200 {
         cell.setModel(model: nil)
         } else {

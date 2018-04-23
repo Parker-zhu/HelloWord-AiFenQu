@@ -51,7 +51,7 @@ class BootPageViewController: BaseViewController {
     }
     lazy var ignoreBtn: UIButton = {
         let btn = UIButton.init()
-//        btn.setTitle("跳过", for: .normal)
+        
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.backgroundColor = UIColor.red
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -65,7 +65,8 @@ class BootPageViewController: BaseViewController {
             if time > 0 {
                 ignoreBtn.setTitle("\(time)s", for: .normal)
             } else {
-                ignoreBtn.setTitle("跳过", for: .normal)
+//                ignoreBtn.setTitle("跳过", for: .normal)
+                self.back()
                 timer?.invalidate()
                 timer = nil
             }
@@ -86,6 +87,7 @@ class BootPageViewController: BaseViewController {
             loadMainBlock!()
         }
     }
+    
     func loadData() {
         
         Network.dataRequest(url: Url.getBootPage(), param: nil, reqmethod: .GET) { (result) in
@@ -96,6 +98,9 @@ class BootPageViewController: BaseViewController {
                 let content = data[0]["content"] as! String
 
                 self.webView.loadHTMLString(content, baseURL: nil)
+            }
+            else {
+                self.back()
             }
         }
     }

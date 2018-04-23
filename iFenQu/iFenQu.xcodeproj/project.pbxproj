@@ -17,6 +17,7 @@
 		B4AA8584208CEB5100A8BC50 /* openArea.json in Resources */ = {isa = PBXBuildFile; fileRef = B4AA8583208CEB5000A8BC50 /* openArea.json */; };
 		B4AA8586208CED2400A8BC50 /* AreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA8585208CED2400A8BC50 /* AreaModel.swift */; };
 		B4AA8588208D9BF800A8BC50 /* AreaChooesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */; };
+		B4AA858A208DCCB200A8BC50 /* InvoiceInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4AA8589208DCCB200A8BC50 /* InvoiceInformationViewController.xib */; };
 		B4AB59012072530100751DF1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59002072530100751DF1 /* DataManager.swift */; };
 		B4AB59032072534300751DF1 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59022072534300751DF1 /* TokenModel.swift */; };
 		B4AB59052072557F00751DF1 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59042072557F00751DF1 /* ModelManager.swift */; };
@@ -132,6 +133,7 @@
 		B4AA8583208CEB5000A8BC50 /* openArea.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openArea.json; sourceTree = "<group>"; };
 		B4AA8585208CED2400A8BC50 /* AreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaModel.swift; sourceTree = "<group>"; };
 		B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaChooesView.swift; sourceTree = "<group>"; };
+		B4AA8589208DCCB200A8BC50 /* InvoiceInformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceInformationViewController.xib; sourceTree = "<group>"; };
 		B4AB59002072530100751DF1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B4AB59022072534300751DF1 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		B4AB59042072557F00751DF1 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				B4C37BF72087939D0099937C /* BrandZoneViewController.swift */,
 				B4C37BF52087939D0099937C /* CardViewController.swift */,
 				B4C37BF92087939D0099937C /* InvoiceInformationViewController.swift */,
+				B4AA8589208DCCB200A8BC50 /* InvoiceInformationViewController.xib */,
 				B4C37BF22087939C0099937C /* ReceiverInfoViewController.swift */,
 				B4C37BF62087939D0099937C /* ReceiverInfoViewController.xib */,
 				B4C37BF82087939D0099937C /* ShippingAddressViewController.swift */,
@@ -702,6 +705,7 @@
 				B4C37BED2087938A0099937C /* LoginViewController.xib in Resources */,
 				B4B12ED82069182E00EB90D8 /* GT3Captcha.bundle in Resources */,
 				B4AA8584208CEB5100A8BC50 /* openArea.json in Resources */,
+				B4AA858A208DCCB200A8BC50 /* InvoiceInformationViewController.xib in Resources */,
 				B4B29FC9206FED6200C34E43 /* Localizable.strings in Resources */,
 				B4C37BF02087938A0099937C /* ChangePhoneViewController.xib in Resources */,
 				B4C37BFE2087939D0099937C /* ReceiverInfoViewController.xib in Resources */,
