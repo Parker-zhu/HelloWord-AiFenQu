@@ -75,6 +75,8 @@ class Network {
                         }
                     }
                 }
+            } else {
+                callBack(resultData)
             }
             
         }

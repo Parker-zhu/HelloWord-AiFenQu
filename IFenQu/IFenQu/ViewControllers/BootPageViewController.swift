@@ -8,11 +8,12 @@
 ///启动页
 import UIKit
 import WebKit
-import AFNetworking
+
 class BootPageViewController: BaseViewController {
 
     ///返回事件调用block
     var loadMainBlock: (() -> Void)?
+    ///加载广告
     lazy var webView = { () -> WKWebView in
         let web = WKWebView.init(frame: self.view.bounds)
         web.uiDelegate = self
@@ -22,7 +23,6 @@ class BootPageViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initBackView()
         loadData()
         self.view.addSubview(webView)
         ignoreBtn.mas_makeConstraints { (make) in
@@ -36,19 +36,10 @@ class BootPageViewController: BaseViewController {
             make?.width.equalTo()(50)
             make?.height.equalTo()(30)
         }
-        timer?.fireDate = NSDate.distantPast
-        timer?.fire()
+        
     }
 
-    func initBackView() {
-        let headerImage = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: SCREEN_Height/7*5))
-        headerImage.image = UIImage.init(named: "Path 122")
-        self.view.addSubview(headerImage)
-        
-        let bottomImage = UIImageView.init(frame: CGRect.init(x: 0, y: SCREEN_Height/7*5, width: SCREEN_Width, height: SCREEN_Height/7*2))
-        bottomImage.image = UIImage.init(named: "Group 488")
-        self.view.addSubview(bottomImage)
-    }
+    ///"跳过"
     lazy var ignoreBtn: UIButton = {
         let btn = UIButton.init()
         
@@ -60,34 +51,39 @@ class BootPageViewController: BaseViewController {
         return btn
     }()
     
+    ///时间
     var time: Int = 5 {
         didSet{
             if time > 0 {
                 ignoreBtn.setTitle("\(time)s", for: .normal)
             } else {
-//                ignoreBtn.setTitle("跳过", for: .normal)
                 self.back()
-                timer?.invalidate()
-                timer = nil
             }
         }
     }
     
+    ///定时器
     lazy var timer: Timer? = {
         let t = Timer.init(timeInterval: 1, target: self, selector: #selector(timeAction), userInfo: nil, repeats: true)
         RunLoop.current.add(t, forMode: .commonModes)
-//        t.fire()
         return t
     }()
+    
+    ///定时器的响应事件
     @objc func timeAction() {
         time -= 1
     }
+    
+    ///回到主控制器
     @objc func back() {
         if loadMainBlock != nil {
             loadMainBlock!()
         }
+        timer?.invalidate()
+        timer = nil
     }
     
+    ///请求广告数据
     func loadData() {
         
         Network.dataRequest(url: Url.getBootPage(), param: nil, reqmethod: .GET) { (result) in
@@ -98,6 +94,8 @@ class BootPageViewController: BaseViewController {
                 let content = data[0]["content"] as! String
 
                 self.webView.loadHTMLString(content, baseURL: nil)
+                self.timer?.fireDate = NSDate.distantPast
+                self.timer?.fire()
             }
             else {
                 self.back()
