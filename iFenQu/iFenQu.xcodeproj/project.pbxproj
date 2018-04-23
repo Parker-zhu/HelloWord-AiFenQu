@@ -18,6 +18,8 @@
 		B4AA8586208CED2400A8BC50 /* AreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA8585208CED2400A8BC50 /* AreaModel.swift */; };
 		B4AA8588208D9BF800A8BC50 /* AreaChooesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */; };
 		B4AA858A208DCCB200A8BC50 /* InvoiceInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4AA8589208DCCB200A8BC50 /* InvoiceInformationViewController.xib */; };
+		B4AA858C208DDEC600A8BC50 /* PurchaseContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA858B208DDEC600A8BC50 /* PurchaseContentView.swift */; };
+		B4AA858E208DDECF00A8BC50 /* PurchaseContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4AA858D208DDECF00A8BC50 /* PurchaseContentView.xib */; };
 		B4AB59012072530100751DF1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59002072530100751DF1 /* DataManager.swift */; };
 		B4AB59032072534300751DF1 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59022072534300751DF1 /* TokenModel.swift */; };
 		B4AB59052072557F00751DF1 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59042072557F00751DF1 /* ModelManager.swift */; };
@@ -134,6 +136,8 @@
 		B4AA8585208CED2400A8BC50 /* AreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaModel.swift; sourceTree = "<group>"; };
 		B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaChooesView.swift; sourceTree = "<group>"; };
 		B4AA8589208DCCB200A8BC50 /* InvoiceInformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceInformationViewController.xib; sourceTree = "<group>"; };
+		B4AA858B208DDEC600A8BC50 /* PurchaseContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseContentView.swift; sourceTree = "<group>"; };
+		B4AA858D208DDECF00A8BC50 /* PurchaseContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseContentView.xib; sourceTree = "<group>"; };
 		B4AB59002072530100751DF1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B4AB59022072534300751DF1 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		B4AB59042072557F00751DF1 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
@@ -480,6 +484,8 @@
 				B4F2BFB4208B77B100CA7F2E /* ProductTableViewCell.swift */,
 				B4F2BFB5208B77B100CA7F2E /* ProductTableViewCell.xib */,
 				B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */,
+				B4AA858B208DDEC600A8BC50 /* PurchaseContentView.swift */,
+				B4AA858D208DDECF00A8BC50 /* PurchaseContentView.xib */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				B4C37BD82087905F0099937C /* CardTableViewCell.xib in Resources */,
 				B4B12E512067A61D00EB90D8 /* Main.storyboard in Resources */,
 				B4C37BD42087905F0099937C /* ReceiverInfoTableViewCell.xib in Resources */,
+				B4AA858E208DDECF00A8BC50 /* PurchaseContentView.xib in Resources */,
 				B4B12ED12067A71300EB90D8 /* Assets.xcassets in Resources */,
 				B4B29FC3206FECB300C34E43 /* InfoPlist.strings in Resources */,
 			);
@@ -950,6 +957,7 @@
 				B4AA8588208D9BF800A8BC50 /* AreaChooesView.swift in Sources */,
 				B4AA8586208CED2400A8BC50 /* AreaModel.swift in Sources */,
 				B4C37BFD2087939D0099937C /* CardViewController.swift in Sources */,
+				B4AA858C208DDEC600A8BC50 /* PurchaseContentView.swift in Sources */,
 				B4B12E9C2067A6EC00EB90D8 /* FilledPageControl.swift in Sources */,
 				B4C37BDA2087905F0099937C /* MineHeaderView.swift in Sources */,
 				B4B12E7D2067A6B400EB90D8 /* BaseViewController.swift in Sources */,
