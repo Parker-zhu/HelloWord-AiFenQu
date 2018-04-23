@@ -16,6 +16,7 @@
 		B4AA8582208CDB4300A8BC50 /* PurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA8581208CDB4300A8BC50 /* PurchaseViewController.swift */; };
 		B4AA8584208CEB5100A8BC50 /* openArea.json in Resources */ = {isa = PBXBuildFile; fileRef = B4AA8583208CEB5000A8BC50 /* openArea.json */; };
 		B4AA8586208CED2400A8BC50 /* AreaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA8585208CED2400A8BC50 /* AreaModel.swift */; };
+		B4AA8588208D9BF800A8BC50 /* AreaChooesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */; };
 		B4AB59012072530100751DF1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59002072530100751DF1 /* DataManager.swift */; };
 		B4AB59032072534300751DF1 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59022072534300751DF1 /* TokenModel.swift */; };
 		B4AB59052072557F00751DF1 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB59042072557F00751DF1 /* ModelManager.swift */; };
@@ -130,6 +131,7 @@
 		B4AA8581208CDB4300A8BC50 /* PurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewController.swift; sourceTree = "<group>"; };
 		B4AA8583208CEB5000A8BC50 /* openArea.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = openArea.json; sourceTree = "<group>"; };
 		B4AA8585208CED2400A8BC50 /* AreaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaModel.swift; sourceTree = "<group>"; };
+		B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaChooesView.swift; sourceTree = "<group>"; };
 		B4AB59002072530100751DF1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B4AB59022072534300751DF1 /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		B4AB59042072557F00751DF1 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				B4C37BC82087905F0099937C /* CardTableViewCell.xib */,
 				B4F2BFB4208B77B100CA7F2E /* ProductTableViewCell.swift */,
 				B4F2BFB5208B77B100CA7F2E /* ProductTableViewCell.xib */,
+				B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -940,6 +943,7 @@
 				B4B12E7F2067A6B400EB90D8 /* BaseTabBarViewController.swift in Sources */,
 				B4F2BFA320897BB700CA7F2E /* NSObject_extension.swift in Sources */,
 				B4B12EC22067A6F500EB90D8 /* MineViewController.swift in Sources */,
+				B4AA8588208D9BF800A8BC50 /* AreaChooesView.swift in Sources */,
 				B4AA8586208CED2400A8BC50 /* AreaModel.swift in Sources */,
 				B4C37BFD2087939D0099937C /* CardViewController.swift in Sources */,
 				B4B12E9C2067A6EC00EB90D8 /* FilledPageControl.swift in Sources */,

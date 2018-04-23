@@ -17,7 +17,7 @@ import UIKit
     func completedInformationModification(infoModel:Any)
 }
 
-class ShippingAddressViewController: BaseViewController {
+class ShippingAddressViewController: BaseViewController,AreaChooesViewDelegate {
     ///姓名
     @IBOutlet weak var nameTextF: XTextField!
     ///手机号
@@ -44,7 +44,7 @@ class ShippingAddressViewController: BaseViewController {
     }
     
     var delegate: ShippingAddressVcDelegate?
-    
+    var addressBtn:IButton!
     ///通过设置这个属性来标示是新增还是修改收货地址
     var infoModel: Any? {
         didSet{
@@ -57,32 +57,9 @@ class ShippingAddressViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initBaseInfo()
-        loadJson()
     }
-
-    var areaModels = [AreaModel]()
     
-    func loadJson() {
-        let path = Bundle.main.path(forResource: "openArea", ofType: "json")
-        let url = URL(fileURLWithPath: path!)
-        // 带throws的方法需要抛异常
-        do {
-            /*
-             * try 和 try! 的区别
-             * try 发生异常会跳到catch代码中
-             * try! 发生异常程序会直接crash
-             */
-            let data = try Data(contentsOf: url)
-            let jsonData:Any = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-            let jsonArr = jsonData as! [[String:Any]]
-            for model in jsonArr {
-                self.areaModels.append(AreaModel.deserialize(from: model)!)
-            }
-            
-        } catch let error as Error! {
-            print("读取本地数据出现错误!",error)
-        }
-    }
+    
     ///配置一些基本设置
     func initBaseInfo() {
         self.navigationItem.title = "新增收货地址"
@@ -93,13 +70,15 @@ class ShippingAddressViewController: BaseViewController {
         lable.textColor = UIColor.lightGray
         detailedAddressTextView.placeholderLable = lable
         
-        let addressBtn = IButton.init(frame: addressView.bounds)
+        addressBtn = IButton.init(frame: addressView.bounds)
         addressView.addSubview(addressBtn)
         addressBtn.layer.cornerRadius = 5
         addressBtn.layer.masksToBounds = true
         
         addressBtn.titleLable.text = "地区选择"
         addressBtn.imageView.image = UIImage.init(named: "Group 634")
+        addressBtn.imageView.width = 30
+        addressBtn.imageView.x = addressView.width - 30
         addressBtn.titleLable.font = UIFont.systemFont(ofSize: 13)
         addressBtn.positionType = .wl_ir
         addressBtn.titleLable.textColor = UIColor.lightGray
@@ -118,43 +97,26 @@ class ShippingAddressViewController: BaseViewController {
         
     }
 
-    var areaPickerView: UIPickerView!
+    lazy var areaPickerView: AreaChooesView = {
+        let area = AreaChooesView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 340))
+        area.delegate = self
+        return area
+    }()
     
-    @objc func areaViewMiss() {
-//        self.areaPickerView.superview?.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 0.5, animations: {
-            self.areaPickerView.y = self.view.height
-        }, completion: { (isEnd) in
-            self.areaPickerView.superview!.removeFromSuperview()
-        })
-    }
     ///弹出地区选择
     @objc func showAreaView() {
-        let bgView = UIView.init(frame: self.view.bounds)
-        bgView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
-//        let tap = UITapGestureRecognizer.init()
-//        tap.addTarget(self, action: #selector(areaViewMiss))
-//        bgView.addGestureRecognizer(tap)
-        self.view.addSubview(bgView)
-        let areaView = UIPickerView.init(frame: CGRect.init(x: 0, y: self.view.height, width: SCREEN_Width, height: 200))
-        areaPickerView = areaView
-        areaView.backgroundColor = UIColor.red
-        
-        let sureBtn = UIButton.init(frame: CGRect.init(x: 0, y: self.view.height + 50, width: SCREEN_Width, height: 50))
-        bgView.addSubview(sureBtn)
-        sureBtn.setTitle("确定", for: .normal)
-        sureBtn.addTarget(self, action: #selector(areaViewMiss), for: .touchUpInside)
-        sureBtn.backgroundColor = xyellow
-        UIView.animate(withDuration: 0.5) {
-            areaView.y = self.view.height - 250
-            sureBtn.y = self.view.height - 50
-        }
-        bgView.addSubview(areaView)
-        
-        
+        PopView.show(view: areaPickerView, isAnmation: true)
+
     }
+    var areaDicInfo: [String:String]?
     func netRequest() {
-        let param = ["provinceName":"上海市","cityName":"上海市","areaName":"浦东新区","address":"神龙教","addressee":"神龙教","mobile":"17602138417"]
+        if areaDicInfo == nil || !phoneTextF.text!.isPhoneNum() || nameTextF.text! == "" || detailedAddressTextView.text == "" {
+            Hud.showError(text: "请完善信息")
+            return
+        }
+        
+        let param = ["provinceName":areaDicInfo!["provinceName"]!,"cityName":areaDicInfo!["cityName"]!,"areaName":areaDicInfo!["areaName"]!,"address":detailedAddressTextView.text,"mobile":phoneTextF.text!] as [String : Any]
+        
         Network.dataRequest(header: nil, url: Url.getAddress(), param: param, reqmethod: .POST, responseSerializerType: .responseHttp) { (result) in
             self.navigationController?.popViewController(animated: true)
             self.delegate?.completedInformationModification(infoModel:"")
@@ -165,6 +127,15 @@ class ShippingAddressViewController: BaseViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    func didSelectedArea(area: [String: String]) {
+        areaDicInfo = area
+        let text = area["provinceName"]! + " " + area["cityName"]! + " " + area["areaName"]!
+        addressBtn.titleLable.text = text
+        addressBtn.titleLable.width = text.getTextSizeB(font: addressBtn.titleLable.font).width
+        addressBtn.titleLable.textColor = UIColor.black
+    }
+    
 }
 
 extension ShippingAddressViewController: UITextViewDelegate,UITextFieldDelegate{
