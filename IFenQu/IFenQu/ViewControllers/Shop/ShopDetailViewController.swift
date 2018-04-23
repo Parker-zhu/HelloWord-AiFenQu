@@ -83,6 +83,7 @@ class ShopDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loadingStatus = .loading
         self.view.backgroundColor = xlightGray
         loadData()
         
@@ -94,12 +95,15 @@ class ShopDetailViewController: BaseViewController {
         let param = ["productId" : "24"]
         Network.dataRequest(url: Url.getShopInformation(), param: param, reqmethod: .GET) { (result) in
             if result?.code == 1 {
+                self.loadingStatus = .normal
                 if let data = result?.responseDic["data"] as?  [[String:Any]] {
                     ///只有一个元素
                     
                 self.productModel = ProductModel.deserialize(from: data.last)!
                   self.reloadAllData()
                 }
+            } else {
+                self.loadingStatus = .error
             }
         }
     }

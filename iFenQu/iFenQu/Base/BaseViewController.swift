@@ -6,6 +6,9 @@
 //  Copyright © 2018年 朱晓峰. All rights reserved.
 //
 
+enum LoadingStatus {
+    case loading,error,normal
+}
 import UIKit
 
 class BaseViewController: UIViewController {
@@ -34,17 +37,26 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     ///开启
-    var loadingView:LoadingView?
+    lazy var loadingView:LoadingView = { () -> LoadingView in
+        let view = LoadingView.init(frame: CGRect.init(x: 0, y: 0, width: 80, height: 80))
+        view.center = self.view.center
+        
+        self.view.addSubview(view)
+        return view
+    }()
     
-    var openLoadingStatus = false {
+    var loadingStatus: LoadingStatus = .normal {
         didSet{
-            if openLoadingStatus {
-                loadingView = LoadingView.init(frame: self.view.bounds)
-                loadingView?.loading()
-                self.view.addSubview(loadingView!)
-            }
-            else {
-                loadingView?.removeFromSuperview()
+            switch loadingStatus {
+            case .normal:
+                loadingView.removeFromSuperview()
+            case .loading:
+                
+                loadingView.loading()
+
+            default:
+                loadingView.error()
+
             }
         }
     }

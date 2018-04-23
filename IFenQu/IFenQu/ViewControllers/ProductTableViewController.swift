@@ -27,22 +27,26 @@ class ProductTableViewController: BaseViewController,UITableViewDelegate,UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "产品列表"
-        openLoadingStatus = true
+        loadingStatus = .loading
         loadData()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        openLoadingStatus = false
+        loadingStatus = .normal
     }
     
     func loadData() {
         Network.dataRequest(url: Url.getProducts(), param: nil, reqmethod: .GET) { (result) in
+            if result?.code == 1 {
             if let data = result?.responseDic["data"] as? [[String:Any]] {
-                self.openLoadingStatus = false
+                self.loadingStatus = .normal
             for model in data {
                 self.shopModel.append(ShopModel.deserialize(from: model)!)
             }
                 self.tableView.reloadData()
+            }
+            } else {
+                self.loadingStatus = .error
             }
         }
     }
