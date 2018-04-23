@@ -33,6 +33,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Esc-BR-CGX" secondAttribute="bottom" id="dSa-Ix-MaT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Esc-BR-CGX" secondAttribute="trailing" id="zXZ-q2-m9k"/>
             </constraints>
+            <nil key="simulatedTopBarMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>
     </objects>

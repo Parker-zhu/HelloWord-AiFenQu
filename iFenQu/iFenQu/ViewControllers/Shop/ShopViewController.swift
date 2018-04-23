@@ -31,26 +31,13 @@ class ShopViewController: BaseViewController {
         return slide
     }()
     
-    ///tableView视图
-//    lazy var tableView = { () -> UITableView in
-//        let table = UITableView.init(frame: self.view.bounds, style: .plain)
-//        table.delegate = self
-//        table.dataSource = self
-//
-//        table.tableHeaderView = slideView
-//        table.register(MainShopTableViewCell.self, forCellReuseIdentifier: "cell")
-//        self.view.addSubview(table)
-//        table.tableFooterView = UIView()
-//        return table
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if #available(iOS 11.0, *) {
-//            tableView.contentInsetAdjustmentBehavior = .never
-//        } else {
-//            self.automaticallyAdjustsScrollViewInsets = false
-//        }
+        if #available(iOS 11.0, *) {
+            contentTableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         
         contentTableView.delegate = self
         contentTableView.dataSource = self
