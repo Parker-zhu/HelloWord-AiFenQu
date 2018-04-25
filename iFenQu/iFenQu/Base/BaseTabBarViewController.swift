@@ -29,10 +29,11 @@ class BaseTabBarViewController: UITabBarController {
     ///   - selectImageName: 选中状态的图片名字
     ///   - title: tabbar上的名字
     private func initSubVcStatus(vc: UIViewController,imageName: String,selectImageName: String,title: String) {
+        
         vc.tabBarItem.image = UIImage.init(named: imageName)
         vc.tabBarItem.selectedImage = UIImage.init(named: selectImageName)
         vc.tabBarItem.title = title
-        self.addChildViewController(vc)
+        self.addChildViewController(BaseNavigationController.init(rootViewController: vc))
     }
     
 

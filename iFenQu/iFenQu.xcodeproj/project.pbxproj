@@ -62,6 +62,7 @@
 		B4BB6992207CBD5A00E6D33B /* PopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6991207CBD5A00E6D33B /* PopView.swift */; };
 		B4BB699A207CD2EC00E6D33B /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB6999207CD2EC00E6D33B /* AlertView.swift */; };
 		B4BB699C207DE45000E6D33B /* MobileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB699B207DE45000E6D33B /* MobileViewController.swift */; };
+		B4BE72942090BD5900A0B2E1 /* CouponSuperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BE72932090BD5900A0B2E1 /* CouponSuperViewController.swift */; };
 		B4C0157E208F7FB800F05B93 /* ShopDetailWebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C0157D208F7FB800F05B93 /* ShopDetailWebModel.swift */; };
 		B4C37BCE2087905F0099937C /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37BBD2087905F0099937C /* MessageTableViewCell.swift */; };
 		B4C37BCF2087905F0099937C /* MessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4C37BBE2087905F0099937C /* MessageTableViewCell.xib */; };
@@ -191,6 +192,7 @@
 		B4BB6991207CBD5A00E6D33B /* PopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopView.swift; sourceTree = "<group>"; };
 		B4BB6999207CD2EC00E6D33B /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		B4BB699B207DE45000E6D33B /* MobileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileViewController.swift; sourceTree = "<group>"; };
+		B4BE72932090BD5900A0B2E1 /* CouponSuperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponSuperViewController.swift; sourceTree = "<group>"; };
 		B4C0157D208F7FB800F05B93 /* ShopDetailWebModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopDetailWebModel.swift; sourceTree = "<group>"; };
 		B4C37BBD2087905F0099937C /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		B4C37BBE2087905F0099937C /* MessageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTableViewCell.xib; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				B4B12EA92067A6F500EB90D8 /* Shop */,
 				B4B12EB02067A6F500EB90D8 /* Mine */,
 				B4F2BFB8208B788D00CA7F2E /* ProductTableViewController.swift */,
+				B4BE72932090BD5900A0B2E1 /* CouponSuperViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				B4B12E892067A6C000EB90D8 /* UIButton_extension.swift in Sources */,
 				B4C37BEC2087938A0099937C /* AboutViewController.swift in Sources */,
 				B4B12E872067A6C000EB90D8 /* UITextField_extension.swift in Sources */,
+				B4BE72942090BD5900A0B2E1 /* CouponSuperViewController.swift in Sources */,
 				B4B89EAD20791AAE009B3D4C /* BootPageViewController.swift in Sources */,
 				B4B12E862067A6C000EB90D8 /* UITextView_extension.swift in Sources */,
 				B4B12E9D2067A6EC00EB90D8 /* SlideshowView.swift in Sources */,

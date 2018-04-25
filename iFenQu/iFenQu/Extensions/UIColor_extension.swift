@@ -8,9 +8,9 @@
 
 import UIKit
 
-class UIColor_extension: UIColor {
+extension UIColor {
     
-    func rgb(r:CGFloat,g:CGFloat,b:CGFloat) -> UIColor {
+    class func rgb(r:CGFloat,g:CGFloat,b:CGFloat) -> UIColor {
         let color = UIColor.init(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: 1)
         return color
     }

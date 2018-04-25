@@ -29,10 +29,19 @@ class MineViewController: BaseViewController {
         }
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
+    var goodsModels = [ShopModel]() {
+        didSet{
+            shopCollectView.reloadData()
+        }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if goodsModels.count == 0 && CacheManager.manager.shopGoodModels != nil {
+            goodsModels = CacheManager.manager.shopGoodModels!
+        }
+    }
+    
     func initTableView() {
         tableView = UITableView.init(frame: self.view.bounds, style: .plain)
         self.view.addSubview(tableView)
@@ -49,20 +58,27 @@ class MineViewController: BaseViewController {
         tableView.backgroundColor = xlightGray
         
     }
-    func initFooterView() -> UIView {
-        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 00, width: SCREEN_Width, height: 220))
+    
+    ///底部商品视图
+    private func initFooterView() -> UIView {
+        let footerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 220))
         let layout = UICollectionViewFlowLayout.init()
-        layout.itemSize = CGSize.init(width: SCREEN_Width/2.5, height: 200)
+        let height: CGFloat = 215
+        layout.itemSize = CGSize.init(width: SCREEN_Width/3, height: height)
         layout.scrollDirection = .horizontal
-        let c = UICollectionView.init(frame: CGRect.init(x: 0, y: 20, width: SCREEN_Width, height: 200), collectionViewLayout: layout)
-        c.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        c.dataSource = self
-        c.delegate = self
-        c.backgroundColor = UIColor.white
-        footerView.addSubview(c)
+        shopCollectView = UICollectionView.init(frame: CGRect.init(x: 0, y: 20, width: SCREEN_Width, height: height), collectionViewLayout: layout)
+        
+        shopCollectView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        
+        shopCollectView.dataSource = self
+        shopCollectView.delegate = self
+        shopCollectView.backgroundColor = UIColor.white
+        shopCollectView.isScrollEnabled = false
+        footerView.addSubview(shopCollectView)
         footerView.backgroundColor = UIColor.clear
         return footerView
     }
+    var shopCollectView: UICollectionView!
     
 }
 
@@ -85,11 +101,22 @@ extension MineViewController: UITableViewDelegate,UITableViewDataSource {
 }
 extension MineViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if  goodsModels.count > 0 {
+            return 3
+        }
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ShopCollectionViewCell
-        cell.setModel(model: nil)
+        cell.setModel(model: goodsModels[indexPath.row + 6])
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        ///把选中的模型传递下一步
+        let shopDetailVc = ShopDetailViewController()
+       shopDetailVc.shopModel = goodsModels[indexPath.row + 6]
+        self.navigationController?.pushViewController(shopDetailVc, animated: true)
     }
 }

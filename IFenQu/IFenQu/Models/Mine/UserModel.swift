@@ -9,17 +9,17 @@
 import UIKit
 
 class UserModel: NSObject {
-    var userId: String?
-    var headImage: String?
-    var userName: String?
+    var userId: String!
+    var headImage: String!
+    var userName: String!
     
-    var mobile: String?
-    var signature: String?
-    var birthday: String?
+    var mobile: String!
+    var signature: String!
+    var birthday: String!
     
-    var subscribe: String?
-    var nickName: String?
-    var userType: String?
+    var subscribe: String!
+    var nickName: String!
+    var userType: String!
     
     
     class func initWithDic(dic: [String : Any]) -> UserModel {

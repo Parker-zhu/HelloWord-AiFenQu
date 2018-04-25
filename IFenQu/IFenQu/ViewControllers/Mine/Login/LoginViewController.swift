@@ -9,9 +9,11 @@
 
 import UIKit
 import SDWebImage
+
 protocol LoginSuccess {
     func loginSuccess(tokenModel:TokenModel)
 }
+
 class LoginViewController: BaseViewController {
     
     //MARK: xib上的视图控件
@@ -100,7 +102,6 @@ class LoginViewController: BaseViewController {
                 }
                 self.back(UIButton())
                 CacheManager.manager.tokenModel = token
-//                CacheManager.storeCache(key: "token", obj: data)
             })
         } else {
             if !phoneTextF.text!.isPhoneNum() {

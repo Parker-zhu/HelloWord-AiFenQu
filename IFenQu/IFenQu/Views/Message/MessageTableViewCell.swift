@@ -16,10 +16,9 @@ class MessageTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    ///传递模型数据
+    func setModel(model:Any?) {
+        
     }
     
 }

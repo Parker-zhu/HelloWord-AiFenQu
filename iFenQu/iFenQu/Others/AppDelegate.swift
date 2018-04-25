@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         weak var weakSelf = self
         self.setBootPage {
             let tabVc = BaseTabBarViewController()
-            
-            weakSelf?.window?.rootViewController = BaseNavigationController.init(rootViewController: tabVc)
+             weakSelf?.window?.rootViewController = tabVc
+//            weakSelf?.window?.rootViewController = BaseNavigationController.init(rootViewController: tabVc)
         }
         
         return true

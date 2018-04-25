@@ -49,4 +49,6 @@ class CacheManager: NSObject {
     
     var userModel: UserModel?
     
+    ///首页商品列表的数据模型，为了提供给’我的‘中使用数据
+    var shopGoodModels: [ShopModel]?
 }

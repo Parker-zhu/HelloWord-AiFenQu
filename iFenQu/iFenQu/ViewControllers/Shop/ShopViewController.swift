@@ -131,6 +131,7 @@ class ShopViewController: BaseViewController {
                     }
                     self.goodShopModels = models
                     CacheManager.storeCache(key: "good", obj: models)
+                    CacheManager.manager.shopGoodModels = models
                     
                 }
             } else {
