@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import HandyJSON
-class GoodModel: HandyJSON{
+
+class GoodModel: ModelManager{
     
     var companyId: Int?
     var sysCompanyInfos: String?
@@ -48,7 +48,4 @@ class GoodModel: HandyJSON{
     ///商品简介
     var goodsAbout: String?
     
-    
-    required init() {
-    }
 }

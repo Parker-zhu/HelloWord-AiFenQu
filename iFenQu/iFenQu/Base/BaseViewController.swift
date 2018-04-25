@@ -44,19 +44,23 @@ class BaseViewController: UIViewController {
         self.view.addSubview(view)
         return view
     }()
-    
+    var formerTitle:String = ""
     var loadingStatus: LoadingStatus = .normal {
         didSet{
+            if self.title != nil && formerTitle == "" {
+                formerTitle = title!
+            }
             switch loadingStatus {
             case .normal:
+                self.title = formerTitle
                 loadingView.removeFromSuperview()
             case .loading:
-                
+                self.title = "加载中..."
                 loadingView.loading()
 
             default:
+                self.title = "请检查您的网络环境"
                 loadingView.error()
-
             }
         }
     }

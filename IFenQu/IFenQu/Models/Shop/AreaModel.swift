@@ -7,15 +7,11 @@
 //
 ///存放地址模型
 import UIKit
-import HandyJSON
-class AreaModel: HandyJSON {
 
-    required init(){}
-    
+class AreaModel: ModelManager {
+
     var code: String?
     var name: String?
     var sub: [AreaModel]?
-    
-    
     
 }

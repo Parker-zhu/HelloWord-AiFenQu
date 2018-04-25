@@ -29,7 +29,7 @@ class MainShopTableViewCell: UITableViewCell {
     var layout: UICollectionViewFlowLayout!
     
     ///点击了collectionViewCell调用，把cell展示到模型数据传过去
-    var didSelectItem: ((Any) -> ())?
+    var didSelectItem: ((ShopModel) -> ())?
     ///cell的偏移
     var offSet = CGFloat(5)
     
@@ -90,17 +90,9 @@ class MainShopTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let cHeight = cellHeight - headerHeight - offSet
-        if cellHeight > 260 {
-            layout.itemSize = CGSize.init(width: cellWidth, height: (cHeight - 40)/5)
-        
-        } else {
-            layout.itemSize = CGSize.init(width: cellWidth, height: cHeight)
-        }
-        
         headerLable.frame = CGRect.init(x: 0, y: offSet, width: SCREEN_Width, height: headerHeight)
         
-        collectionView.frame = CGRect.init(x: 0, y: headerLable.frame.maxY, width: SCREEN_Width, height: cHeight)
+        collectionView.y = headerLable.frame.maxY
         
     }
     
@@ -112,9 +104,13 @@ class MainShopTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
     }
-    
+    var shopModes = [ShopModel]() {
+        didSet{
+            collectionView.reloadData()
+        }
+    }
     ///设置数据
-    func setModel(model:[Any],title:(String,TitleType),scrollDirection:UICollectionViewScrollDirection,selectModel:@escaping (Any)->()) {
+    func setModel(model:[ShopModel],title:(String,TitleType),scrollDirection:UICollectionViewScrollDirection,selectModel:@escaping (ShopModel)->()) {
         
         didSelectItem = selectModel
         
@@ -137,13 +133,24 @@ class MainShopTableViewCell: UITableViewCell {
             headerLable.titleLable.drawCircle(lineColor: UIColor.lightGray, backColor: UIColor.clear, isDrawArrows: true)
         }
         dirction = scrollDirection
+        let cHeight = cellHeight - headerHeight - offSet
+        if cellHeight > 260 {
+            layout.itemSize = CGSize.init(width: cellWidth, height: (cHeight - 40)/CGFloat((6 + 1)/2))
+            
+        } else {
+            layout.itemSize = CGSize.init(width: cellWidth, height: cHeight)
+        }
         
+        shopModes = model
     }
 }
 
 extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if cellHeight > 300 && shopModes.count > 0 {
+            return 6
+        }
+        return shopModes.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ShopCollectionViewCell
@@ -151,7 +158,8 @@ extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
         if self.cellHeight < 200 {
         cell.setModel(model: nil)
         } else {
-           cell.setModel(model: "")
+            
+            cell.setModel(model: shopModes[indexPath.row], isShowRed: self.cellHeight > 300)
         }
         
         
@@ -160,7 +168,7 @@ extension MainShopTableViewCell: UICollectionViewDelegate,UICollectionViewDataSo
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if didSelectItem != nil {
-            didSelectItem!("aaa")
+            didSelectItem!(shopModes[indexPath.row])
         }
         
     }

@@ -9,7 +9,4 @@
 import UIKit
 
 extension NSObject {
-    func loadWithDic(dic:[String:Any]) {
-        
-    }
 }

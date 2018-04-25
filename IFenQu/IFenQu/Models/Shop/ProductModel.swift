@@ -7,8 +7,8 @@
 //
 ///商品信息模型
 import UIKit
-import HandyJSON
-class ProductModel: HandyJSON {
+
+class ProductModel: ModelManager {
     ///产品ID
     var productId: Int?
     var updateTime: String?
@@ -82,8 +82,6 @@ class ProductModel: HandyJSON {
 //        
 //        return model
 //    }
-    required init() {
-        
-    }
+    
     
 }

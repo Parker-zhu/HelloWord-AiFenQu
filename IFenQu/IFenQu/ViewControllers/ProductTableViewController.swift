@@ -27,6 +27,7 @@ class ProductTableViewController: BaseViewController,UITableViewDelegate,UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "产品列表"
+        self.view.backgroundColor = xlightGray
         loadingStatus = .loading
         loadData()
     }
@@ -36,12 +37,14 @@ class ProductTableViewController: BaseViewController,UITableViewDelegate,UITable
     }
     
     func loadData() {
-        Network.dataRequest(url: Url.getProducts(), param: nil, reqmethod: .GET) { (result) in
+        Network.dataRequest(url: Url.getProducts(), reqmethod: .GET) { (result) in
             if result?.code == 1 {
             if let data = result?.responseDic["data"] as? [[String:Any]] {
                 self.loadingStatus = .normal
             for model in data {
-                self.shopModel.append(ShopModel.deserialize(from: model)!)
+                if let m = ShopModel.deserialize(from: model) {
+                    self.shopModel.append(m)
+                }
             }
                 self.tableView.reloadData()
             }
@@ -59,7 +62,7 @@ class ProductTableViewController: BaseViewController,UITableViewDelegate,UITable
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return shopModel.count
     }
 
@@ -71,51 +74,4 @@ class ProductTableViewController: BaseViewController,UITableViewDelegate,UITable
         cell.setModel(model: shopModel[indexPath.row])
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

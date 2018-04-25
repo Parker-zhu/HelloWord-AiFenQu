@@ -16,15 +16,8 @@ class XTextField: UITextField {
 
     var linePosition: [LinePosition]? {
         didSet{
-            
            self.setNeedsDisplay()
         }
-    }
-    
-    
-    override func drawPlaceholder(in rect: CGRect) {
-//        super.drawPlaceholder(in: CGRect.init(x: 20, y: rect.origin.y, width: rect.width, height: rect.height))
-        super.drawPlaceholder(in: rect)
     }
     
     override func draw(_ rect: CGRect) {
@@ -59,11 +52,4 @@ class XTextField: UITextField {
         line.lineWidth = 1
         line.stroke()
     }
-    
-    //改变光标位置
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return super.editingRect(forBounds: bounds)
-//       return  super.editingRect(forBounds: CGRect.init(x: 20, y: bounds.origin.y, width: bounds.width, height: bounds.height))
-    }
-    
 }

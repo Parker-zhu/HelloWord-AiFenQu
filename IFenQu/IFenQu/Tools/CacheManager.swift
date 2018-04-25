@@ -11,7 +11,7 @@
             加载的数据加入到缓存，同时在异步存储到本地
  从本地查找数据
  在AppDelegate的时候就初始化，异步读取本地数据，加载到缓存，如果缓存中找不到数据，再从本地找
- 
+ //字典数据中有空值，不能使用plist存储
 */
 import UIKit
 
@@ -19,63 +19,30 @@ class CacheManager: NSObject {
     
     static let manager = CacheManager.init()
     
+    var dataManger:DataManager!
+    
     override init() {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(removeAllObj), name: .UIApplicationDidReceiveMemoryWarning, object: nil)
-        self.loadDataFromLocal()
-        
-    }
-    ///从本地加载数据到缓存，在AppDelegate中调用，异步加载
-    private func loadDataFromLocal() {
-        
+        dataManger = DataManager()
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    @objc private func removeAllObj() {
-        self.cache.removeAllObjects()
-    }
-    
-    
-    private lazy var cache: NSCache = {
-        return NSCache<AnyObject, AnyObject>.init()
-    }()
-    
-    
-    class func readCache(key:String) -> [String:Any]? {
+    ///读取数据
+    class func readCache(key:String) -> [ShopModel] {
         let m = CacheManager.manager
-        
-        let obj = m.cache.object(forKey: key as AnyObject)
-        //缓存中没有找到数据，从本地找,并且加载到缓存
-        if obj == nil {
-            let dic = NSDictionary.init(contentsOfFile: m.getCachePath(key: key))
-            if dic != nil {
-                DispatchQueue.global().async {
-                    m.cache.setObject(dic!, forKey: key as AnyObject)
-                }
-                return dic as? [String : Any]
-            } else {
-                return nil
-            }
-        }
-        return obj as? [String : Any]
+        return m.dataManger.getDataFromTable(tableName: key)
     }
-    private func getCachePath(key:String) -> String {
-        var path = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
-        path = path + "\(key).plist"
-        return path
-    }
-    class func storeCache(key:String,obj:[String:Any]) {
+    
+    
+    ///存储数据
+    class func storeCache(key:String,obj:[ShopModel]) {
         let m = CacheManager.manager
-        
-        m.cache.setObject(obj as AnyObject, forKey: key as AnyObject)
-        //加入缓存中，同时异步存储本地
-        DispatchQueue.global().async {
-            (obj as NSDictionary).write(toFile: m.getCachePath(key: key), atomically: true)
-            
+        m.dataManger.deleteFromTable(tableName: "shop")
+        m.dataManger.createTable(tableName: "shop", arFields: ["productName","productId","url","totalPrice",""], arFieldsType: ["TEXT","INTEGER","TEXT","FLOAT"])
+        var dicModels: [NSDictionary] = []
+        for model in obj {
+            dicModels.append(model.toDic() as NSDictionary)
         }
+        m.dataManger.updateDataToTable(tableName: key, dicFields: dicModels)
     }
     
     var tokenModel: TokenModel?

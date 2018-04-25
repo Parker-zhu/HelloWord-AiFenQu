@@ -46,6 +46,7 @@ class PopView: NSObject {
     class func disMiss(){
         PopView.share.miss()
     }
+    
     @objc private func miss() {
         if self.contentView.subviews.count > 0 {
             self.contentView.subviews.last?.removeFromSuperview()
@@ -55,8 +56,8 @@ class PopView: NSObject {
         }
         self.contentView.removeFromSuperview()
     }
+    
     class func show(view:UIView,isAnmation:Bool) {
-//        view.backgroundColor = UIColor.white
         view.frame = CGRect.init(x: 0, y: SCREEN_Height - view.height, width: view.width, height: view.height)
         let window = UIApplication.shared.keyWindow
         

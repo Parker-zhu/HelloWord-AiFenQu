@@ -7,12 +7,8 @@
 //
 
 import UIKit
-import MJExtension
+import HandyJSON
 ///模型解析
-extension NSObject {
-    ///字典转模型
-    class func dicToModel(dic:Any) -> NSObject {
-        
-        return self.mj_object(withKeyValues: dic)
-    }
+class ModelManager: HandyJSON {
+    required init() {}
 }

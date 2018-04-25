@@ -100,7 +100,7 @@ class LoginViewController: BaseViewController {
                 }
                 self.back(UIButton())
                 CacheManager.manager.tokenModel = token
-                CacheManager.storeCache(key: "token", obj: data)
+//                CacheManager.storeCache(key: "token", obj: data)
             })
         } else {
             if !phoneTextF.text!.isPhoneNum() {

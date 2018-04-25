@@ -15,18 +15,20 @@ class PurchaseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "购买确认"
-        contenScrollView = UIScrollView.init()
-        contenScrollView.contentSize = CGSize.init(width: SCREEN_Width, height: 1000)
+        
+        contenScrollView = UIScrollView.init(frame: self.view.bounds)
         self.view.backgroundColor = xlightGray
         contenScrollView.backgroundColor = xlightGray
+        contenScrollView.contentSize = CGSize.init(width: 0, height: 0)
         self.view.addSubview(contenScrollView)
         
-        contenScrollView.mas_makeConstraints { (make) in
-            make?.right.equalTo()(self.view.mas_right)
-            make?.top.equalTo()(self.view.mas_top)
-            make?.bottom.equalTo()(self.view.mas_bottom)
-            make?.left.equalTo()(self.view.mas_left)
-        }
+//        contenScrollView.mas_makeConstraints { (make) in
+//            make?.right.equalTo()(self.view.mas_right)
+//            make?.top.equalTo()(self.view.mas_top)
+//            make?.bottom.equalTo()(self.view.safe)
+//            make?.left.equalTo()(self.view.mas_left)
+//
+//        }
         
         let addressLable = UILabel.init(frame: CGRect.init(x: 20, y: 5, width: SCREEN_Width, height: 30))
         addressLable.text = "详细收货信息"
@@ -90,8 +92,6 @@ class PurchaseViewController: BaseViewController {
             make?.left.equalTo()(self.view.mas_left)
         }
         
-        
-        
     }
     var contentInfoView: PurchaseContentView!
     
@@ -106,10 +106,12 @@ class PurchaseViewController: BaseViewController {
     var addreLableInfo: UILabel!
     var v: UIView!
     @objc func addressAction() {
-//        addreLableInfo.text = "追问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为"
+//        addreLableInfo.text = "追问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为问发会为和giureiugnreugnriutgtirugnuirtgnrtjngirtngjrtjrnjgbjrtgjtrn追问发会为"
 //        v.mas_updateConstraints { (make) in
 //            make?.height.equalTo()((addreLableInfo.text?.getTextSizeB(font: addreLableInfo.font, size: CGSize.init(width: SCREEN_Width - 70, height: SCREEN_Height)).height)! + 30)
 //        }
+//        self.view.layoutIfNeeded()
+//        contenScrollView.contentSize = CGSize.init(width: SCREEN_Width, height: contentInfoView.frame.maxY + 80)
         let vc = ShippingAddressViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         

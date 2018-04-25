@@ -38,6 +38,8 @@ class SMSVerification: XButton,GT3CaptchaManagerDelegate,GT3CaptchaManagerViewDe
                 if result?.code == 1 {
                     weakSelf?.manger.configureGTest(result?.responseDic["gt"] as! String, challenge: result?.responseDic["challenge"] as! String, success: result?.responseDic["success"] as! NSNumber, withAPI2: api2)
                     weakSelf?.manger.startGTCaptchaWith(animated: true)
+                } else {
+                    Hud.showError(text: "请检查网络")
                 }
             }
     }

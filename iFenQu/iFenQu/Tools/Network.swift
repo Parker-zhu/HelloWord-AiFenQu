@@ -20,7 +20,7 @@ enum ResponseSerializerType {
 
 class Network {
     
-    class func dataRequest(url:String,param:[String:Any]?,reqmethod:ReqMethod,callBack: @escaping (_ result: (code: Int, responseDic: [String: Any])?) -> Void) {
+    class func dataRequest(url:String,param:[String:Any]? = nil,reqmethod:ReqMethod,callBack: @escaping (_ result: (code: Int, responseDic: [String: Any])?) -> Void) {
         dataRequest(header: nil, url: url, param: param, reqmethod: reqmethod, callBack: callBack)
         
     }

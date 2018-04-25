@@ -61,22 +61,34 @@ class ShopCollectionViewCell: UICollectionViewCell {
     
     var lable4: UILabel!
     
-    func setModel(model:Any?) {
-        imageView.image = UIImage.init(named: "3C-187x140pt-iPad-Pro-10.5")
-        if model != nil {
-        lable1.text = "Apple X 国行4G智能手机智能手机"
-        lable2.text = "总价 ¥8388.00起"
-        lable3.text = "12期"
+    func setModel(model:ShopModel?,isShowRed: Bool = false) {
+        let url =  URL.init(string: model?.url ?? "a")
         
+        
+        if model != nil {
+        imageView.setImageWith(url!, placeholderImage: UIImage.init(named: "3C-187x140pt-iPad-Pro-10.5"))
+        lable1.text = model?.productName
+            let price = "\(model?.totalPrice ?? 0)".getDecimals()
+        lable2.text = "总价 ¥\(price)起"
+        lable3.text = "12期"
+            if isShowRed {
+                lable3.textColor = UIColor.white
+                lable3.backgroundColor = UIColor.red
+            } else {
+                lable3.textColor = UIColor.red
+                lable3.backgroundColor = UIColor.white
+            }
+            
         let lable3Width = "12期".getTextSizeB(font: lable3.font).width
         lable3.width = lable3Width + 10
-        
-        lable4.adjustSize(title: "¥ 566.00起", newFont: 12)
+        let minPrice = "\((model?.totalPrice)!/12)".getDecimals()
+        lable4.adjustSize(title: "¥ \(minPrice)起", newFont: 12)
         lable4.x = lable3.frame.maxX  + 5
         lable4.width = (lable4.text?.getTextSizeB(font: lable4.font).width)!
         imageView.height = (self.height - offSet*1.5)/8*5
         } else {
             imageView.height = self.height - offSet*1.5
+            imageView.image = UIImage.init(named: "APPLE")
         }
         
     }

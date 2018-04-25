@@ -7,6 +7,7 @@
 //
 ///商品详情
 import UIKit
+import WebKit
 
 class ShopDetailViewController: BaseViewController {
 
@@ -20,17 +21,14 @@ class ShopDetailViewController: BaseViewController {
         return scroll
     }()
     
-    lazy var slideView = { () -> SlideshowView in 
-        let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 300), imageURLPaths: ["MacBook Pro 新款15寸 3 mbl","MacBook Pro 新款15寸 3 mbl","MacBook Pro 新款15寸 3 mbl"], titles: nil, didSelectItemAtIndex: { (index) in
-            
-        })
-        slide.imageViewContentMode = .scaleAspectFit
-        slide.pageControlCurrentPageColor = UIColor.black
-        slide.pageControlBottom = 40
-        slide.autoScrollTimeInterval = 0
-        slide.backgroundColor = UIColor.white
-        contentScrollView.addSubview(slide)
-        return slide
+    lazy var headerWebView = { () -> UIWebView in
+        
+        let web = UIWebView.init()
+        web.scalesPageToFit = true
+        web.delegate = self
+        web.backgroundColor = xlightGray
+        self.contentScrollView.addSubview(web)
+        return web
     }()
     
     lazy var shopNameLable = { () -> UILabel in
@@ -82,40 +80,72 @@ class ShopDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.loadingStatus = .loading
+        
         self.view.backgroundColor = xlightGray
+        
+        
+        
         loadData()
         
     }
     var productModel: ProductModel!
+    var shopModel: ShopModel!
+    
+    var webModel: [ShopDetailWebModel] = [] {
+        didSet{
+            for model in webModel {
+                if model.contentLocationType == "BANNER" {
+                    self.headerWebView.loadHTMLString(model.content, baseURL: nil)
+                }
+            }
+            if describeView != nil {
+                describeView.setWebModel(model: webModel)
+            }
+            
+        }
+    }
     
     ///加载网络数据
     func loadData() {
-        let param = ["productId" : "24"]
+        let param = ["productId" : shopModel.productId]
         Network.dataRequest(url: Url.getShopInformation(), param: param, reqmethod: .GET) { (result) in
             if result?.code == 1 {
-                self.loadingStatus = .normal
+
                 if let data = result?.responseDic["data"] as?  [[String:Any]] {
                     ///只有一个元素
-                    
+
                 self.productModel = ProductModel.deserialize(from: data.last)!
-                  self.reloadAllData()
+                self.reloadAllData()
+                self.loadingStatus = .normal
+                    
+                }
+                else {
+                    self.loadingStatus = .error
                 }
             } else {
                 self.loadingStatus = .error
             }
         }
+        ///
+        
     }
     
     ///刷新界面数据
     func reloadAllData() {
         self.title = productModel.productName
         
+        headerWebView.mas_makeConstraints { (make) in
+            make?.right.equalTo()(self.view.mas_right)
+            make?.top.equalTo()(self.contentScrollView.mas_top)
+            make?.left.equalTo()(self.view.mas_left)
+            make?.height.equalTo()(300)
+        }
+        
         shopNameLable.text = productModel.describe
         bottomView.loadData(models: productModel.goodsList!)
         shopNameSuperView.mas_makeConstraints { (make) in
-            make?.top.equalTo()(slideView.mas_bottom)?.offset()(2)
+            make?.top.equalTo()(headerWebView.mas_bottom)?.offset()(2)
             make?.left.equalTo()(self.view.mas_left)
             make?.right.equalTo()(self.view.mas_right)
             make?.height.equalTo()(shopNameLable.text!.getTextSize(font: 14).height + 40)
@@ -123,7 +153,7 @@ class ShopDetailViewController: BaseViewController {
         }
         
         shopNameLable.mas_makeConstraints { (make) in
-            make?.top.equalTo()(slideView.mas_bottom)?.offset()(2)
+            make?.top.equalTo()(headerWebView.mas_bottom)?.offset()(2)
             make?.left.equalTo()(self.view.mas_left)?.offset()(20)
             make?.right.equalTo()(self.view.mas_right)?.offset()(-20)
             make?.height.equalTo()(shopNameLable.text!.getTextSize(font: 14).height + 40)
@@ -146,8 +176,8 @@ class ShopDetailViewController: BaseViewController {
         }
         bottomView.backgroundColor = UIColor.white
         
-        let describeView = ShopDetailDescribeView.init()
-        
+        describeView = ShopDetailDescribeView.init()
+//        describeView.setWebModel(model: webModel)
         self.contentScrollView.addSubview(describeView)
         describeView.mas_makeConstraints { (make) in
             make?.top.equalTo()(typeBtn.mas_bottom)?.offset()(15)
@@ -156,14 +186,35 @@ class ShopDetailViewController: BaseViewController {
             make?.height.equalTo()(500)
             
         }
+        Network.dataRequest(header: nil, url: Url.getProductRelation(), param: nil, reqmethod: .GET, responseSerializerType: .responseHttp) { (result) in
+            if result?.code == 1 {
+                if let data = result?.responseDic["data"] as? [[String:Any]]  {
+                    var models = [ShopDetailWebModel]()
+                    for model in data {
+                        if let m = ShopDetailWebModel.deserialize(from: model) {
+                            models.append(m)
+                        }
+                    }
+                    self.webModel = models
+                }
+            }
+            else {
+                
+            }
+        }
         
     }
-    
+    var describeView:ShopDetailDescribeView!
 }
 
-extension ShopDetailViewController: ConfirmViewDelegate{
+extension ShopDetailViewController: ConfirmViewDelegate,UIWebViewDelegate{
     func didConfirm() {
         let vc = PurchaseViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        headerWebView.mas_updateConstraints { (make) in
+            make?.height.equalTo()(webView.scrollView.contentSize.height)
+        }
     }
 }

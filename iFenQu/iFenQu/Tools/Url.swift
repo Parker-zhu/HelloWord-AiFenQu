@@ -41,7 +41,7 @@ class Url {
     }
     ///获取商品关联素材
     class func getProductRelation() -> String {
-        return Url.getEnvironment() + "products/1/contents"
+        return Url.getEnvironment() + "product/v1/products/71/contents"
     }
     ///保存寄存地址
     class func getAddress() -> String {
@@ -70,5 +70,13 @@ class Url {
     ///保单摘要
     class func getCarInsurance() -> String {
         return Url.getEnvironment() + "personal/v1/order/783/policy/831"
+    }
+    ///热销榜
+    class func getHotProducts() -> String {
+        return Url.getEnvironment() + "product/v1/products/hot_sale"
+    }
+    ///新品首发
+    class func getNewProducts() -> String {
+        return Url.getEnvironment() + "product/v1/products/new_product"
     }
 }
