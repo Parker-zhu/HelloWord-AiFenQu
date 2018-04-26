@@ -27,7 +27,7 @@ class ShopDetailViewController: BaseViewController {
         web.scalesPageToFit = true
         web.delegate = self
         web.backgroundColor = xlightGray
-        self.contentScrollView.addSubview(web)
+        contentView.addSubview(web)
         return web
     }()
     
@@ -40,9 +40,10 @@ class ShopDetailViewController: BaseViewController {
         lable.textColor = UIColor.black
         return lable
     }()
+    
     lazy var shopNameSuperView = { () -> UIView in
         let v = UIView.init()
-        contentScrollView.addSubview(v)
+        contentView.addSubview(v)
         v.backgroundColor = UIColor.white
         return v
     }()
@@ -52,6 +53,7 @@ class ShopDetailViewController: BaseViewController {
         typeBtnSuperView.addSubview(btn)
         btn.block = {
             let p = ProductTypesView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_Width, height: 500))
+            p.setModel(model: self.productModel)
             PopView.show(view: p, isAnmation: true)
         }
         btn.setTitle("选择商品款型", for: .normal)
@@ -63,17 +65,17 @@ class ShopDetailViewController: BaseViewController {
     }()
     lazy var typeBtnSuperView = { () -> UIView in
         let v = UIView.init()
-        contentScrollView.addSubview(v)
+        contentView.addSubview(v)
         v.backgroundColor = UIColor.white
         return v
     }()
     
+    ///底部价钱信息视图
     lazy var bottomView = { () -> ConfirmView in
         let v = ConfirmView.initFormNib() as! ConfirmView
         v.frame = CGRect.init(x: 0, y: self.view.height - 80, width: SCREEN_Width, height: 80)
         self.view.addSubview(v)
         v.delegate = self
-        v.backgroundColor = UIColor.white
         return v
     }()
     
@@ -84,14 +86,14 @@ class ShopDetailViewController: BaseViewController {
         
         self.view.backgroundColor = xlightGray
         
-        
-        
         loadData()
         
     }
-    var productModel: ProductModel!
-    var shopModel: ShopModel!
     
+    var productModel: ProductModel!
+    ///进入详情必须传的商品信息模型
+    var shopModel: ShopModel!
+    ///详情页里加载web的模型数据
     var webModel: [ShopDetailWebModel] = [] {
         didSet{
             for model in webModel {
@@ -115,10 +117,11 @@ class ShopDetailViewController: BaseViewController {
                 if let data = result?.responseDic["data"] as?  [[String:Any]] {
                     ///只有一个元素
 
-                self.productModel = ProductModel.deserialize(from: data.last)!
-                self.reloadAllData()
-                self.loadingStatus = .normal
-                    
+                    if let model = ProductModel.deserialize(from: data.last) {
+                        self.productModel = model
+                        self.reloadAllData()
+                        self.loadingStatus = .normal
+                    }
                 }
                 else {
                     self.loadingStatus = .error
@@ -127,13 +130,24 @@ class ShopDetailViewController: BaseViewController {
                 self.loadingStatus = .error
             }
         }
-        ///
         
     }
+    var contentView: UIView!
     
     ///刷新界面数据
     func reloadAllData() {
         self.title = productModel.productName
+        
+        contentScrollView.mas_makeConstraints { (make) in
+            make?.edges.equalTo()(self.view)
+        }
+        
+        contentView = UIView.init()
+        contentScrollView.addSubview(contentView)
+        contentView.mas_makeConstraints { (make) in
+            make?.edges.equalTo()(contentScrollView)
+            make?.center.equalTo()(self.view.center)
+        }
         
         headerWebView.mas_makeConstraints { (make) in
             make?.right.equalTo()(self.view.mas_right)
@@ -143,7 +157,8 @@ class ShopDetailViewController: BaseViewController {
         }
         
         shopNameLable.text = productModel.describe
-        bottomView.loadData(models: productModel.goodsList!)
+        bottomView.loadData(models: productModel.goodsList)
+        
         shopNameSuperView.mas_makeConstraints { (make) in
             make?.top.equalTo()(headerWebView.mas_bottom)?.offset()(2)
             make?.left.equalTo()(self.view.mas_left)
@@ -156,7 +171,7 @@ class ShopDetailViewController: BaseViewController {
             make?.top.equalTo()(headerWebView.mas_bottom)?.offset()(2)
             make?.left.equalTo()(self.view.mas_left)?.offset()(20)
             make?.right.equalTo()(self.view.mas_right)?.offset()(-20)
-            make?.height.equalTo()(shopNameLable.text!.getTextSize(font: 14).height + 40)
+            make?.bottom.equalTo()(shopNameSuperView.mas_bottom)
             
         }
         
@@ -167,25 +182,32 @@ class ShopDetailViewController: BaseViewController {
             make?.height.equalTo()(50)
             
         }
+        
         typeBtn.mas_makeConstraints { (make) in
             make?.top.equalTo()(shopNameSuperView.mas_bottom)?.offset()(2)
             make?.left.equalTo()(self.view.mas_left)?.offset()(20)
             make?.right.equalTo()(self.view.mas_right)?.offset()(-20)
-            make?.height.equalTo()(50)
+            make?.bottom.equalTo()(typeBtnSuperView.mas_bottom)
             
         }
-        bottomView.backgroundColor = UIColor.white
         
         describeView = ShopDetailDescribeView.init()
-//        describeView.setWebModel(model: webModel)
-        self.contentScrollView.addSubview(describeView)
+        contentView.addSubview(describeView)
         describeView.mas_makeConstraints { (make) in
             make?.top.equalTo()(typeBtn.mas_bottom)?.offset()(15)
             make?.left.equalTo()(self.view.mas_left)
             make?.right.equalTo()(self.view.mas_right)
-            make?.height.equalTo()(500)
+            make?.height.equalTo()(700)
             
         }
+        loadWebModel()
+        
+    }
+    
+    var describeView:ShopDetailDescribeView!
+    ///加载web信息模型
+    func loadWebModel() {
+        
         Network.dataRequest(header: nil, url: Url.getProductRelation(), param: nil, reqmethod: .GET, responseSerializerType: .responseHttp) { (result) in
             if result?.code == 1 {
                 if let data = result?.responseDic["data"] as? [[String:Any]]  {
@@ -202,9 +224,7 @@ class ShopDetailViewController: BaseViewController {
                 
             }
         }
-        
     }
-    var describeView:ShopDetailDescribeView!
 }
 
 extension ShopDetailViewController: ConfirmViewDelegate,UIWebViewDelegate{

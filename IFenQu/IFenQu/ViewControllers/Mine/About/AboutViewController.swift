@@ -11,9 +11,9 @@ import UIKit
 
 class AboutViewController: BaseViewController {
 
-    var contentTableView: UITableView!
+    private var contentTableView: UITableView!
     
-    var dataSource: [String]!
+    private var dataSource: [String]!
     
     
     override func viewDidLoad() {
@@ -43,6 +43,7 @@ extension AboutViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ///跳转目标地址
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

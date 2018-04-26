@@ -56,12 +56,15 @@ extension String {
         var newS = ""
         var havePoint = false
         var num = count
+        var decimals = ""
         for c in self.characters {
             if havePoint {
+                
                 num -= 1
                 if num < 0 {
                     break
                 }
+                decimals.append(c)
             }
             if c == "." {
             havePoint = true
@@ -74,9 +77,17 @@ extension String {
             }
             for _ in 0..<num {
                 newS.append("0")
+                decimals.append("0")
             }
         }
-        
+        if isNeedcomma {
+             let newSInt = (self as NSString ).integerValue
+                
+            if newSInt > 1000 {
+               return "\(newSInt/1000),\(newSInt%1000).\(decimals)"
+            }
+            
+        }
         return newS
     }
 }

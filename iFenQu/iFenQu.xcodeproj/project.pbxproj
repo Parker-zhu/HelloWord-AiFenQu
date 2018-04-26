@@ -94,6 +94,14 @@
 		B4C37BFF2087939D0099937C /* BrandZoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37BF72087939D0099937C /* BrandZoneViewController.swift */; };
 		B4C37C002087939D0099937C /* ShippingAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37BF82087939D0099937C /* ShippingAddressViewController.swift */; };
 		B4C37C012087939D0099937C /* InvoiceInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37BF92087939D0099937C /* InvoiceInformationViewController.swift */; };
+		B4C857092091DDF900A24FAA /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C857082091DDF900A24FAA /* OrderViewController.swift */; };
+		B4C8570C2091DE7800A24FAA /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8570A2091DE7800A24FAA /* OrderTableViewCell.swift */; };
+		B4C8570D2091DE7800A24FAA /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4C8570B2091DE7800A24FAA /* OrderTableViewCell.xib */; };
+		B4C8570F2091E36800A24FAA /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8570E2091E36800A24FAA /* OrderDetailViewController.swift */; };
+		B4C857122091E58B00A24FAA /* DiscountCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C857102091E58B00A24FAA /* DiscountCouponViewController.swift */; };
+		B4C857152091F38C00A24FAA /* DiscountCouponViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4C857142091F38C00A24FAA /* DiscountCouponViewController.xib */; };
+		B4C857182091F84700A24FAA /* DiscountCouponTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C857162091F84700A24FAA /* DiscountCouponTableViewCell.swift */; };
+		B4C857192091F84700A24FAA /* DiscountCouponTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4C857172091F84700A24FAA /* DiscountCouponTableViewCell.xib */; };
 		B4F2BFA320897BB700CA7F2E /* NSObject_extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2BFA220897BB700CA7F2E /* NSObject_extension.swift */; };
 		B4F2BFA5208B0E4500CA7F2E /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2BFA4208B0E4500CA7F2E /* ShopModel.swift */; };
 		B4F2BFA7208B139900CA7F2E /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2BFA6208B139900CA7F2E /* ProductModel.swift */; };
@@ -224,6 +232,14 @@
 		B4C37BF72087939D0099937C /* BrandZoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandZoneViewController.swift; sourceTree = "<group>"; };
 		B4C37BF82087939D0099937C /* ShippingAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShippingAddressViewController.swift; sourceTree = "<group>"; };
 		B4C37BF92087939D0099937C /* InvoiceInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvoiceInformationViewController.swift; sourceTree = "<group>"; };
+		B4C857082091DDF900A24FAA /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		B4C8570A2091DE7800A24FAA /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		B4C8570B2091DE7800A24FAA /* OrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
+		B4C8570E2091E36800A24FAA /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		B4C857102091E58B00A24FAA /* DiscountCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCouponViewController.swift; sourceTree = "<group>"; };
+		B4C857142091F38C00A24FAA /* DiscountCouponViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountCouponViewController.xib; sourceTree = "<group>"; };
+		B4C857162091F84700A24FAA /* DiscountCouponTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCouponTableViewCell.swift; sourceTree = "<group>"; };
+		B4C857172091F84700A24FAA /* DiscountCouponTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountCouponTableViewCell.xib; sourceTree = "<group>"; };
 		B4F2BFA220897BB700CA7F2E /* NSObject_extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject_extension.swift; sourceTree = "<group>"; };
 		B4F2BFA4208B0E4500CA7F2E /* ShopModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		B4F2BFA6208B139900CA7F2E /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
@@ -404,6 +420,8 @@
 				B4B12EB02067A6F500EB90D8 /* Mine */,
 				B4F2BFB8208B788D00CA7F2E /* ProductTableViewController.swift */,
 				B4BE72932090BD5900A0B2E1 /* CouponSuperViewController.swift */,
+				B4C857082091DDF900A24FAA /* OrderViewController.swift */,
+				B4C8570E2091E36800A24FAA /* OrderDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -423,6 +441,8 @@
 				B4C37BF42087939C0099937C /* ShippingAddressViewController.xib */,
 				B4C37BF32087939C0099937C /* ShopDetailViewController.swift */,
 				B4AA8581208CDB4300A8BC50 /* PurchaseViewController.swift */,
+				B4C857102091E58B00A24FAA /* DiscountCouponViewController.swift */,
+				B4C857142091F38C00A24FAA /* DiscountCouponViewController.xib */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -491,6 +511,10 @@
 				B4AA8587208D9BF800A8BC50 /* AreaChooesView.swift */,
 				B4AA858B208DDEC600A8BC50 /* PurchaseContentView.swift */,
 				B4AA858D208DDECF00A8BC50 /* PurchaseContentView.xib */,
+				B4C8570A2091DE7800A24FAA /* OrderTableViewCell.swift */,
+				B4C8570B2091DE7800A24FAA /* OrderTableViewCell.xib */,
+				B4C857162091F84700A24FAA /* DiscountCouponTableViewCell.swift */,
+				B4C857172091F84700A24FAA /* DiscountCouponTableViewCell.xib */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -713,6 +737,7 @@
 				B4C37BDC2087905F0099937C /* MineTableViewCell.xib in Resources */,
 				B4AA8580208CC4F800A8BC50 /* ConfirmView.xib in Resources */,
 				B4F2BFB7208B77B100CA7F2E /* ProductTableViewCell.xib in Resources */,
+				B4C857192091F84700A24FAA /* DiscountCouponTableViewCell.xib in Resources */,
 				B4C37BFC2087939D0099937C /* ShippingAddressViewController.xib in Resources */,
 				B4C37BED2087938A0099937C /* LoginViewController.xib in Resources */,
 				B4B12ED82069182E00EB90D8 /* GT3Captcha.bundle in Resources */,
@@ -720,7 +745,9 @@
 				B4AA858A208DCCB200A8BC50 /* InvoiceInformationViewController.xib in Resources */,
 				B4B29FC9206FED6200C34E43 /* Localizable.strings in Resources */,
 				B4C37BF02087938A0099937C /* ChangePhoneViewController.xib in Resources */,
+				B4C8570D2091DE7800A24FAA /* OrderTableViewCell.xib in Resources */,
 				B4C37BFE2087939D0099937C /* ReceiverInfoViewController.xib in Resources */,
+				B4C857152091F38C00A24FAA /* DiscountCouponViewController.xib in Resources */,
 				B4B12ED22067A71300EB90D8 /* LaunchScreen.storyboard in Resources */,
 				B4C37BD82087905F0099937C /* CardTableViewCell.xib in Resources */,
 				B4B12E512067A61D00EB90D8 /* Main.storyboard in Resources */,
@@ -954,6 +981,7 @@
 				B4BE72942090BD5900A0B2E1 /* CouponSuperViewController.swift in Sources */,
 				B4B89EAD20791AAE009B3D4C /* BootPageViewController.swift in Sources */,
 				B4B12E862067A6C000EB90D8 /* UITextView_extension.swift in Sources */,
+				B4C857182091F84700A24FAA /* DiscountCouponTableViewCell.swift in Sources */,
 				B4B12E9D2067A6EC00EB90D8 /* SlideshowView.swift in Sources */,
 				B4B89EED207A5C58009B3D4C /* UILable_extension.swift in Sources */,
 				B4B12EA02067A6EC00EB90D8 /* SnakePageControl.swift in Sources */,
@@ -985,10 +1013,14 @@
 				B4F6A98520890131003155E3 /* UserModel.swift in Sources */,
 				B4F2BFA7208B139900CA7F2E /* ProductModel.swift in Sources */,
 				B4B12EDA206918A000EB90D8 /* SMSVerification.swift in Sources */,
+				B4C8570C2091DE7800A24FAA /* OrderTableViewCell.swift in Sources */,
+				B4C857122091E58B00A24FAA /* DiscountCouponViewController.swift in Sources */,
+				B4C8570F2091E36800A24FAA /* OrderDetailViewController.swift in Sources */,
 				B4B12E9E2067A6EC00EB90D8 /* SlideshowViewCell.swift in Sources */,
 				B4C37C012087939D0099937C /* InvoiceInformationViewController.swift in Sources */,
 				B4B12EA22067A6EC00EB90D8 /* Url.swift in Sources */,
 				B4C37BFB2087939D0099937C /* ShopDetailViewController.swift in Sources */,
+				B4C857092091DDF900A24FAA /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

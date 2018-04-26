@@ -21,6 +21,7 @@ class BaseViewController: UIViewController {
         } else {
             self.navigationController?.setNavigationBarHidden(false, animated: false)
         }
+        
     }
     
     override func viewDidLoad() {

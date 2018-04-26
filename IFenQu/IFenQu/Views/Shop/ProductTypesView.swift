@@ -29,7 +29,7 @@ class ProductTypesView: UIView {
         btn.shadeColor()
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.setTitle("立即购买", for: .normal)
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         btn.block = {
             PopView.disMiss()
         }
@@ -61,11 +61,10 @@ class ProductTypesView: UIView {
         headerView.addSubview(lable2)
     }
     
-    var data = ["银色1","银色银色2","银色银银色3","银色4","银色银色5","银色银银色6"]
+    var productModel:ProductModel!
     
-    
-    func setModel(model:Any) {
-        
+    func setModel(model:ProductModel) {
+        productModel = model
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -80,12 +79,12 @@ class ProductTypesView: UIView {
 extension ProductTypesView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ProductTypeItemCellCell
-        cell.setModel(title: data[indexPath.row])
+//        cell.setModel(title: data[indexPath.row])
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return 10
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
@@ -107,7 +106,7 @@ extension ProductTypesView: UICollectionViewDelegate,UICollectionViewDataSource,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: data[indexPath.row].getTextSize(font: 12).width + 15, height: 25)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize.init(width: data[indexPath.row].getTextSize(font: 12).width + 15, height: 25)
+//    }
 }

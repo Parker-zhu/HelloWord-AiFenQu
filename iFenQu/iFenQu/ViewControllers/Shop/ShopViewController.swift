@@ -8,7 +8,7 @@
 ///首页
 
 import UIKit
-
+import Foundation
 class ShopViewController: BaseViewController {
     @IBOutlet weak var contentTableView: UITableView!
     ///顶部轮播图高度
@@ -23,7 +23,7 @@ class ShopViewController: BaseViewController {
     lazy var slideView = { () -> SlideshowView in
         
         let slide = SlideshowView.slideshowViewWithFrame(CGRect.init(x: 0, y: 0, width: self.view.width, height: slideHeight), imageURLPaths: ["banner","banner","banner","banner","banner"], titles: [], didSelectItemAtIndex: { (index) in
-            let vc = ProductTableViewController()
+            let vc = DiscountCouponViewController()
             self.navigationController?.pushViewController(vc, animated: true)
             
         })
@@ -85,8 +85,9 @@ class ShopViewController: BaseViewController {
 //        if CacheManager.manager.dataManger.getDataFromTable(tableName: "hot").count > 0 {
 //            self.hotShopModels = CacheManager.manager.dataManger.getDataFromTable(tableName: "hot")
 //        }
-        
+        print("zhuxiaofengzzz0")
         Network.dataRequest(url: Url.getHotProducts(), param: nil, reqmethod: .GET) { (result) in
+            print("zhuxiaofeng1zzz")
             if result?.code == 1 {
                 if let data = result?.responseDic["data"] as? [[String:Any]] {
                     
@@ -138,8 +139,6 @@ class ShopViewController: BaseViewController {
                 
             }
         }
-        
-        
     }
 }
 

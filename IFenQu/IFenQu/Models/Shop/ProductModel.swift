@@ -31,7 +31,7 @@ class ProductModel: ModelManager {
     ///产品简介
     var productAbout: String?
     ///商品列表
-    var goodsList: [GoodModel]?
+    var goodsList: [GoodModel] = []
     
     var catcreateTimeegoryId: String?
     var brandId: String?

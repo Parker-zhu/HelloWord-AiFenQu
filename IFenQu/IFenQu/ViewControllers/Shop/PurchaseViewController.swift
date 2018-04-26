@@ -11,30 +11,45 @@ import UIKit
 class PurchaseViewController: BaseViewController {
 
     var contenScrollView: UIScrollView!
+    var contentBgView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "购买确认"
         
-        contenScrollView = UIScrollView.init(frame: self.view.bounds)
+        contenScrollView = UIScrollView.init()
         self.view.backgroundColor = xlightGray
         contenScrollView.backgroundColor = xlightGray
         contenScrollView.contentSize = CGSize.init(width: 0, height: 0)
         self.view.addSubview(contenScrollView)
         
-//        contenScrollView.mas_makeConstraints { (make) in
-//            make?.right.equalTo()(self.view.mas_right)
-//            make?.top.equalTo()(self.view.mas_top)
-//            make?.bottom.equalTo()(self.view.safe)
-//            make?.left.equalTo()(self.view.mas_left)
-//
-//        }
+        contenScrollView.mas_makeConstraints { (make) in
+            make?.top.equalTo()(self.view.mas_top)
+            make?.bottom.equalTo()(self.view.mas_bottom)
+            make?.right.equalTo()(self.view.mas_right)
+            make?.left.equalTo()(self.view.mas_left)
+        }
         
-        let addressLable = UILabel.init(frame: CGRect.init(x: 20, y: 5, width: SCREEN_Width, height: 30))
+        contentBgView = UIView.init()
+        contenScrollView.addSubview(contentBgView)
+        contentBgView.mas_makeConstraints { (make) in
+            make?.edges.equalTo()(contenScrollView)
+            make?.center.equalTo()(self.view.center)
+        }
+        
+        let addressLable = UILabel.init()//frame: CGRect.init(x: 20, y: 5, width: SCREEN_Width, height: 30)
         addressLable.text = "详细收货信息"
         addressLable.textColor = UIColor.darkGray
         addressLable.font = UIFont.systemFont(ofSize: 12)
-        contenScrollView.addSubview(addressLable)
+        contentBgView.addSubview(addressLable)
+        
+        addressLable.mas_makeConstraints { (make) in
+            make?.top.equalTo()(contentBgView.mas_top)?.offset()(5)
+            make?.left.equalTo()(contentBgView.mas_left)?.offset()(20)
+            make?.right.equalTo()(contentBgView.mas_right)?.offset()(-20)
+            make?.height.equalTo()(30)
+        }
+        
         
         let addressView = UIView.init()
         addressView.backgroundColor = UIColor.white
@@ -42,7 +57,7 @@ class PurchaseViewController: BaseViewController {
         let tap = UITapGestureRecognizer.init()
         tap.addTarget(self, action: #selector(addressAction))
         addressView.addGestureRecognizer(tap)
-        contenScrollView.addSubview(addressView)
+        contentBgView.addSubview(addressView)
         v = addressView
         
         let addressInfoLable = UILabel.init()
@@ -82,13 +97,13 @@ class PurchaseViewController: BaseViewController {
         bottomView.backgroundColor = UIColor.white
         
         contentInfoView = PurchaseContentView.initFormNib() as! PurchaseContentView
-        contenScrollView.addSubview(contentInfoView)
+        contentBgView.addSubview(contentInfoView)
         
         contentInfoView.mas_makeConstraints { (make) in
             make?.right.equalTo()(self.view.mas_right)
             make?.top.equalTo()(addressView.mas_bottom)?.offset()(20)
-//            make?.height.equalTo()(500)
-            make?.bottom.equalTo()(contenScrollView.mas_bottom)
+            make?.height.equalTo()(500)
+//            make?.bottom.equalTo()(contenScrollView.mas_bottom)
             make?.left.equalTo()(self.view.mas_left)
         }
         

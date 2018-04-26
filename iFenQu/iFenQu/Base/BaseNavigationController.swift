@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseNavigationController: UINavigationController {
+class BaseNavigationController: UINavigationController,UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class BaseNavigationController: UINavigationController {
    
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        
+        viewController.hidesBottomBarWhenPushed = self.childViewControllers.count != 0
         if self.childViewControllers.count > 0 {
             let backBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 40, height: 30))
             backBtn.addTarget(self, action: #selector(navBack), for: .touchUpInside)
